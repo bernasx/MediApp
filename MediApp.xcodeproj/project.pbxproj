@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,6 @@
 		B3B59C51240F6CDAA4D322B5 /* Pods_MediApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5ACF762A90ABA92D052BBE /* Pods_MediApp.framework */; };
 		D1D21FCD246171C70044AC93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FCC246171C70044AC93 /* AppDelegate.m */; };
 		D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FCF246171C70044AC93 /* SceneDelegate.m */; };
-		D1D21FD3246171C70044AC93 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FD2246171C70044AC93 /* ViewController.m */; };
 		D1D21FD6246171C70044AC93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D21FD4246171C70044AC93 /* Main.storyboard */; };
 		D1D21FD9246171C70044AC93 /* MediApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FD7246171C70044AC93 /* MediApp.xcdatamodeld */; };
 		D1D21FDB246171C80044AC93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D21FDA246171C80044AC93 /* Assets.xcassets */; };
@@ -20,6 +19,7 @@
 		D1D21FEB246171C80044AC93 /* MediAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FEA246171C80044AC93 /* MediAppTests.m */; };
 		D1D21FF6246171C80044AC93 /* MediAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FF5246171C80044AC93 /* MediAppUITests.m */; };
 		D1D220042461759A0044AC93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D220032461759A0044AC93 /* GoogleService-Info.plist */; };
+		D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2200924617E700044AC93 /* ITS_LoginViewController.m */; };
 		F0B7E32E8CBE8093E6099263 /* Pods_MediApp_MediAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6221D7ED31C1D09ADE39D8 /* Pods_MediApp_MediAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +54,6 @@
 		D1D21FCC246171C70044AC93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D1D21FCE246171C70044AC93 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		D1D21FCF246171C70044AC93 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		D1D21FD1246171C70044AC93 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D1D21FD2246171C70044AC93 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D1D21FD5246171C70044AC93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1D21FD8246171C70044AC93 /* MediApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MediApp.xcdatamodel; sourceTree = "<group>"; };
 		D1D21FDA246171C80044AC93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +68,8 @@
 		D1D21FF7246171C80044AC93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D220032461759A0044AC93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1D220052461759F0044AC93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1D2200824617E700044AC93 /* ITS_LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_LoginViewController.h; sourceTree = "<group>"; };
+		D1D2200924617E700044AC93 /* ITS_LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_LoginViewController.m; sourceTree = "<group>"; };
 		DC5ACF762A90ABA92D052BBE /* Pods_MediApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,7 +121,6 @@
 				CC47EFABBA977A39C3AE20BC /* Pods-MediAppTests.debug.xcconfig */,
 				724613EC9AE1B341FD50BE85 /* Pods-MediAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -151,15 +150,13 @@
 		D1D21FCA246171C70044AC93 /* MediApp */ = {
 			isa = PBXGroup;
 			children = (
+				D1D2200724617E240044AC93 /* ITS_ViewControllers */,
+				D1D2200624617E130044AC93 /* Storyboards */,
+				D1D21FDA246171C80044AC93 /* Assets.xcassets */,
 				D1D21FCB246171C70044AC93 /* AppDelegate.h */,
 				D1D21FCC246171C70044AC93 /* AppDelegate.m */,
 				D1D21FCE246171C70044AC93 /* SceneDelegate.h */,
 				D1D21FCF246171C70044AC93 /* SceneDelegate.m */,
-				D1D21FD1246171C70044AC93 /* ViewController.h */,
-				D1D21FD2246171C70044AC93 /* ViewController.m */,
-				D1D21FD4246171C70044AC93 /* Main.storyboard */,
-				D1D21FDA246171C80044AC93 /* Assets.xcassets */,
-				D1D21FDC246171C80044AC93 /* LaunchScreen.storyboard */,
 				D1D21FDF246171C80044AC93 /* Info.plist */,
 				D1D21FE0246171C80044AC93 /* main.m */,
 				D1D220052461759F0044AC93 /* GoogleService-Info.plist */,
@@ -184,6 +181,24 @@
 				D1D21FF7246171C80044AC93 /* Info.plist */,
 			);
 			path = MediAppUITests;
+			sourceTree = "<group>";
+		};
+		D1D2200624617E130044AC93 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D1D21FD4246171C70044AC93 /* Main.storyboard */,
+				D1D21FDC246171C80044AC93 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D1D2200724617E240044AC93 /* ITS_ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D1D2200824617E700044AC93 /* ITS_LoginViewController.h */,
+				D1D2200924617E700044AC93 /* ITS_LoginViewController.m */,
+			);
+			path = ITS_ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,8 +441,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D21FE1246171C80044AC93 /* main.m in Sources */,
+				D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */,
 				D1D21FD9246171C70044AC93 /* MediApp.xcdatamodeld in Sources */,
-				D1D21FD3246171C70044AC93 /* ViewController.m in Sources */,
 				D1D21FCD246171C70044AC93 /* AppDelegate.m in Sources */,
 				D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */,
 			);

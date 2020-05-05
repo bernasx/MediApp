@@ -1,0 +1,601 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D1D21FCD246171C70044AC93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FCC246171C70044AC93 /* AppDelegate.m */; };
+		D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FCF246171C70044AC93 /* SceneDelegate.m */; };
+		D1D21FD3246171C70044AC93 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FD2246171C70044AC93 /* ViewController.m */; };
+		D1D21FD6246171C70044AC93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D21FD4246171C70044AC93 /* Main.storyboard */; };
+		D1D21FD9246171C70044AC93 /* MediApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FD7246171C70044AC93 /* MediApp.xcdatamodeld */; };
+		D1D21FDB246171C80044AC93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D21FDA246171C80044AC93 /* Assets.xcassets */; };
+		D1D21FDE246171C80044AC93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D21FDC246171C80044AC93 /* LaunchScreen.storyboard */; };
+		D1D21FE1246171C80044AC93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FE0246171C80044AC93 /* main.m */; };
+		D1D21FEB246171C80044AC93 /* MediAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FEA246171C80044AC93 /* MediAppTests.m */; };
+		D1D21FF6246171C80044AC93 /* MediAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FF5246171C80044AC93 /* MediAppUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D1D21FE7246171C80044AC93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1D21FC0246171C60044AC93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1D21FC7246171C70044AC93;
+			remoteInfo = MediApp;
+		};
+		D1D21FF2246171C80044AC93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1D21FC0246171C60044AC93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1D21FC7246171C70044AC93;
+			remoteInfo = MediApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D1D21FC8246171C70044AC93 /* MediApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D21FCB246171C70044AC93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D1D21FCC246171C70044AC93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D1D21FCE246171C70044AC93 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		D1D21FCF246171C70044AC93 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		D1D21FD1246171C70044AC93 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D1D21FD2246171C70044AC93 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D1D21FD5246171C70044AC93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D1D21FD8246171C70044AC93 /* MediApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MediApp.xcdatamodel; sourceTree = "<group>"; };
+		D1D21FDA246171C80044AC93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D1D21FDD246171C80044AC93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D1D21FDF246171C80044AC93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1D21FE0246171C80044AC93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D1D21FE6246171C80044AC93 /* MediAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D21FEA246171C80044AC93 /* MediAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediAppTests.m; sourceTree = "<group>"; };
+		D1D21FEC246171C80044AC93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1D21FF1246171C80044AC93 /* MediAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D21FF5246171C80044AC93 /* MediAppUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediAppUITests.m; sourceTree = "<group>"; };
+		D1D21FF7246171C80044AC93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D1D21FC5246171C70044AC93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1D21FE3246171C80044AC93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1D21FEE246171C80044AC93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D1D21FBF246171C60044AC93 = {
+			isa = PBXGroup;
+			children = (
+				D1D21FCA246171C70044AC93 /* MediApp */,
+				D1D21FE9246171C80044AC93 /* MediAppTests */,
+				D1D21FF4246171C80044AC93 /* MediAppUITests */,
+				D1D21FC9246171C70044AC93 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D1D21FC9246171C70044AC93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D1D21FC8246171C70044AC93 /* MediApp.app */,
+				D1D21FE6246171C80044AC93 /* MediAppTests.xctest */,
+				D1D21FF1246171C80044AC93 /* MediAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D1D21FCA246171C70044AC93 /* MediApp */ = {
+			isa = PBXGroup;
+			children = (
+				D1D21FCB246171C70044AC93 /* AppDelegate.h */,
+				D1D21FCC246171C70044AC93 /* AppDelegate.m */,
+				D1D21FCE246171C70044AC93 /* SceneDelegate.h */,
+				D1D21FCF246171C70044AC93 /* SceneDelegate.m */,
+				D1D21FD1246171C70044AC93 /* ViewController.h */,
+				D1D21FD2246171C70044AC93 /* ViewController.m */,
+				D1D21FD4246171C70044AC93 /* Main.storyboard */,
+				D1D21FDA246171C80044AC93 /* Assets.xcassets */,
+				D1D21FDC246171C80044AC93 /* LaunchScreen.storyboard */,
+				D1D21FDF246171C80044AC93 /* Info.plist */,
+				D1D21FE0246171C80044AC93 /* main.m */,
+				D1D21FD7246171C70044AC93 /* MediApp.xcdatamodeld */,
+			);
+			path = MediApp;
+			sourceTree = "<group>";
+		};
+		D1D21FE9246171C80044AC93 /* MediAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				D1D21FEA246171C80044AC93 /* MediAppTests.m */,
+				D1D21FEC246171C80044AC93 /* Info.plist */,
+			);
+			path = MediAppTests;
+			sourceTree = "<group>";
+		};
+		D1D21FF4246171C80044AC93 /* MediAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D1D21FF5246171C80044AC93 /* MediAppUITests.m */,
+				D1D21FF7246171C80044AC93 /* Info.plist */,
+			);
+			path = MediAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D1D21FC7246171C70044AC93 /* MediApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1D21FFA246171C80044AC93 /* Build configuration list for PBXNativeTarget "MediApp" */;
+			buildPhases = (
+				D1D21FC4246171C70044AC93 /* Sources */,
+				D1D21FC5246171C70044AC93 /* Frameworks */,
+				D1D21FC6246171C70044AC93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MediApp;
+			productName = MediApp;
+			productReference = D1D21FC8246171C70044AC93 /* MediApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D1D21FE5246171C80044AC93 /* MediAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1D21FFD246171C80044AC93 /* Build configuration list for PBXNativeTarget "MediAppTests" */;
+			buildPhases = (
+				D1D21FE2246171C80044AC93 /* Sources */,
+				D1D21FE3246171C80044AC93 /* Frameworks */,
+				D1D21FE4246171C80044AC93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1D21FE8246171C80044AC93 /* PBXTargetDependency */,
+			);
+			name = MediAppTests;
+			productName = MediAppTests;
+			productReference = D1D21FE6246171C80044AC93 /* MediAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D1D21FF0246171C80044AC93 /* MediAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1D22000246171C80044AC93 /* Build configuration list for PBXNativeTarget "MediAppUITests" */;
+			buildPhases = (
+				D1D21FED246171C80044AC93 /* Sources */,
+				D1D21FEE246171C80044AC93 /* Frameworks */,
+				D1D21FEF246171C80044AC93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1D21FF3246171C80044AC93 /* PBXTargetDependency */,
+			);
+			name = MediAppUITests;
+			productName = MediAppUITests;
+			productReference = D1D21FF1246171C80044AC93 /* MediAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D1D21FC0246171C60044AC93 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Bernardo Miguel Nunes Ribeiro";
+				TargetAttributes = {
+					D1D21FC7246171C70044AC93 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					D1D21FE5246171C80044AC93 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = D1D21FC7246171C70044AC93;
+					};
+					D1D21FF0246171C80044AC93 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = D1D21FC7246171C70044AC93;
+					};
+				};
+			};
+			buildConfigurationList = D1D21FC3246171C60044AC93 /* Build configuration list for PBXProject "MediApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D1D21FBF246171C60044AC93;
+			productRefGroup = D1D21FC9246171C70044AC93 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D1D21FC7246171C70044AC93 /* MediApp */,
+				D1D21FE5246171C80044AC93 /* MediAppTests */,
+				D1D21FF0246171C80044AC93 /* MediAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D1D21FC6246171C70044AC93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1D21FDE246171C80044AC93 /* LaunchScreen.storyboard in Resources */,
+				D1D21FDB246171C80044AC93 /* Assets.xcassets in Resources */,
+				D1D21FD6246171C70044AC93 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1D21FE4246171C80044AC93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1D21FEF246171C80044AC93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D1D21FC4246171C70044AC93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1D21FE1246171C80044AC93 /* main.m in Sources */,
+				D1D21FD9246171C70044AC93 /* MediApp.xcdatamodeld in Sources */,
+				D1D21FD3246171C70044AC93 /* ViewController.m in Sources */,
+				D1D21FCD246171C70044AC93 /* AppDelegate.m in Sources */,
+				D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1D21FE2246171C80044AC93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1D21FEB246171C80044AC93 /* MediAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1D21FED246171C80044AC93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1D21FF6246171C80044AC93 /* MediAppUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D1D21FE8246171C80044AC93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1D21FC7246171C70044AC93 /* MediApp */;
+			targetProxy = D1D21FE7246171C80044AC93 /* PBXContainerItemProxy */;
+		};
+		D1D21FF3246171C80044AC93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1D21FC7246171C70044AC93 /* MediApp */;
+			targetProxy = D1D21FF2246171C80044AC93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D1D21FD4246171C70044AC93 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1D21FD5246171C70044AC93 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D1D21FDC246171C80044AC93 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1D21FDD246171C80044AC93 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D1D21FF8246171C80044AC93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D1D21FF9246171C80044AC93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D1D21FFB246171C80044AC93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MediApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bernardo.ribeiro.MediApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D1D21FFC246171C80044AC93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MediApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bernardo.ribeiro.MediApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D1D21FFE246171C80044AC93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MediAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bernardo.ribeiro.MediAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MediApp.app/MediApp";
+			};
+			name = Debug;
+		};
+		D1D21FFF246171C80044AC93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MediAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bernardo.ribeiro.MediAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MediApp.app/MediApp";
+			};
+			name = Release;
+		};
+		D1D22001246171C80044AC93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MediAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bernardo.ribeiro.MediAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MediApp;
+			};
+			name = Debug;
+		};
+		D1D22002246171C80044AC93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MediAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bernardo.ribeiro.MediAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MediApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D1D21FC3246171C60044AC93 /* Build configuration list for PBXProject "MediApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1D21FF8246171C80044AC93 /* Debug */,
+				D1D21FF9246171C80044AC93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1D21FFA246171C80044AC93 /* Build configuration list for PBXNativeTarget "MediApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1D21FFB246171C80044AC93 /* Debug */,
+				D1D21FFC246171C80044AC93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1D21FFD246171C80044AC93 /* Build configuration list for PBXNativeTarget "MediAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1D21FFE246171C80044AC93 /* Debug */,
+				D1D21FFF246171C80044AC93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1D22000246171C80044AC93 /* Build configuration list for PBXNativeTarget "MediAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1D22001246171C80044AC93 /* Debug */,
+				D1D22002246171C80044AC93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D1D21FD7246171C70044AC93 /* MediApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D1D21FD8246171C70044AC93 /* MediApp.xcdatamodel */,
+			);
+			currentVersion = D1D21FD8246171C70044AC93 /* MediApp.xcdatamodel */;
+			path = MediApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D1D21FC0246171C60044AC93 /* Project object */;
+}

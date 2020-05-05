@@ -1,0 +1,20 @@
+//
+//  AppDelegate.h
+//  MediApp
+//
+//  Created by Bernardo Miguel Nunes Ribeiro on 05/05/2020.
+//  Copyright © 2020 Bernardo Miguel Nunes Ribeiro. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (readonly, strong) NSPersistentContainer *persistentContainer;
+
+- (void)saveContext;
+
+
+@end
+

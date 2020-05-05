@@ -16,17 +16,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self designViewElements];
 }
 
-/*
-#pragma mark - Navigation
+//Designs the view's elements and components with the proper characteristics
+- (void) designViewElements {
+    [self.navigationItem setTitle:@"Login"];
+    [self.welcomeLbl setText:@"Bem-vindo à MediApp"];
+    [self.welcomeLbl setTextColor:[ITS_Colors secondaryColor]];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    //setup textfield components
+    [self.emailView initWithTitle:@"Email" andType:UITextFieldEmail andFrame:self.emailView.frame];
+    [self.passwordView initWithTitle:@"Password" andType:UITextFieldPassword andFrame:self.passwordView.frame];
 }
-*/
+
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "ITS_Colors.h"
 @import Firebase;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -15,7 +16,7 @@
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 
 - (void)saveContext;
-
+- (void)designNavBar;
 
 @end
 

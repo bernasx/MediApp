@@ -20,6 +20,13 @@
 		D1D21FF6246171C80044AC93 /* MediAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FF5246171C80044AC93 /* MediAppUITests.m */; };
 		D1D220042461759A0044AC93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D220032461759A0044AC93 /* GoogleService-Info.plist */; };
 		D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2200924617E700044AC93 /* ITS_LoginViewController.m */; };
+		D1D2200F2461860F0044AC93 /* ITS_Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2200E2461860F0044AC93 /* ITS_Colors.m */; };
+		D1D220172461ACFB0044AC93 /* ITS_TextFieldComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D220162461ACFB0044AC93 /* ITS_TextFieldComponent.m */; };
+		D1D220192461AD090044AC93 /* ITS_TextFieldComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D220182461AD090044AC93 /* ITS_TextFieldComponent.xib */; };
+		D1D2201A2461B14D0044AC93 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1D220112461A9040044AC93 /* SF-Pro-Text-Semibold.otf */; };
+		D1D2201B2461B14D0044AC93 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1D220122461A90D0044AC93 /* SF-Pro-Text-Regular.otf */; };
+		D1D2201C2461B14D0044AC93 /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1D220142461A9150044AC93 /* SF-Pro-Text-RegularItalic.otf */; };
+		D1D2201D2461B14D0044AC93 /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1D220132461A9150044AC93 /* SF-Pro-Text-SemiboldItalic.otf */; };
 		F0B7E32E8CBE8093E6099263 /* Pods_MediApp_MediAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6221D7ED31C1D09ADE39D8 /* Pods_MediApp_MediAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +77,15 @@
 		D1D220052461759F0044AC93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1D2200824617E700044AC93 /* ITS_LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_LoginViewController.h; sourceTree = "<group>"; };
 		D1D2200924617E700044AC93 /* ITS_LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_LoginViewController.m; sourceTree = "<group>"; };
+		D1D2200D2461860F0044AC93 /* ITS_Colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_Colors.h; sourceTree = "<group>"; };
+		D1D2200E2461860F0044AC93 /* ITS_Colors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_Colors.m; sourceTree = "<group>"; };
+		D1D220112461A9040044AC93 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Semibold.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		D1D220122461A90D0044AC93 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-Regular.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		D1D220132461A9150044AC93 /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-SemiboldItalic.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		D1D220142461A9150044AC93 /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-RegularItalic.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		D1D220152461ACFB0044AC93 /* ITS_TextFieldComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_TextFieldComponent.h; sourceTree = "<group>"; };
+		D1D220162461ACFB0044AC93 /* ITS_TextFieldComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_TextFieldComponent.m; sourceTree = "<group>"; };
+		D1D220182461AD090044AC93 /* ITS_TextFieldComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_TextFieldComponent.xib; sourceTree = "<group>"; };
 		DC5ACF762A90ABA92D052BBE /* Pods_MediApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,6 +145,7 @@
 			children = (
 				D1D21FCA246171C70044AC93 /* MediApp */,
 				D1D220032461759A0044AC93 /* GoogleService-Info.plist */,
+				D1D220102461A8FB0044AC93 /* Fonts */,
 				D1D21FE9246171C80044AC93 /* MediAppTests */,
 				D1D21FF4246171C80044AC93 /* MediAppUITests */,
 				D1D21FC9246171C70044AC93 /* Products */,
@@ -150,6 +167,7 @@
 		D1D21FCA246171C70044AC93 /* MediApp */ = {
 			isa = PBXGroup;
 			children = (
+				D1D2200B246185AD0044AC93 /* ITS_CustomControls */,
 				D1D2200724617E240044AC93 /* ITS_ViewControllers */,
 				D1D2200624617E130044AC93 /* Storyboards */,
 				D1D21FDA246171C80044AC93 /* Assets.xcassets */,
@@ -199,6 +217,37 @@
 				D1D2200924617E700044AC93 /* ITS_LoginViewController.m */,
 			);
 			path = ITS_ViewControllers;
+			sourceTree = "<group>";
+		};
+		D1D2200B246185AD0044AC93 /* ITS_CustomControls */ = {
+			isa = PBXGroup;
+			children = (
+				D1D2200C246185C60044AC93 /* Design */,
+			);
+			path = ITS_CustomControls;
+			sourceTree = "<group>";
+		};
+		D1D2200C246185C60044AC93 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				D1D2200D2461860F0044AC93 /* ITS_Colors.h */,
+				D1D2200E2461860F0044AC93 /* ITS_Colors.m */,
+				D1D220152461ACFB0044AC93 /* ITS_TextFieldComponent.h */,
+				D1D220162461ACFB0044AC93 /* ITS_TextFieldComponent.m */,
+				D1D220182461AD090044AC93 /* ITS_TextFieldComponent.xib */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		D1D220102461A8FB0044AC93 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D1D220112461A9040044AC93 /* SF-Pro-Text-Semibold.otf */,
+				D1D220122461A90D0044AC93 /* SF-Pro-Text-Regular.otf */,
+				D1D220142461A9150044AC93 /* SF-Pro-Text-RegularItalic.otf */,
+				D1D220132461A9150044AC93 /* SF-Pro-Text-SemiboldItalic.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,8 +358,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1D2201A2461B14D0044AC93 /* SF-Pro-Text-Semibold.otf in Resources */,
+				D1D2201B2461B14D0044AC93 /* SF-Pro-Text-Regular.otf in Resources */,
+				D1D2201C2461B14D0044AC93 /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				D1D2201D2461B14D0044AC93 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				D1D21FDE246171C80044AC93 /* LaunchScreen.storyboard in Resources */,
 				D1D220042461759A0044AC93 /* GoogleService-Info.plist in Resources */,
+				D1D220192461AD090044AC93 /* ITS_TextFieldComponent.xib in Resources */,
 				D1D21FDB246171C80044AC93 /* Assets.xcassets in Resources */,
 				D1D21FD6246171C70044AC93 /* Main.storyboard in Resources */,
 			);
@@ -442,7 +496,9 @@
 			files = (
 				D1D21FE1246171C80044AC93 /* main.m in Sources */,
 				D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */,
+				D1D2200F2461860F0044AC93 /* ITS_Colors.m in Sources */,
 				D1D21FD9246171C70044AC93 /* MediApp.xcdatamodeld in Sources */,
+				D1D220172461ACFB0044AC93 /* ITS_TextFieldComponent.m in Sources */,
 				D1D21FCD246171C70044AC93 /* AppDelegate.m in Sources */,
 				D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */,
 			);

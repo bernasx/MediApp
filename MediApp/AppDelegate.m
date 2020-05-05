@@ -17,7 +17,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [FIRApp configure];
+    [self designNavBar];
     return YES;
+}
+
+
+//Designs the style that navbar will have for the entire app
+- (void)designNavBar {
+    [[UINavigationBar appearance] setTintColor:[ITS_Colors primaryColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[ITS_Colors primaryColor]}];
+    [[UINavigationBar appearance] setLargeTitleTextAttributes:@{NSForegroundColorAttributeName:[ITS_Colors primaryColor]}];
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
 }
 
 

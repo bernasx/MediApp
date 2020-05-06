@@ -30,6 +30,11 @@
     return [UIColor colorWithRed:221.0/255.0 green:221.0/255.0 blue:221.0/255.0 alpha:1];
 }
 
++ (UIColor *)warningColor {
+    //red
+    return [UIColor colorWithRed:255.0/255.0f green:126/255.0f blue:121/255.0f alpha:1.0];
+}
+
 
 
 @end

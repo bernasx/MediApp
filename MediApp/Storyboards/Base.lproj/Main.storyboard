@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Ht-zm-fGR">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -17,47 +17,87 @@
             <objects>
                 <viewController id="HmC-P6-pFD" customClass="ITS_LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h4B-0k-uNQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="medic-bg" translatesAutoresizingMaskIntoConstraints="NO" id="ryI-m5-tcH">
-                                <rect key="frame" x="174" y="424" width="240" height="350"/>
+                                <rect key="frame" x="119" y="323" width="240" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="3F9-jb-zre"/>
+                                    <constraint firstAttribute="height" constant="300" id="3F9-jb-zre"/>
                                     <constraint firstAttribute="width" constant="240" id="V4n-fF-lgF"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lVa-4r-9OO">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aO5-uq-BDz">
-                                        <rect key="frame" x="8" y="8" width="398" height="36"/>
+                                        <rect key="frame" x="8" y="8" width="359" height="36"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2E-Rx-FRB" customClass="ITS_TextFieldComponent">
-                                        <rect key="frame" x="0.0" y="60" width="414" height="150"/>
+                                        <rect key="frame" x="0.0" y="60" width="375" height="110"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="Kg4-9k-0pz"/>
+                                            <constraint firstAttribute="height" constant="110" id="Kg4-9k-0pz"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8iw-E9-wzp" customClass="ITS_TextFieldComponent">
-                                        <rect key="frame" x="0.0" y="210" width="414" height="150"/>
+                                        <rect key="frame" x="0.0" y="170" width="375" height="110"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="ZX4-j6-tiA"/>
+                                            <constraint firstAttribute="height" constant="110" id="ZX4-j6-tiA"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qy0-Vy-HzS">
+                                        <rect key="frame" x="279" y="280" width="80" height="37"/>
+                                        <color key="backgroundColor" red="0.97311604210000002" green="0.42959710369999998" blue="0.2300363544" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="GDF-9A-mCQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="22"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onLoginButtonTapped:" destination="HmC-P6-pFD" eventType="touchUpInside" id="GDl-YG-Kkz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOk-91-T2s">
+                                        <rect key="frame" x="8" y="588" width="144" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="144" id="s95-a2-R89"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="12"/>
+                                        <state key="normal" title="Termos de Utilização"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnE-cg-65y">
+                                        <rect key="frame" x="8" y="559" width="155" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="155" id="arx-RO-nTi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="12"/>
+                                        <state key="normal" title="Politica de Privacidade"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="aO5-uq-BDz" firstAttribute="leading" secondItem="lVa-4r-9OO" secondAttribute="leading" constant="8" id="6Z7-Xp-fhX"/>
                                     <constraint firstItem="8iw-E9-wzp" firstAttribute="leading" secondItem="lVa-4r-9OO" secondAttribute="leading" id="AcB-Di-cji"/>
                                     <constraint firstItem="8iw-E9-wzp" firstAttribute="top" secondItem="M2E-Rx-FRB" secondAttribute="bottom" id="BqC-gX-t2h"/>
+                                    <constraint firstItem="Qy0-Vy-HzS" firstAttribute="top" secondItem="8iw-E9-wzp" secondAttribute="bottom" id="DER-yV-O9o"/>
+                                    <constraint firstItem="GOk-91-T2s" firstAttribute="leading" secondItem="lVa-4r-9OO" secondAttribute="leading" constant="8" id="E7g-IN-ufq"/>
                                     <constraint firstAttribute="trailing" secondItem="aO5-uq-BDz" secondAttribute="trailing" constant="8" id="HjR-HX-JG8"/>
+                                    <constraint firstItem="GOk-91-T2s" firstAttribute="top" secondItem="lnE-cg-65y" secondAttribute="bottom" constant="2" id="Pl6-L1-4Yc"/>
+                                    <constraint firstItem="Qy0-Vy-HzS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lVa-4r-9OO" secondAttribute="leading" priority="250" constant="326" id="SVP-7F-O5O"/>
+                                    <constraint firstAttribute="bottom" secondItem="GOk-91-T2s" secondAttribute="bottom" constant="8" id="ahq-Wv-AKz"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lnE-cg-65y" secondAttribute="trailing" priority="250" constant="212" id="cdl-bT-k0c"/>
+                                    <constraint firstItem="lnE-cg-65y" firstAttribute="leading" secondItem="lVa-4r-9OO" secondAttribute="leading" constant="8" id="dWW-Ay-3XL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qy0-Vy-HzS" secondAttribute="trailing" constant="16" id="eOD-BF-BKG"/>
                                     <constraint firstAttribute="trailing" secondItem="M2E-Rx-FRB" secondAttribute="trailing" id="mku-BZ-fTQ"/>
                                     <constraint firstItem="M2E-Rx-FRB" firstAttribute="leading" secondItem="lVa-4r-9OO" secondAttribute="leading" id="n7q-i7-M0r"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GOk-91-T2s" secondAttribute="trailing" priority="250" constant="223" id="nTN-fc-V16"/>
                                     <constraint firstItem="aO5-uq-BDz" firstAttribute="top" secondItem="lVa-4r-9OO" secondAttribute="top" constant="8" id="pg3-B1-kUH"/>
                                     <constraint firstAttribute="trailing" secondItem="8iw-E9-wzp" secondAttribute="trailing" id="sU2-L8-AEg"/>
                                     <constraint firstItem="M2E-Rx-FRB" firstAttribute="top" secondItem="aO5-uq-BDz" secondAttribute="bottom" constant="16" id="zUH-5d-2od"/>
@@ -68,7 +108,7 @@
                         <constraints>
                             <constraint firstItem="lVa-4r-9OO" firstAttribute="trailing" secondItem="fX2-yF-WcZ" secondAttribute="trailing" id="4Mx-QF-Mgv"/>
                             <constraint firstItem="lVa-4r-9OO" firstAttribute="bottom" secondItem="fX2-yF-WcZ" secondAttribute="bottom" id="VfZ-R1-ERH"/>
-                            <constraint firstItem="ryI-m5-tcH" firstAttribute="trailing" secondItem="fX2-yF-WcZ" secondAttribute="trailing" id="ffu-ZZ-WHg"/>
+                            <constraint firstItem="ryI-m5-tcH" firstAttribute="trailing" secondItem="fX2-yF-WcZ" secondAttribute="trailing" constant="-16" id="ffu-ZZ-WHg"/>
                             <constraint firstItem="ryI-m5-tcH" firstAttribute="bottom" secondItem="fX2-yF-WcZ" secondAttribute="bottom" id="giS-OO-VAk"/>
                             <constraint firstItem="lVa-4r-9OO" firstAttribute="top" secondItem="fX2-yF-WcZ" secondAttribute="top" id="i1g-ju-IjA"/>
                             <constraint firstItem="lVa-4r-9OO" firstAttribute="leading" secondItem="fX2-yF-WcZ" secondAttribute="leading" id="sIj-Ed-C9v"/>
@@ -78,6 +118,7 @@
                     <navigationItem key="navigationItem" id="R8S-de-5Ix"/>
                     <connections>
                         <outlet property="emailView" destination="M2E-Rx-FRB" id="1fK-Rw-zkc"/>
+                        <outlet property="loginButton" destination="Qy0-Vy-HzS" id="DGJ-ED-2zd"/>
                         <outlet property="passwordView" destination="8iw-E9-wzp" id="cVA-96-eMD"/>
                         <outlet property="welcomeLabel" destination="aO5-uq-BDz" id="zqB-rx-tzi"/>
                     </connections>
@@ -91,7 +132,7 @@
             <objects>
                 <navigationController id="5Ht-zm-fGR" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="X0I-cV-185">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
@@ -103,7 +144,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37p-Mq-oKh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112" y="-107"/>
+            <point key="canvasLocation" x="-36" y="-107"/>
         </scene>
     </scenes>
     <resources>

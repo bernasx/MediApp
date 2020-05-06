@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)secondaryColor;
 + (UIColor *)smallButtonAndTitleColor;
 + (UIColor *)smallTextColor;
++ (UIColor *)warningColor;
 @end
 
 NS_ASSUME_NONNULL_END

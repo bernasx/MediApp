@@ -16,7 +16,6 @@
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 
 - (void)saveContext;
-- (void)designNavBar;
 
 @end
 

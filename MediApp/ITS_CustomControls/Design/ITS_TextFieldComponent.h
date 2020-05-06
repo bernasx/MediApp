@@ -8,22 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "ITS_Colors.h"
+#import "ITS_Enums.h"
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSUInteger, TextFieldType) {
-    UITextFieldEmail,
-    UITextFieldPassword,
-    UITextFieldDate,
-    UITextFieldTime,
-    UITextFieldDefault
-};
-
-@interface ITS_TextFieldComponent : UIView
+@interface ITS_TextFieldComponent : UIView <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIView *view;
 
-- (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType;
 - (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andFrame:(CGRect)frame;
 - (void)updateComponentType:(TextFieldType)textfieldType;
+- (void)updateComponentStatus:(TextFieldStatus)textFieldStatus withWarningMessage:(NSString *) warningMessage;
+- (bool)textfieldHasText;
+- (NSInteger)textfieldSize;
+- (NSString *)textfieldText;
 @end
 
 NS_ASSUME_NONNULL_END

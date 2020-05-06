@@ -24,17 +24,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="p0f-nM-QdT">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REV-qQ-8Wg">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cj-wE-tCY">
-                                    <rect key="frame" x="16" y="0.0" width="398" height="50"/>
+                                    <rect key="frame" x="16" y="0.0" width="398" height="30"/>
                                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -45,14 +45,14 @@
                                 <constraint firstAttribute="trailing" secondItem="2cj-wE-tCY" secondAttribute="trailing" id="eb8-Ow-Bcx"/>
                                 <constraint firstItem="2cj-wE-tCY" firstAttribute="leading" secondItem="REV-qQ-8Wg" secondAttribute="leading" constant="16" id="i9o-bf-TQd"/>
                                 <constraint firstAttribute="bottom" secondItem="2cj-wE-tCY" secondAttribute="bottom" id="mw4-Dm-FGl"/>
-                                <constraint firstAttribute="height" constant="50" id="urw-4u-ylX"/>
+                                <constraint firstAttribute="height" constant="30" id="urw-4u-ylX"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fM9-LB-qWl">
-                            <rect key="frame" x="0.0" y="50" width="414" height="70"/>
+                            <rect key="frame" x="0.0" y="30" width="414" height="50"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K65-Tl-NkO">
-                                    <rect key="frame" x="8" y="10" width="398" height="44"/>
+                                    <rect key="frame" x="16" y="0.0" width="382" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="1Zt-Fe-tha"/>
                                     </constraints>
@@ -61,14 +61,14 @@
                                 </textField>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="K65-Tl-NkO" firstAttribute="leading" secondItem="fM9-LB-qWl" secondAttribute="leading" constant="8" id="7DB-tX-QpR"/>
-                                <constraint firstItem="K65-Tl-NkO" firstAttribute="top" secondItem="fM9-LB-qWl" secondAttribute="top" constant="10" id="9J8-rC-qmN"/>
-                                <constraint firstAttribute="height" constant="70" id="pgR-ek-yje"/>
-                                <constraint firstAttribute="trailing" secondItem="K65-Tl-NkO" secondAttribute="trailing" constant="8" id="sN4-p3-Cto"/>
+                                <constraint firstItem="K65-Tl-NkO" firstAttribute="leading" secondItem="fM9-LB-qWl" secondAttribute="leading" constant="16" id="7DB-tX-QpR"/>
+                                <constraint firstItem="K65-Tl-NkO" firstAttribute="top" secondItem="fM9-LB-qWl" secondAttribute="top" id="9J8-rC-qmN"/>
+                                <constraint firstAttribute="height" constant="50" id="pgR-ek-yje"/>
+                                <constraint firstAttribute="trailing" secondItem="K65-Tl-NkO" secondAttribute="trailing" constant="16" id="sN4-p3-Cto"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yoE-pk-W6b">
-                            <rect key="frame" x="0.0" y="120" width="414" height="30"/>
+                            <rect key="frame" x="0.0" y="80" width="414" height="30"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dca-Lv-GQc">
                                     <rect key="frame" x="0.0" y="0.0" width="398" height="30"/>

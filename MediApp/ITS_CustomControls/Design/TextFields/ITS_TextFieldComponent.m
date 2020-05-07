@@ -69,6 +69,10 @@
         case UITextFieldTime:
             [self setupWithLeftView:nil andRightView:[UIImage systemImageNamed:@"clock"]];
             break;
+        case UITextFieldNumber:
+            [self.textfield setKeyboardType:UIKeyboardTypeNumberPad];
+            [self setupWithLeftView:nil andRightView:nil];
+            break;
         default:
             break;
     }

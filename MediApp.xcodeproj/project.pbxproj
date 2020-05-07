@@ -37,6 +37,8 @@
 		D1D2204824640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D2204624640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib */; };
 		D1D2204B24644A8A0044AC93 /* ITS_MedicsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2204A24644A8A0044AC93 /* ITS_MedicsListViewController.m */; };
 		D1D2204E246454170044AC93 /* ITS_AddMedicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2204D246454170044AC93 /* ITS_AddMedicViewController.m */; };
+		D1D22051246470F70044AC93 /* ITS_TextFieldWithTableComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D22050246470F70044AC93 /* ITS_TextFieldWithTableComponent.m */; };
+		D1D22053246472310044AC93 /* ITS_TextFieldWithTableComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D22052246472310044AC93 /* ITS_TextFieldWithTableComponent.xib */; };
 		F0B7E32E8CBE8093E6099263 /* Pods_MediApp_MediAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6221D7ED31C1D09ADE39D8 /* Pods_MediApp_MediAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +117,9 @@
 		D1D2204A24644A8A0044AC93 /* ITS_MedicsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_MedicsListViewController.m; sourceTree = "<group>"; };
 		D1D2204C246454170044AC93 /* ITS_AddMedicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_AddMedicViewController.h; sourceTree = "<group>"; };
 		D1D2204D246454170044AC93 /* ITS_AddMedicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_AddMedicViewController.m; sourceTree = "<group>"; };
+		D1D2204F246470F70044AC93 /* ITS_TextFieldWithTableComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_TextFieldWithTableComponent.h; sourceTree = "<group>"; };
+		D1D22050246470F70044AC93 /* ITS_TextFieldWithTableComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_TextFieldWithTableComponent.m; sourceTree = "<group>"; };
+		D1D22052246472310044AC93 /* ITS_TextFieldWithTableComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_TextFieldWithTableComponent.xib; sourceTree = "<group>"; };
 		DC5ACF762A90ABA92D052BBE /* Pods_MediApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -342,6 +347,9 @@
 				D1D220152461ACFB0044AC93 /* ITS_TextFieldComponent.h */,
 				D1D220162461ACFB0044AC93 /* ITS_TextFieldComponent.m */,
 				D1D220182461AD090044AC93 /* ITS_TextFieldComponent.xib */,
+				D1D2204F246470F70044AC93 /* ITS_TextFieldWithTableComponent.h */,
+				D1D22050246470F70044AC93 /* ITS_TextFieldWithTableComponent.m */,
+				D1D22052246472310044AC93 /* ITS_TextFieldWithTableComponent.xib */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -454,6 +462,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1D22053246472310044AC93 /* ITS_TextFieldWithTableComponent.xib in Resources */,
 				D1D2201A2461B14D0044AC93 /* SF-Pro-Text-Semibold.otf in Resources */,
 				D1D2201B2461B14D0044AC93 /* SF-Pro-Text-Regular.otf in Resources */,
 				D1D2204824640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib in Resources */,
@@ -594,6 +603,7 @@
 				D1D2204E246454170044AC93 /* ITS_AddMedicViewController.m in Sources */,
 				D1D21FE1246171C80044AC93 /* main.m in Sources */,
 				D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */,
+				D1D22051246470F70044AC93 /* ITS_TextFieldWithTableComponent.m in Sources */,
 				D1D2200F2461860F0044AC93 /* ITS_Colors.m in Sources */,
 				D1D2202F2462EBDD0044AC93 /* ITS_LoginViewModel.m in Sources */,
 				D1D2204B24644A8A0044AC93 /* ITS_MedicsListViewController.m in Sources */,

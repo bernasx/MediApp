@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, TextFieldType) {
     UITextFieldPassword,
     UITextFieldDate,
     UITextFieldTime,
+    UITextFieldNumber,
     UITextFieldDefault
 };
 

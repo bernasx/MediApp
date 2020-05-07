@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ITS_FirebaseManager.h"
+#import <FirebaseAuth.h>
+#import <FirebaseDatabase.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_Repository : NSObject

@@ -11,12 +11,33 @@
 @interface ITS_MainMenuViewController ()
 @property (nonatomic) NSMutableArray* selectionImages;
 @property (nonatomic) NSMutableArray* selectionTitles;
+@property (nonatomic) MainMenuSelection mainMenuSelection;
 @end
 
 @implementation ITS_MainMenuViewController
+#pragma mark - IBActions
+
+- (IBAction)onShowAll:(id)sender {
+    //decide where to go
+    switch (self.mainMenuSelection) {
+        case MainMenuSelectionMedicalAppointment:
+            //go to medicalappointments (consultas)
+            break;
+        case MainMenuSelectionPatients:
+            //go to patients
+            break;
+        case MainMenuSelectionAppointments:
+            //go to appointments(agendamentos)
+            break;
+        case MainMenuSelectionMedics:
+            [self instantiateNewViewController:@"medicsListViewController"];
+            break;
+        default:
+            break;
+    }
+}
 
 #pragma mark -  Initial Setup
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"%@",[[FIRAuth auth] currentUser].email);
@@ -32,7 +53,6 @@
     [self.topSectionView.layer setMaskedCorners:kCALayerMaxXMaxYCorner | kCALayerMinXMaxYCorner];
     
     //navbar design and setting the menu button design/action
-    [self.navigationController.navigationBar setBarTintColor:[ITS_Colors secondaryColor]];
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationItem setTitle:@"Menu"];
     UIImage *menuButtonImage = [UIImage imageNamed:@"menu-25"];
@@ -46,7 +66,6 @@
     [self fillSelectionArraysWithSingleImageName:@"person.2.fill" andTitle:@"Os meus pacientes"];
     [self fillSelectionArraysWithSingleImageName:@"calendar.badge.plus" andTitle:@"Os meus agendamentos"];
     [self fillSelectionArraysWithSingleImageName:@"person.3.fill" andTitle:@"Os meus médicos"];
-    
     //selection collectionview layout
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.itemSize = CGSizeMake(128, 128);
@@ -56,7 +75,13 @@
     layout.minimumInteritemSpacing = 40;
     self.menuSelectionCollectionView.collectionViewLayout = layout;
     
-    [self.menuSelectionCollectionView reloadData];
+    //show all button
+    [self.showAllButton setTintColor:[ITS_Colors smallButtonAndTitleColor]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    //must be set here due to this view specifically changing its navBar color. If we press back to menu we want to be able to reapply the color
+    [self.navigationController.navigationBar setBarTintColor:[ITS_Colors secondaryColor]];
 }
 
 //fills the selection arrays used to draw the selection collectionview with given name for an image and title for a labels
@@ -64,6 +89,7 @@
     [self.selectionImages addObject:[UIImage systemImageNamed:imageName]];
     [self.selectionTitles addObject:title];
 }
+
 
 #pragma mark - Navigation
 
@@ -74,6 +100,19 @@
 - (void)viewWillDisappear:(BOOL)animated {
     //make the navbar look normal again
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+}
+
+//Instantiates and pushes a new view controller based on the storyboard identifier
+- (void)instantiateNewViewController:(NSString *)identifier{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:NSBundle.mainBundle];
+    UIViewController* vc = [storyboard instantiateViewControllerWithIdentifier:identifier]; //Casts the initiated vc to the class it should be in
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - Data and Status
+
+- (void)updateViewWithCurrentSelection {
+    //Code for updating the view, calling everything appropriately
 }
 
 #pragma mark - UICollectionView Delegate and Data source
@@ -98,6 +137,22 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    switch (indexPath.row) {
+        case 0:
+            self.mainMenuSelection = MainMenuSelectionMedicalAppointment;
+            break;
+        case 1:
+            self.mainMenuSelection = MainMenuSelectionPatients;
+            break;
+        case 2:
+            self.mainMenuSelection = MainMenuSelectionAppointments;
+            break;
+        case 3:
+            self.mainMenuSelection = MainMenuSelectionMedics;
+            break;
+        default:
+            break;
+    }
+    [self updateViewWithCurrentSelection];
 }
 @end

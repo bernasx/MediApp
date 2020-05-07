@@ -26,6 +26,13 @@ typedef NS_ENUM(NSUInteger, TextFieldStatus) {
     UITextFieldStatusWarning
 };
 
+typedef NS_ENUM(NSUInteger, MainMenuSelection) {
+    MainMenuSelectionMedicalAppointment,
+    MainMenuSelectionPatients,
+    MainMenuSelectionAppointments,
+    MainMenuSelectionMedics
+};
+
 @end
 
 NS_ASSUME_NONNULL_END

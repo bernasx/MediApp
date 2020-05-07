@@ -8,31 +8,37 @@
 
 #import "ITS_Repository.h"
 @interface ITS_Repository()
-@property (nonatomic) ITS_FirebaseManager *firebaseManager;
+@property (strong, nonatomic) FIRDatabaseReference *ref;
 @end
 
 @implementation ITS_Repository
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.firebaseManager = [[ITS_FirebaseManager alloc] init];
+        self.ref = [[FIRDatabase database] reference];
     }
     return self;
 }
 
 - (void)loginUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(NSError * _Nullable))completion {
-    [self.firebaseManager signInWithEmail:email andPassword:password completion:^(NSError * _Nonnull error) {
+    [[FIRAuth auth] signInWithEmail:email password:password completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
         completion(error);
     }];
 }
 
 - (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(NSError * _Nullable))completion {
-    [self.firebaseManager createUserWithEmail:email andPassword:password completion:^(NSError * _Nonnull error) {
+    [[FIRAuth auth] createUserWithEmail:email password:password completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
         completion(error);
     }];
 }
 
 - (void)logOut {
-    [self.firebaseManager signOut];
+    FIRAuth *firebaseAuth = [FIRAuth auth];
+    NSError *signOutError;
+    bool status = [firebaseAuth signOut:&signOutError];
+    if (!status) {
+        NSLog(@"Error signing out: %@", signOutError);
+        return;
+    }
 }
 @end

@@ -9,11 +9,13 @@
 #import "ITS_ViewController.h"
 #import <FirebaseAuth.h>
 #import "ITS_MainMenuSelectionCollectionViewCell.h"
+#import "ITS_MedicsListViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_MainMenuViewController : ITS_ViewController<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIView *topSectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *menuSelectionCollectionView;
+@property (weak, nonatomic) IBOutlet UIButton *showAllButton;
 @end
 
 NS_ASSUME_NONNULL_END

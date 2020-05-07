@@ -60,10 +60,10 @@
         }
     }];
 }
-
-- (void)instantiateNewViewController:(NSString *)identifier {
+//Instantiates and pushes a new view controller based on the storyboard identifier
+- (void)instantiateNewViewController:(NSString *)identifier{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:NSBundle.mainBundle];
-    ITS_MainMenuViewController *vc = [storyboard instantiateViewControllerWithIdentifier:identifier];
+    UIViewController* vc = [storyboard instantiateViewControllerWithIdentifier:identifier]; //Casts the initiated vc to the class it should be in
     [self.navigationController pushViewController:vc animated:YES];
 }
 

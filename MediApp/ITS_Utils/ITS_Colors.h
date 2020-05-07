@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)smallButtonAndTitleColor;
 + (UIColor *)smallTextColor;
 + (UIColor *)warningColor;
++ (CAGradientLayer *)mainMenuCellGradient;
 @end
 
 NS_ASSUME_NONNULL_END

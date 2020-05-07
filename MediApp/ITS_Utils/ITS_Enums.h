@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, TextFieldStatus) {
     UITextFieldStatusNormal,
     UITextFieldStatusWarning
 };
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,6 +12,7 @@
 #import <FirebaseAuth.h>
 #import "ITS_LoginViewModel.h"
 #import "ITS_ServiceErrorHandler.h"
+#import "ITS_MainMenuViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_LoginViewController : ITS_ViewController

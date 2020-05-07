@@ -25,7 +25,7 @@
     [self.repository loginUserWithEmail:email andPassword:password completion:^(NSError * _Nullable error) {
         ITS_ServiceErrorHandler *errorHandler = [[ITS_ServiceErrorHandler alloc] init];
         if(error) {
-            [errorHandler setCurrentError:error];
+            [errorHandler checkStatusCode:error];
         }
         completion(errorHandler);
     }];
@@ -36,5 +36,9 @@
     [self.repository registerUserWithEmail:email andPassword:password completion:^(NSError * _Nullable error) {
         [self.repository logOut];
     }];
+}
+
+- (void)logOut {
+    [self.repository logOut];
 }
 @end

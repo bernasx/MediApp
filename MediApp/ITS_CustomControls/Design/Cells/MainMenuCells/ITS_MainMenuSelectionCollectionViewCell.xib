@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mainMenuSelectionCell" id="gTV-IL-0wX" customClass="ITS_MainMenuSelectionCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94H-d8-ZF6">
+                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFJ-2c-kJF">
+                                <rect key="frame" x="70" y="70" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YHN-Qd-t5J"/>
+                                    <constraint firstAttribute="width" constant="50" id="YdK-B0-PcO"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKn-i9-Xdn">
+                                <rect key="frame" x="8" y="0.0" width="112" height="62"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fFJ-2c-kJF" firstAttribute="top" secondItem="yKn-i9-Xdn" secondAttribute="bottom" constant="8" id="1fX-1r-QSE"/>
+                            <constraint firstAttribute="bottom" secondItem="fFJ-2c-kJF" secondAttribute="bottom" constant="8" id="CYV-Kk-81R"/>
+                            <constraint firstAttribute="trailing" secondItem="yKn-i9-Xdn" secondAttribute="trailing" constant="8" id="ItB-d8-X9Q"/>
+                            <constraint firstItem="yKn-i9-Xdn" firstAttribute="leading" secondItem="94H-d8-ZF6" secondAttribute="leading" constant="8" id="bD5-rX-lF8"/>
+                            <constraint firstAttribute="trailing" secondItem="fFJ-2c-kJF" secondAttribute="trailing" constant="8" id="gOh-uv-9Ze"/>
+                            <constraint firstItem="yKn-i9-Xdn" firstAttribute="top" secondItem="94H-d8-ZF6" secondAttribute="top" id="rtU-aG-gBO"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="94H-d8-ZF6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DmY-aK-YSM"/>
+                <constraint firstAttribute="trailing" secondItem="94H-d8-ZF6" secondAttribute="trailing" id="EL0-q3-Us0"/>
+                <constraint firstItem="94H-d8-ZF6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EsR-ez-Exp"/>
+                <constraint firstAttribute="bottom" secondItem="94H-d8-ZF6" secondAttribute="bottom" id="ef9-W9-Uqa"/>
+            </constraints>
+            <size key="customSize" width="128" height="128"/>
+            <connections>
+                <outlet property="containerView" destination="94H-d8-ZF6" id="fyh-Ww-9r3"/>
+                <outlet property="iconImageView" destination="fFJ-2c-kJF" id="12r-wi-Rgy"/>
+                <outlet property="titleLabel" destination="yKn-i9-Xdn" id="lTU-ZB-4Sx"/>
+            </connections>
+            <point key="canvasLocation" x="188.40579710144928" y="158.03571428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>

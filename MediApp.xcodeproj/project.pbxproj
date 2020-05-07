@@ -33,6 +33,9 @@
 		D1D2202B2462D4270044AC93 /* ITS_Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2202A2462D4270044AC93 /* ITS_Repository.m */; };
 		D1D2202F2462EBDD0044AC93 /* ITS_LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2202E2462EBDD0044AC93 /* ITS_LoginViewModel.m */; };
 		D1D22035246302B80044AC93 /* ITS_ServiceErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D22034246302B80044AC93 /* ITS_ServiceErrorHandler.m */; };
+		D1D22038246314EA0044AC93 /* ITS_MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D22037246314EA0044AC93 /* ITS_MainMenuViewController.m */; };
+		D1D2204724640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2204524640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.m */; };
+		D1D2204824640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D2204624640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib */; };
 		F0B7E32E8CBE8093E6099263 /* Pods_MediApp_MediAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6221D7ED31C1D09ADE39D8 /* Pods_MediApp_MediAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +107,11 @@
 		D1D2202E2462EBDD0044AC93 /* ITS_LoginViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_LoginViewModel.m; sourceTree = "<group>"; };
 		D1D22033246302B80044AC93 /* ITS_ServiceErrorHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_ServiceErrorHandler.h; sourceTree = "<group>"; };
 		D1D22034246302B80044AC93 /* ITS_ServiceErrorHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_ServiceErrorHandler.m; sourceTree = "<group>"; };
+		D1D22036246314EA0044AC93 /* ITS_MainMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_MainMenuViewController.h; sourceTree = "<group>"; };
+		D1D22037246314EA0044AC93 /* ITS_MainMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_MainMenuViewController.m; sourceTree = "<group>"; };
+		D1D2204424640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_MainMenuSelectionCollectionViewCell.h; sourceTree = "<group>"; };
+		D1D2204524640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_MainMenuSelectionCollectionViewCell.m; sourceTree = "<group>"; };
+		D1D2204624640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_MainMenuSelectionCollectionViewCell.xib; sourceTree = "<group>"; };
 		DC5ACF762A90ABA92D052BBE /* Pods_MediApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -237,6 +245,8 @@
 				D1D2201F2462AA740044AC93 /* ITS_ViewController.m */,
 				D1D2200824617E700044AC93 /* ITS_LoginViewController.h */,
 				D1D2200924617E700044AC93 /* ITS_LoginViewController.m */,
+				D1D22036246314EA0044AC93 /* ITS_MainMenuViewController.h */,
+				D1D22037246314EA0044AC93 /* ITS_MainMenuViewController.m */,
 			);
 			path = ITS_ViewControllers;
 			sourceTree = "<group>";
@@ -253,11 +263,8 @@
 		D1D2200C246185C60044AC93 /* Design */ = {
 			isa = PBXGroup;
 			children = (
-				D1D2200D2461860F0044AC93 /* ITS_Colors.h */,
-				D1D2200E2461860F0044AC93 /* ITS_Colors.m */,
-				D1D220152461ACFB0044AC93 /* ITS_TextFieldComponent.h */,
-				D1D220162461ACFB0044AC93 /* ITS_TextFieldComponent.m */,
-				D1D220182461AD090044AC93 /* ITS_TextFieldComponent.xib */,
+				D1D22043246409090044AC93 /* TextFields */,
+				D1D22039246407270044AC93 /* Cells */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -276,6 +283,8 @@
 		D1D220212462B49C0044AC93 /* ITS_Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D1D2200D2461860F0044AC93 /* ITS_Colors.h */,
+				D1D2200E2461860F0044AC93 /* ITS_Colors.m */,
 				D1D220222462B4AC0044AC93 /* ITS_Enums.h */,
 				D1D220232462B4AC0044AC93 /* ITS_Enums.m */,
 			);
@@ -302,6 +311,34 @@
 				D1D2202E2462EBDD0044AC93 /* ITS_LoginViewModel.m */,
 			);
 			path = VIewModels;
+			sourceTree = "<group>";
+		};
+		D1D22039246407270044AC93 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D1D2203A246407350044AC93 /* MainMenuCells */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D1D2203A246407350044AC93 /* MainMenuCells */ = {
+			isa = PBXGroup;
+			children = (
+				D1D2204424640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.h */,
+				D1D2204524640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.m */,
+				D1D2204624640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib */,
+			);
+			path = MainMenuCells;
+			sourceTree = "<group>";
+		};
+		D1D22043246409090044AC93 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				D1D220152461ACFB0044AC93 /* ITS_TextFieldComponent.h */,
+				D1D220162461ACFB0044AC93 /* ITS_TextFieldComponent.m */,
+				D1D220182461AD090044AC93 /* ITS_TextFieldComponent.xib */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +451,7 @@
 			files = (
 				D1D2201A2461B14D0044AC93 /* SF-Pro-Text-Semibold.otf in Resources */,
 				D1D2201B2461B14D0044AC93 /* SF-Pro-Text-Regular.otf in Resources */,
+				D1D2204824640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib in Resources */,
 				D1D2201C2461B14D0044AC93 /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				D1D2201D2461B14D0044AC93 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				D1D21FDE246171C80044AC93 /* LaunchScreen.storyboard in Resources */,
@@ -561,6 +599,8 @@
 				D1D220242462B4AC0044AC93 /* ITS_Enums.m in Sources */,
 				D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */,
 				D1D2202B2462D4270044AC93 /* ITS_Repository.m in Sources */,
+				D1D2204724640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.m in Sources */,
+				D1D22038246314EA0044AC93 /* ITS_MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

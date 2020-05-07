@@ -31,6 +31,7 @@
     }
 }
 
+#pragma mark - Login and Navigation Methods
 - (void)login {
     [self.viewModel logInUserWithEmail:self.emailView.textfieldText andPassword:self.passwordView.textfieldText completion:^(ITS_ServiceErrorHandler * _Nonnull errorHandler) {
         //if there was an error
@@ -39,14 +40,14 @@
             for (int i = 0; i < errorHandler.errorIndexes.count; i++) {
                 int index = [[errorHandler.errorIndexes objectAtIndex:i] intValue];
                 switch (index) {
-                    case 0:
+                    case -1:
                         //should display an alert
                         NSLog(@"%@",errorHandler.currentError.localizedDescription);
                         break;
-                    case 1:
+                    case UITextFieldEmail:
                         [self.emailView updateComponentStatus:UITextFieldStatusWarning withWarningMessage:errorHandler.errorString];
                         break;
-                    case 2:
+                    case UITextFieldPassword:
                         [self.passwordView updateComponentStatus:UITextFieldStatusWarning withWarningMessage:errorHandler.errorString];
                         break;
                     default:
@@ -55,9 +56,15 @@
             }
         } else {
             //login was successful
-            NSLog(@"Login com sucesso");
+            [self instantiateNewViewController:@"mainMenuViewController"];
         }
     }];
+}
+
+- (void)instantiateNewViewController:(NSString *)identifier {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:NSBundle.mainBundle];
+    ITS_MainMenuViewController *vc = [storyboard instantiateViewControllerWithIdentifier:identifier];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark -  Initial Setup
@@ -72,6 +79,11 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:gestureRecognizer];
     gestureRecognizer.cancelsTouchesInView = NO;
+    
+    //auto login
+    if ([[FIRAuth auth] currentUser]) {
+        [self instantiateNewViewController:@"mainMenuViewController"];
+    }
 }
 
 - (void)dismissKeyboard {

@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ITS_Enums.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_ServiceErrorHandler : NSObject
 @property (nonatomic) NSError *currentError;
 @property (nonatomic) NSString *errorString;
 @property (nonatomic) NSArray *errorIndexes;
+- (void)checkStatusCode:(NSError *)error;
 @end
 
 NS_ASSUME_NONNULL_END

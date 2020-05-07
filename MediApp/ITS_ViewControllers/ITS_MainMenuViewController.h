@@ -1,0 +1,19 @@
+//
+//  ITS_MainMenuViewController.h
+//  MediApp
+//
+//  Created by Bernardo Miguel Nunes Ribeiro on 06/05/2020.
+//  Copyright © 2020 Bernardo Miguel Nunes Ribeiro. All rights reserved.
+//
+
+#import "ITS_ViewController.h"
+#import <FirebaseAuth.h>
+#import "ITS_MainMenuSelectionCollectionViewCell.h"
+NS_ASSUME_NONNULL_BEGIN
+
+@interface ITS_MainMenuViewController : ITS_ViewController<UICollectionViewDelegate,UICollectionViewDataSource>
+@property (weak, nonatomic) IBOutlet UIView *topSectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *menuSelectionCollectionView;
+@end
+
+NS_ASSUME_NONNULL_END

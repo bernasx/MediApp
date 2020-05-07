@@ -13,30 +13,24 @@
 
 @implementation ITS_ServiceErrorHandler
 
-//Override setter, as soon as an error is given the whole object updates.
-- (void)setCurrentError:(NSError *)currentError {
-    _currentError = currentError;
-    [self checkStatusCode:self.currentError];
-}
-
 //check statuscode and call for an update to the error handler
 - (void)checkStatusCode:(NSError *)error {
     if(error) {
         switch ([error code]) {
             case 17007:
-                [self updateCurrentError:@"Este email já está em uso!" andWithIndexes:[NSArray arrayWithObjects:@"0", nil]];
+                [self updateCurrentError:@"Este email já está em uso!" andWithIndexes:[NSArray arrayWithObjects:[NSNumber numberWithInteger:-1], nil]];
                 break;
             case 17008:
-                [self updateCurrentError:@"Por favor insira um email válido." andWithIndexes:[NSArray arrayWithObjects:@"1", nil]];
+                [self updateCurrentError:@"Por favor insira um email válido." andWithIndexes:[NSArray arrayWithObjects:[NSNumber numberWithInteger:UITextFieldEmail], nil]];
                 break;
             case 17009:
-                [self updateCurrentError:@"Password incorreta" andWithIndexes:[NSArray arrayWithObjects:@"2", nil]];
+                [self updateCurrentError:@"Password incorreta" andWithIndexes:[NSArray arrayWithObjects:[NSNumber numberWithInteger:UITextFieldPassword], nil]];
                 break;
             case 17011:
-                [self updateCurrentError:@"Este email não existe." andWithIndexes:[NSArray arrayWithObjects:@"1", nil]];
+                [self updateCurrentError:@"Este email não existe." andWithIndexes:[NSArray arrayWithObjects:[NSNumber numberWithInteger:UITextFieldEmail], nil]];
                 break;
             default:
-                [self updateCurrentError:@"Erro" andWithIndexes:[NSArray arrayWithObjects:@"0", nil]];
+                [self updateCurrentError:@"Erro" andWithIndexes:[NSArray arrayWithObjects:[NSNumber numberWithInteger:-1], nil]];
                 break;
         }
     }

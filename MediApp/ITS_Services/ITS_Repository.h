@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)registerUserWithEmail: (NSString *) email andPassword: (NSString *)password completion:(void (^)(NSError * _Nullable error))completion;
 - (void)loginUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(NSError * _Nullable error))completion;
 - (void)logOut;
+
+- (void)fetchSpecialties:(void (^)(NSArray * _Nullable))completion;
 @end
 
 NS_ASSUME_NONNULL_END

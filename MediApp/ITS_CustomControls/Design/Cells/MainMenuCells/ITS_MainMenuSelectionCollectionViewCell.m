@@ -21,11 +21,6 @@
     gradientLayer.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     [self.containerView.layer insertSublayer:gradientLayer atIndex:0];
     
-    //Make the corners round
-//    [self.containerView.layer setCornerRadius:10];
-//    [self.containerView setClipsToBounds:YES];
-    
-    
     self.contentView.layer.cornerRadius = 10.0f;
     self.contentView.layer.borderWidth = 1.0f;
     self.contentView.layer.borderColor = [UIColor clearColor].CGColor;

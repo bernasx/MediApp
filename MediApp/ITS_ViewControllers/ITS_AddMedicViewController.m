@@ -9,14 +9,16 @@
 #import "ITS_AddMedicViewController.h"
 
 @interface ITS_AddMedicViewController ()
-
+@property (nonatomic) ITS_AddMedicViewModel *viewModel;
 @end
 
 @implementation ITS_AddMedicViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewModel = [[ITS_AddMedicViewModel alloc] init];
     [self designViewElements];
+    
 }
 
 //Designs the view's elements and components with the proper characteristics
@@ -35,7 +37,14 @@
     [self.nationalityComponentView initWithTitle:@"Nacionalidade" andType:UITextFieldDefault andFrame:self.nationalityComponentView.frame];
     [self.nifComponentView initWithTitle:@"NIF" andType:UITextFieldNumber andFrame:self.nifComponentView.frame];
     [self.ccNumberComponentView initWithTitle:@"Nº CC" andType:UITextFieldNumber andFrame:self.ccNumberComponentView.frame];
-
+    
+    //fetch specialties, init the view
+    [self.viewModel fetchSpecialties:^(NSArray * _Nullable specialtiesArray) {
+        [self.specialtyComponentView initWithTitle:@"Especialidade" andType:UITextFieldSearch andSearchType:SearchSpecialty andFrame:self.specialtyComponentView.frame andArray:specialtiesArray];
+        
+    }];
 }
+
+
 
 @end

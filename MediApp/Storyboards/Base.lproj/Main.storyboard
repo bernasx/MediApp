@@ -154,7 +154,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7d-u3-Hau">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                                 <subviews>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tlj-K5-9HC">
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tlj-K5-9HC" customClass="ITS_CarroselCollectionView">
                                                         <rect key="frame" x="0.0" y="100" width="414" height="150"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -168,8 +168,8 @@
                                                         </collectionViewFlowLayout>
                                                         <cells/>
                                                         <connections>
-                                                            <outlet property="dataSource" destination="xJX-TV-SFM" id="qmG-he-cXC"/>
-                                                            <outlet property="delegate" destination="xJX-TV-SFM" id="og5-8q-wqD"/>
+                                                            <outlet property="dataSource" destination="xJX-TV-SFM" id="270-BV-Tsy"/>
+                                                            <outlet property="delegate" destination="xJX-TV-SFM" id="cgi-hl-e3m"/>
                                                         </connections>
                                                     </collectionView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0x-5E-7hf">
@@ -227,7 +227,7 @@
                         <viewLayoutGuide key="safeArea" id="CED-vf-OTb"/>
                     </view>
                     <connections>
-                        <outlet property="menuSelectionCollectionView" destination="Tlj-K5-9HC" id="Rku-hy-2vs"/>
+                        <outlet property="menuSelectionCollectionView" destination="Tlj-K5-9HC" id="krP-SA-mUt"/>
                         <outlet property="showAllButton" destination="r0x-5E-7hf" id="kmG-wo-4S1"/>
                         <outlet property="topSectionView" destination="eth-Fw-9ng" id="Glr-Bv-mqf"/>
                     </connections>
@@ -347,11 +347,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10b-BK-d8x" customClass="ITS_TextFieldWithTableComponent">
+                                                <rect key="frame" x="0.0" y="1037.6666666666667" width="375" height="350"/>
+                                                <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="350" id="3dd-IO-4ee"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="OTX-c8-B1h" firstAttribute="leading" secondItem="6Tc-Dl-s6D" secondAttribute="leading" id="45o-CR-Nv4"/>
-                                            <constraint firstAttribute="bottom" secondItem="0c0-3K-U4Q" secondAttribute="bottom" constant="462.5" id="5dU-wg-A3p"/>
                                             <constraint firstItem="ft4-tV-frb" firstAttribute="leading" secondItem="6Tc-Dl-s6D" secondAttribute="leading" id="8ob-dq-pOR"/>
                                             <constraint firstItem="HUv-pO-Tmr" firstAttribute="top" secondItem="6Tc-Dl-s6D" secondAttribute="top" constant="16" id="At7-Zg-zjf"/>
                                             <constraint firstItem="Yo8-ee-Nqa" firstAttribute="leading" secondItem="6Tc-Dl-s6D" secondAttribute="leading" id="BCS-rg-6Ix"/>
@@ -365,13 +371,16 @@
                                             <constraint firstItem="jLr-9K-wsl" firstAttribute="leading" secondItem="UgF-oC-CNO" secondAttribute="trailing" constant="14" id="Lpm-h0-ylM"/>
                                             <constraint firstItem="Yo8-ee-Nqa" firstAttribute="top" secondItem="Ucy-IC-lh1" secondAttribute="bottom" id="OV3-sB-oN3"/>
                                             <constraint firstItem="Oe9-si-G1W" firstAttribute="top" secondItem="OTX-c8-B1h" secondAttribute="bottom" constant="8" id="QBU-bq-gf2"/>
+                                            <constraint firstItem="10b-BK-d8x" firstAttribute="top" secondItem="0c0-3K-U4Q" secondAttribute="bottom" id="QLA-ZU-bmh"/>
                                             <constraint firstAttribute="trailing" secondItem="ft4-tV-frb" secondAttribute="trailing" id="U7v-zj-PQZ"/>
                                             <constraint firstItem="Pkb-9Z-68K" firstAttribute="leading" secondItem="6Tc-Dl-s6D" secondAttribute="leading" id="UMB-vO-TcU"/>
                                             <constraint firstAttribute="trailing" secondItem="jLr-9K-wsl" secondAttribute="trailing" constant="13" id="V4F-MQ-iyU"/>
+                                            <constraint firstAttribute="trailing" secondItem="10b-BK-d8x" secondAttribute="trailing" id="WTN-35-ssc"/>
                                             <constraint firstAttribute="trailing" secondItem="Ucy-IC-lh1" secondAttribute="trailing" id="XgN-bO-hQ7"/>
                                             <constraint firstAttribute="trailing" secondItem="Y29-JF-DYU" secondAttribute="trailing" id="YsK-dV-t5G"/>
                                             <constraint firstAttribute="trailing" secondItem="GKj-s9-0oU" secondAttribute="trailing" id="a8B-Yz-lDo"/>
                                             <constraint firstItem="jLr-9K-wsl" firstAttribute="top" secondItem="Oe9-si-G1W" secondAttribute="bottom" constant="8" id="cdN-It-1ld"/>
+                                            <constraint firstAttribute="bottom" secondItem="10b-BK-d8x" secondAttribute="bottom" constant="112.33" id="cuF-VE-tFg"/>
                                             <constraint firstItem="Ucy-IC-lh1" firstAttribute="top" secondItem="Y29-JF-DYU" secondAttribute="bottom" id="dhW-w4-QDT"/>
                                             <constraint firstAttribute="trailing" secondItem="Oe9-si-G1W" secondAttribute="trailing" constant="8" id="gBX-dC-7qW"/>
                                             <constraint firstAttribute="trailing" secondItem="0c0-3K-U4Q" secondAttribute="trailing" id="guV-ZO-QEi"/>
@@ -382,6 +391,7 @@
                                             <constraint firstItem="GKj-s9-0oU" firstAttribute="leading" secondItem="6Tc-Dl-s6D" secondAttribute="leading" id="lv7-GZ-HJ2"/>
                                             <constraint firstItem="GKj-s9-0oU" firstAttribute="top" secondItem="HUv-pO-Tmr" secondAttribute="bottom" id="n40-Ad-tt7"/>
                                             <constraint firstItem="Pkb-9Z-68K" firstAttribute="top" secondItem="ft4-tV-frb" secondAttribute="bottom" id="pNP-nH-J1O"/>
+                                            <constraint firstItem="10b-BK-d8x" firstAttribute="leading" secondItem="6Tc-Dl-s6D" secondAttribute="leading" id="r1l-OE-cQj"/>
                                             <constraint firstItem="Oe9-si-G1W" firstAttribute="leading" secondItem="UgF-oC-CNO" secondAttribute="trailing" constant="8" id="sYY-Gw-k8b"/>
                                             <constraint firstItem="Y29-JF-DYU" firstAttribute="leading" secondItem="6Tc-Dl-s6D" secondAttribute="leading" id="usD-eG-PT9"/>
                                             <constraint firstItem="Y29-JF-DYU" firstAttribute="top" secondItem="UgF-oC-CNO" secondAttribute="bottom" id="xA3-AZ-AUW"/>
@@ -422,6 +432,7 @@
                         <outlet property="nifComponentView" destination="Pkb-9Z-68K" id="3bK-Kc-PKX"/>
                         <outlet property="personalDataSectionLabel" destination="HUv-pO-Tmr" id="vOD-N8-NZB"/>
                         <outlet property="postalCodeComponentView" destination="Ucy-IC-lh1" id="8ss-Us-IgH"/>
+                        <outlet property="specialtyComponentView" destination="10b-BK-d8x" id="ZCT-pf-8aA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wel-UH-Y9P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

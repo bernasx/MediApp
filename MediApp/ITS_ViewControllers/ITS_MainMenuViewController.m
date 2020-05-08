@@ -9,8 +9,6 @@
 #import "ITS_MainMenuViewController.h"
 
 @interface ITS_MainMenuViewController ()
-@property (nonatomic) NSMutableArray* selectionImages;
-@property (nonatomic) NSMutableArray* selectionTitles;
 @property (nonatomic) MainMenuSelection mainMenuSelection;
 @end
 
@@ -59,22 +57,6 @@
     UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithImage:menuButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(didTapMenuButton)];
     [self.navigationItem setRightBarButtonItem:menuBarButton];
     
-    //fill up the arrays for designing the main menu
-    self.selectionImages = [[NSMutableArray alloc] init];
-    self.selectionTitles = [[NSMutableArray alloc] init];
-    [self fillSelectionArraysWithSingleImageName:@"calendar" andTitle:@"As minhas consultas"];
-    [self fillSelectionArraysWithSingleImageName:@"person.2.fill" andTitle:@"Os meus pacientes"];
-    [self fillSelectionArraysWithSingleImageName:@"calendar.badge.plus" andTitle:@"Os meus agendamentos"];
-    [self fillSelectionArraysWithSingleImageName:@"person.3.fill" andTitle:@"Os meus médicos"];
-    //selection collectionview layout
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(128, 128);
-    [layout setSectionInset:UIEdgeInsetsMake(5, 10, 5, 10)];
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.minimumLineSpacing = 40;
-    layout.minimumInteritemSpacing = 40;
-    self.menuSelectionCollectionView.collectionViewLayout = layout;
-    
     //show all button
     [self.showAllButton setTintColor:[ITS_Colors smallButtonAndTitleColor]];
 }
@@ -83,13 +65,6 @@
     //must be set here due to this view specifically changing its navBar color. If we press back to menu we want to be able to reapply the color
     [self.navigationController.navigationBar setBarTintColor:[ITS_Colors secondaryColor]];
 }
-
-//fills the selection arrays used to draw the selection collectionview with given name for an image and title for a labels
-- (void)fillSelectionArraysWithSingleImageName:(NSString*)imageName andTitle:(NSString*)title {
-    [self.selectionImages addObject:[UIImage systemImageNamed:imageName]];
-    [self.selectionTitles addObject:title];
-}
-
 
 #pragma mark - Navigation
 
@@ -122,7 +97,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.selectionTitles count];
+    return [self.menuSelectionCollectionView itemCount];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -131,8 +106,8 @@
     UINib *nib = [UINib nibWithNibName:nibID bundle:NSBundle.mainBundle];
     [self.menuSelectionCollectionView registerNib:nib forCellWithReuseIdentifier:cellID];
     ITS_MainMenuSelectionCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
-    [cell setImage:[self.selectionImages objectAtIndex:indexPath.row]];
-    [cell setTitle:[self.selectionTitles objectAtIndex:indexPath.row]];
+    [cell setImage:[self.menuSelectionCollectionView imageAtIndex:indexPath.row]];
+    [cell setTitle:[self.menuSelectionCollectionView titleAtIndex:indexPath.row]];
     return cell;
 }
 

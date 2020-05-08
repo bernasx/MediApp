@@ -19,7 +19,13 @@ typedef NS_ENUM(NSUInteger, TextFieldType) {
     UITextFieldDate,
     UITextFieldTime,
     UITextFieldNumber,
+    UITextFieldSearch,
     UITextFieldDefault
+};
+
+typedef NS_ENUM(NSUInteger, SearchType) {
+    SearchSpecialty,
+    SearchDisease
 };
 
 typedef NS_ENUM(NSUInteger, TextFieldStatus) {

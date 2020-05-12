@@ -10,6 +10,7 @@
 #import "ITS_AddViewModel.h"
 #import "ITS_AddTableViewCell.h"
 #import "ITS_Enums.h"
+#import "ITS_HeaderViewTableViewCell.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_AddViewController : ITS_ViewController<UITableViewDelegate,UITableViewDataSource>

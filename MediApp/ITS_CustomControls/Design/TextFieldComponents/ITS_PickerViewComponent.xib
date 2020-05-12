@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -24,27 +23,30 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTw-Ev-cuO">
-                    <rect key="frame" x="0.0" y="60" width="414" height="50"/>
-                </pickerView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7B-l9-7el">
                     <rect key="frame" x="16" y="8" width="40.5" height="20"/>
                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="sTw-Ev-cuO">
+                    <rect key="frame" x="16" y="44" width="160" height="46"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ueu-7Z-f6K"/>
+                        <outlet property="delegate" destination="-1" id="oxx-bd-Wr7"/>
+                    </connections>
+                </pickerView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="sTw-Ev-cuO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="5kq-hC-DFH"/>
                 <constraint firstItem="a7B-l9-7el" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="IIH-eQ-CNY"/>
-                <constraint firstItem="sTw-Ev-cuO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="WN6-X9-3MP"/>
-                <constraint firstItem="sTw-Ev-cuO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Y7i-Y7-qUd"/>
-                <constraint firstItem="sTw-Ev-cuO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="inM-tk-lOr"/>
-                <constraint firstItem="sTw-Ev-cuO" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="nPh-qL-i0t"/>
+                <constraint firstItem="sTw-Ev-cuO" firstAttribute="top" secondItem="a7B-l9-7el" secondAttribute="bottom" constant="16" id="avk-Xf-1S9"/>
+                <constraint firstAttribute="bottom" secondItem="sTw-Ev-cuO" secondAttribute="bottom" constant="20" id="kH2-3i-Yma"/>
                 <constraint firstItem="a7B-l9-7el" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="qRI-X0-O9A"/>
+                <constraint firstAttribute="trailing" secondItem="sTw-Ev-cuO" secondAttribute="trailing" constant="238" id="uXs-VX-N3c"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="131.8840579710145" y="-131.25"/>
         </view>
     </objects>

@@ -10,7 +10,7 @@
 #import "ITS_Colors.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ITS_PickerViewComponent : UIView
+@interface ITS_PickerViewComponent : UIView <UIPickerViewDelegate,UIPickerViewDataSource>
 - (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame withDataArray:(NSArray *)dataArray;
 - (void)setViewFrame;
 @end

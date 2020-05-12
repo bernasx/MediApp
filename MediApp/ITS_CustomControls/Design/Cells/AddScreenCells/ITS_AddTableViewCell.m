@@ -21,9 +21,8 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
-
+//Sets up the cell with the appropriate view type. Additionally, it gives it the frame that it should use.
 - (void)setUpCellwithType:(TextFieldComponentType)textFieldComponentType andTitle:(NSString *)title andTextFieldType:(TextFieldType)textFieldType andSearchType:(SearchType)searchType andData:(NSArray*)dataArray andWidth:(CGFloat)width {
-    
     
     switch (textFieldComponentType) {
         case TextFieldComponentTypeNormal:
@@ -45,6 +44,7 @@
             break;
     }
 
+    //make sure everything is clickable
     [self setUserInteractionEnabled:YES];
     [self.contentView setUserInteractionEnabled:YES];
     [self.componentView setUserInteractionEnabled:YES];

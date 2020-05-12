@@ -10,7 +10,6 @@
 		8E1776C228FFD40A20E05C32 /* Pods_MediAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39B80C99017C8219323CFDF /* Pods_MediAppTests.framework */; };
 		B3B59C51240F6CDAA4D322B5 /* Pods_MediApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5ACF762A90ABA92D052BBE /* Pods_MediApp.framework */; };
 		D11B8AF7246575640073C7DE /* Specialty.m in Sources */ = {isa = PBXBuildFile; fileRef = D11B8AF6246575640073C7DE /* Specialty.m */; };
-		D11B8AFA246575DE0073C7DE /* ITS_AddMedicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D11B8AF9246575DE0073C7DE /* ITS_AddMedicViewModel.m */; };
 		D11B8B0124659A180073C7DE /* ITS_SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D11B8AFF24659A180073C7DE /* ITS_SearchTableViewCell.m */; };
 		D11B8B0224659A180073C7DE /* ITS_SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11B8B0024659A180073C7DE /* ITS_SearchTableViewCell.xib */; };
 		D11B8B052465A2D50073C7DE /* Disease.m in Sources */ = {isa = PBXBuildFile; fileRef = D11B8B042465A2D50073C7DE /* Disease.m */; };
@@ -49,6 +48,9 @@
 		D1D22053246472310044AC93 /* ITS_TextFieldWithTableComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D22052246472310044AC93 /* ITS_TextFieldWithTableComponent.xib */; };
 		D1D22056246551380044AC93 /* ITS_CarroselCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D22055246551380044AC93 /* ITS_CarroselCollectionView.m */; };
 		D1DC710E246A917D00FA5402 /* ITS_TextFieldComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1DC710D246A917D00FA5402 /* ITS_TextFieldComponent.xib */; };
+		D1DC7112246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DC7110246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.m */; };
+		D1DC7113246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1DC7111246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.xib */; };
+		D1DC7116246B067200FA5402 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DC7115246B067200FA5402 /* Person.m */; };
 		F0B7E32E8CBE8093E6099263 /* Pods_MediApp_MediAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6221D7ED31C1D09ADE39D8 /* Pods_MediApp_MediAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,8 +82,6 @@
 		CC47EFABBA977A39C3AE20BC /* Pods-MediAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MediAppTests/Pods-MediAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D11B8AF5246575640073C7DE /* Specialty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Specialty.h; sourceTree = "<group>"; };
 		D11B8AF6246575640073C7DE /* Specialty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Specialty.m; sourceTree = "<group>"; };
-		D11B8AF8246575DE0073C7DE /* ITS_AddMedicViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_AddMedicViewModel.h; sourceTree = "<group>"; };
-		D11B8AF9246575DE0073C7DE /* ITS_AddMedicViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_AddMedicViewModel.m; sourceTree = "<group>"; };
 		D11B8AFE24659A180073C7DE /* ITS_SearchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_SearchTableViewCell.h; sourceTree = "<group>"; };
 		D11B8AFF24659A180073C7DE /* ITS_SearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_SearchTableViewCell.m; sourceTree = "<group>"; };
 		D11B8B0024659A180073C7DE /* ITS_SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_SearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -148,6 +148,11 @@
 		D1D22054246551380044AC93 /* ITS_CarroselCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_CarroselCollectionView.h; sourceTree = "<group>"; };
 		D1D22055246551380044AC93 /* ITS_CarroselCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_CarroselCollectionView.m; sourceTree = "<group>"; };
 		D1DC710D246A917D00FA5402 /* ITS_TextFieldComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_TextFieldComponent.xib; sourceTree = "<group>"; };
+		D1DC710F246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_HeaderViewTableViewCell.h; sourceTree = "<group>"; };
+		D1DC7110246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_HeaderViewTableViewCell.m; sourceTree = "<group>"; };
+		D1DC7111246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_HeaderViewTableViewCell.xib; sourceTree = "<group>"; };
+		D1DC7114246B067200FA5402 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		D1DC7115246B067200FA5402 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		DC5ACF762A90ABA92D052BBE /* Pods_MediApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -209,6 +214,8 @@
 				D11B8AF6246575640073C7DE /* Specialty.m */,
 				D11B8B032465A2D50073C7DE /* Disease.h */,
 				D11B8B042465A2D50073C7DE /* Disease.m */,
+				D1DC7114246B067200FA5402 /* Person.h */,
+				D1DC7115246B067200FA5402 /* Person.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -221,6 +228,9 @@
 				D11B8B0024659A180073C7DE /* ITS_SearchTableViewCell.xib */,
 				D11B8B09246949C00073C7DE /* ITS_AddTableViewCell.h */,
 				D11B8B0A246949C00073C7DE /* ITS_AddTableViewCell.m */,
+				D1DC710F246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.h */,
+				D1DC7110246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.m */,
+				D1DC7111246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.xib */,
 			);
 			path = AddScreenCells;
 			sourceTree = "<group>";
@@ -373,8 +383,6 @@
 			children = (
 				D1D2202D2462EBDD0044AC93 /* ITS_LoginViewModel.h */,
 				D1D2202E2462EBDD0044AC93 /* ITS_LoginViewModel.m */,
-				D11B8AF8246575DE0073C7DE /* ITS_AddMedicViewModel.h */,
-				D11B8AF9246575DE0073C7DE /* ITS_AddMedicViewModel.m */,
 				D11B8B1424695E430073C7DE /* ITS_AddViewModel.h */,
 				D11B8B1524695E430073C7DE /* ITS_AddViewModel.m */,
 			);
@@ -524,6 +532,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1DC7113246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.xib in Resources */,
 				D1D22053246472310044AC93 /* ITS_TextFieldWithTableComponent.xib in Resources */,
 				D1D2201A2461B14D0044AC93 /* SF-Pro-Text-Semibold.otf in Resources */,
 				D1D2201B2461B14D0044AC93 /* SF-Pro-Text-Regular.otf in Resources */,
@@ -666,10 +675,10 @@
 			files = (
 				D11B8B0124659A180073C7DE /* ITS_SearchTableViewCell.m in Sources */,
 				D1D21FE1246171C80044AC93 /* main.m in Sources */,
+				D1DC7112246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.m in Sources */,
 				D11B8B11246950920073C7DE /* ITS_PickerViewComponent.m in Sources */,
 				D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */,
 				D1D22051246470F70044AC93 /* ITS_TextFieldWithTableComponent.m in Sources */,
-				D11B8AFA246575DE0073C7DE /* ITS_AddMedicViewModel.m in Sources */,
 				D1D2200F2461860F0044AC93 /* ITS_Colors.m in Sources */,
 				D1D2202F2462EBDD0044AC93 /* ITS_LoginViewModel.m in Sources */,
 				D11B8B1624695E430073C7DE /* ITS_AddViewModel.m in Sources */,
@@ -686,6 +695,7 @@
 				D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */,
 				D11B8B052465A2D50073C7DE /* Disease.m in Sources */,
 				D11B8B08246943810073C7DE /* ITS_AddViewController.m in Sources */,
+				D1DC7116246B067200FA5402 /* Person.m in Sources */,
 				D1D2202B2462D4270044AC93 /* ITS_Repository.m in Sources */,
 				D1D2204724640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.m in Sources */,
 				D1D22038246314EA0044AC93 /* ITS_MainMenuViewController.m in Sources */,

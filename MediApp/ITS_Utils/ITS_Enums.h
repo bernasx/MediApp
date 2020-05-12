@@ -23,16 +23,26 @@ typedef NS_ENUM(NSUInteger, TextFieldType) {
     UITextFieldDefault
 };
 
+//Decides what textfieldcomponent the view must display
+typedef NS_ENUM(NSUInteger, TextFieldComponentType) {
+    TextFieldComponentTypeNormal,
+    TextFieldComponentTypeTableView,
+    TextFieldComponentTypePickerView
+};
+
+//tells the textfieldcomponent which type it is handling
 typedef NS_ENUM(NSUInteger, SearchType) {
     SearchSpecialty,
     SearchDisease
 };
 
+//tells the textfieldcomponent the status of the component
 typedef NS_ENUM(NSUInteger, TextFieldStatus) {
     UITextFieldStatusNormal,
     UITextFieldStatusWarning
 };
 
+//Enum for the currently selected main menu
 typedef NS_ENUM(NSUInteger, MainMenuSelection) {
     MainMenuSelectionMedicalAppointment,
     MainMenuSelectionPatients,

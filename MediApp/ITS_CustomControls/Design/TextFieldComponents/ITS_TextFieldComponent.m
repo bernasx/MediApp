@@ -25,17 +25,32 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
-        [self addSubview:self.view];
-        [self.view.superview setBackgroundColor:[UIColor clearColor]];
+        [self buildFrame];
     }
     return self;
     
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self buildFrame];
+    }
+    return self;
+}
+
+//adds the view to the superview with a clear background
+- (void)buildFrame {
+    [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
+    [self addSubview:self.view];
+    [self.view.superview setBackgroundColor:[UIColor clearColor]];
+}
+
 //init the object with a type and find out how to set it up. Frame will set up the view properly to fit the one in Storyboard
 - (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andFrame:(CGRect)frame {
-    self.view.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    self.frame =  frame;
+    //self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, width, self.view.frame.size.height);
     [self.titleLabel setText:title]; //all of them have a similar title
     [self.titleLabel setTextColor:[ITS_Colors smallButtonAndTitleColor]];
     [self.warningLabel setHidden:YES]; //all warning labels should be hidden by default
@@ -44,6 +59,11 @@
     [self changeTextViewDesignWithColor:[ITS_Colors smallTextColor]]; //setup the textfield with whatever color we wish
     self.textfield.delegate = self;
     [self updateComponentType:textfieldType];
+}
+
+//Call this after initializing the component to set the frame properly to work with cell and subviews
+- (void)setViewFrame {
+    self.view.frame = self.frame;
 }
 
 #pragma mark - View Design

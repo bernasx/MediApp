@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ITS_PickerViewComponent">
+            <connections>
+                <outlet property="pickerView" destination="sTw-Ev-cuO" id="FDa-il-4TE"/>
+                <outlet property="titleLabel" destination="a7B-l9-7el" id="la4-qj-A3W"/>
+                <outlet property="view" destination="iN0-l3-epB" id="8Zo-1T-2vr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTw-Ev-cuO">
+                    <rect key="frame" x="0.0" y="60" width="414" height="50"/>
+                </pickerView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7B-l9-7el">
+                    <rect key="frame" x="16" y="8" width="40.5" height="20"/>
+                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="a7B-l9-7el" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="IIH-eQ-CNY"/>
+                <constraint firstItem="sTw-Ev-cuO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="WN6-X9-3MP"/>
+                <constraint firstItem="sTw-Ev-cuO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Y7i-Y7-qUd"/>
+                <constraint firstItem="sTw-Ev-cuO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="inM-tk-lOr"/>
+                <constraint firstItem="sTw-Ev-cuO" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="nPh-qL-i0t"/>
+                <constraint firstItem="a7B-l9-7el" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="qRI-X0-O9A"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="131.8840579710145" y="-131.25"/>
+        </view>
+    </objects>
+</document>

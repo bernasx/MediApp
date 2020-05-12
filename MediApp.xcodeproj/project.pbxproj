@@ -14,6 +14,11 @@
 		D11B8B0124659A180073C7DE /* ITS_SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D11B8AFF24659A180073C7DE /* ITS_SearchTableViewCell.m */; };
 		D11B8B0224659A180073C7DE /* ITS_SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11B8B0024659A180073C7DE /* ITS_SearchTableViewCell.xib */; };
 		D11B8B052465A2D50073C7DE /* Disease.m in Sources */ = {isa = PBXBuildFile; fileRef = D11B8B042465A2D50073C7DE /* Disease.m */; };
+		D11B8B08246943810073C7DE /* ITS_AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D11B8B07246943800073C7DE /* ITS_AddViewController.m */; };
+		D11B8B0C246949C00073C7DE /* ITS_AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D11B8B0A246949C00073C7DE /* ITS_AddTableViewCell.m */; };
+		D11B8B11246950920073C7DE /* ITS_PickerViewComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D11B8B10246950920073C7DE /* ITS_PickerViewComponent.m */; };
+		D11B8B13246950B40073C7DE /* ITS_PickerViewComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11B8B12246950B40073C7DE /* ITS_PickerViewComponent.xib */; };
+		D11B8B1624695E430073C7DE /* ITS_AddViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D11B8B1524695E430073C7DE /* ITS_AddViewModel.m */; };
 		D1D21FCD246171C70044AC93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FCC246171C70044AC93 /* AppDelegate.m */; };
 		D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FCF246171C70044AC93 /* SceneDelegate.m */; };
 		D1D21FD6246171C70044AC93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D21FD4246171C70044AC93 /* Main.storyboard */; };
@@ -27,7 +32,6 @@
 		D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2200924617E700044AC93 /* ITS_LoginViewController.m */; };
 		D1D2200F2461860F0044AC93 /* ITS_Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2200E2461860F0044AC93 /* ITS_Colors.m */; };
 		D1D220172461ACFB0044AC93 /* ITS_TextFieldComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D220162461ACFB0044AC93 /* ITS_TextFieldComponent.m */; };
-		D1D220192461AD090044AC93 /* ITS_TextFieldComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D220182461AD090044AC93 /* ITS_TextFieldComponent.xib */; };
 		D1D2201A2461B14D0044AC93 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1D220112461A9040044AC93 /* SF-Pro-Text-Semibold.otf */; };
 		D1D2201B2461B14D0044AC93 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1D220122461A90D0044AC93 /* SF-Pro-Text-Regular.otf */; };
 		D1D2201C2461B14D0044AC93 /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1D220142461A9150044AC93 /* SF-Pro-Text-RegularItalic.otf */; };
@@ -41,10 +45,10 @@
 		D1D2204724640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2204524640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.m */; };
 		D1D2204824640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D2204624640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib */; };
 		D1D2204B24644A8A0044AC93 /* ITS_MedicsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2204A24644A8A0044AC93 /* ITS_MedicsListViewController.m */; };
-		D1D2204E246454170044AC93 /* ITS_AddMedicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D2204D246454170044AC93 /* ITS_AddMedicViewController.m */; };
 		D1D22051246470F70044AC93 /* ITS_TextFieldWithTableComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D22050246470F70044AC93 /* ITS_TextFieldWithTableComponent.m */; };
 		D1D22053246472310044AC93 /* ITS_TextFieldWithTableComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D22052246472310044AC93 /* ITS_TextFieldWithTableComponent.xib */; };
 		D1D22056246551380044AC93 /* ITS_CarroselCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D22055246551380044AC93 /* ITS_CarroselCollectionView.m */; };
+		D1DC710E246A917D00FA5402 /* ITS_TextFieldComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1DC710D246A917D00FA5402 /* ITS_TextFieldComponent.xib */; };
 		F0B7E32E8CBE8093E6099263 /* Pods_MediApp_MediAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6221D7ED31C1D09ADE39D8 /* Pods_MediApp_MediAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +87,15 @@
 		D11B8B0024659A180073C7DE /* ITS_SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_SearchTableViewCell.xib; sourceTree = "<group>"; };
 		D11B8B032465A2D50073C7DE /* Disease.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Disease.h; sourceTree = "<group>"; };
 		D11B8B042465A2D50073C7DE /* Disease.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Disease.m; sourceTree = "<group>"; };
+		D11B8B06246943800073C7DE /* ITS_AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_AddViewController.h; sourceTree = "<group>"; };
+		D11B8B07246943800073C7DE /* ITS_AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_AddViewController.m; sourceTree = "<group>"; };
+		D11B8B09246949C00073C7DE /* ITS_AddTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_AddTableViewCell.h; sourceTree = "<group>"; };
+		D11B8B0A246949C00073C7DE /* ITS_AddTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_AddTableViewCell.m; sourceTree = "<group>"; };
+		D11B8B0F246950920073C7DE /* ITS_PickerViewComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_PickerViewComponent.h; sourceTree = "<group>"; };
+		D11B8B10246950920073C7DE /* ITS_PickerViewComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_PickerViewComponent.m; sourceTree = "<group>"; };
+		D11B8B12246950B40073C7DE /* ITS_PickerViewComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_PickerViewComponent.xib; sourceTree = "<group>"; };
+		D11B8B1424695E430073C7DE /* ITS_AddViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_AddViewModel.h; sourceTree = "<group>"; };
+		D11B8B1524695E430073C7DE /* ITS_AddViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_AddViewModel.m; sourceTree = "<group>"; };
 		D1D21FC8246171C70044AC93 /* MediApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D21FCB246171C70044AC93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D1D21FCC246171C70044AC93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -112,7 +125,6 @@
 		D1D220142461A9150044AC93 /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Text-RegularItalic.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
 		D1D220152461ACFB0044AC93 /* ITS_TextFieldComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_TextFieldComponent.h; sourceTree = "<group>"; };
 		D1D220162461ACFB0044AC93 /* ITS_TextFieldComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_TextFieldComponent.m; sourceTree = "<group>"; };
-		D1D220182461AD090044AC93 /* ITS_TextFieldComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_TextFieldComponent.xib; sourceTree = "<group>"; };
 		D1D2201E2462AA740044AC93 /* ITS_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_ViewController.h; sourceTree = "<group>"; };
 		D1D2201F2462AA740044AC93 /* ITS_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_ViewController.m; sourceTree = "<group>"; };
 		D1D220222462B4AC0044AC93 /* ITS_Enums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_Enums.h; sourceTree = "<group>"; };
@@ -130,13 +142,12 @@
 		D1D2204624640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_MainMenuSelectionCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1D2204924644A8A0044AC93 /* ITS_MedicsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_MedicsListViewController.h; sourceTree = "<group>"; };
 		D1D2204A24644A8A0044AC93 /* ITS_MedicsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_MedicsListViewController.m; sourceTree = "<group>"; };
-		D1D2204C246454170044AC93 /* ITS_AddMedicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_AddMedicViewController.h; sourceTree = "<group>"; };
-		D1D2204D246454170044AC93 /* ITS_AddMedicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_AddMedicViewController.m; sourceTree = "<group>"; };
 		D1D2204F246470F70044AC93 /* ITS_TextFieldWithTableComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_TextFieldWithTableComponent.h; sourceTree = "<group>"; };
 		D1D22050246470F70044AC93 /* ITS_TextFieldWithTableComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_TextFieldWithTableComponent.m; sourceTree = "<group>"; };
 		D1D22052246472310044AC93 /* ITS_TextFieldWithTableComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_TextFieldWithTableComponent.xib; sourceTree = "<group>"; };
 		D1D22054246551380044AC93 /* ITS_CarroselCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_CarroselCollectionView.h; sourceTree = "<group>"; };
 		D1D22055246551380044AC93 /* ITS_CarroselCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_CarroselCollectionView.m; sourceTree = "<group>"; };
+		D1DC710D246A917D00FA5402 /* ITS_TextFieldComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_TextFieldComponent.xib; sourceTree = "<group>"; };
 		DC5ACF762A90ABA92D052BBE /* Pods_MediApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -200,6 +211,18 @@
 				D11B8B042465A2D50073C7DE /* Disease.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D11B8B0E24694BF60073C7DE /* AddScreenCells */ = {
+			isa = PBXGroup;
+			children = (
+				D11B8AFE24659A180073C7DE /* ITS_SearchTableViewCell.h */,
+				D11B8AFF24659A180073C7DE /* ITS_SearchTableViewCell.m */,
+				D11B8B0024659A180073C7DE /* ITS_SearchTableViewCell.xib */,
+				D11B8B09246949C00073C7DE /* ITS_AddTableViewCell.h */,
+				D11B8B0A246949C00073C7DE /* ITS_AddTableViewCell.m */,
+			);
+			path = AddScreenCells;
 			sourceTree = "<group>";
 		};
 		D1D21FBF246171C60044AC93 = {
@@ -285,8 +308,8 @@
 				D1D22037246314EA0044AC93 /* ITS_MainMenuViewController.m */,
 				D1D2204924644A8A0044AC93 /* ITS_MedicsListViewController.h */,
 				D1D2204A24644A8A0044AC93 /* ITS_MedicsListViewController.m */,
-				D1D2204C246454170044AC93 /* ITS_AddMedicViewController.h */,
-				D1D2204D246454170044AC93 /* ITS_AddMedicViewController.m */,
+				D11B8B06246943800073C7DE /* ITS_AddViewController.h */,
+				D11B8B07246943800073C7DE /* ITS_AddViewController.m */,
 			);
 			path = ITS_ViewControllers;
 			sourceTree = "<group>";
@@ -304,7 +327,7 @@
 		D1D2200C246185C60044AC93 /* Design */ = {
 			isa = PBXGroup;
 			children = (
-				D1D22043246409090044AC93 /* TextFields */,
+				D1D22043246409090044AC93 /* TextFieldComponents */,
 				D1D22039246407270044AC93 /* Cells */,
 				D1D22054246551380044AC93 /* ITS_CarroselCollectionView.h */,
 				D1D22055246551380044AC93 /* ITS_CarroselCollectionView.m */,
@@ -352,6 +375,8 @@
 				D1D2202E2462EBDD0044AC93 /* ITS_LoginViewModel.m */,
 				D11B8AF8246575DE0073C7DE /* ITS_AddMedicViewModel.h */,
 				D11B8AF9246575DE0073C7DE /* ITS_AddMedicViewModel.m */,
+				D11B8B1424695E430073C7DE /* ITS_AddViewModel.h */,
+				D11B8B1524695E430073C7DE /* ITS_AddViewModel.m */,
 			);
 			path = VIewModels;
 			sourceTree = "<group>";
@@ -359,10 +384,8 @@
 		D1D22039246407270044AC93 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D11B8B0E24694BF60073C7DE /* AddScreenCells */,
 				D1D2203A246407350044AC93 /* MainMenuCells */,
-				D11B8AFE24659A180073C7DE /* ITS_SearchTableViewCell.h */,
-				D11B8AFF24659A180073C7DE /* ITS_SearchTableViewCell.m */,
-				D11B8B0024659A180073C7DE /* ITS_SearchTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -377,17 +400,20 @@
 			path = MainMenuCells;
 			sourceTree = "<group>";
 		};
-		D1D22043246409090044AC93 /* TextFields */ = {
+		D1D22043246409090044AC93 /* TextFieldComponents */ = {
 			isa = PBXGroup;
 			children = (
 				D1D220152461ACFB0044AC93 /* ITS_TextFieldComponent.h */,
 				D1D220162461ACFB0044AC93 /* ITS_TextFieldComponent.m */,
-				D1D220182461AD090044AC93 /* ITS_TextFieldComponent.xib */,
+				D1DC710D246A917D00FA5402 /* ITS_TextFieldComponent.xib */,
 				D1D2204F246470F70044AC93 /* ITS_TextFieldWithTableComponent.h */,
 				D1D22050246470F70044AC93 /* ITS_TextFieldWithTableComponent.m */,
 				D1D22052246472310044AC93 /* ITS_TextFieldWithTableComponent.xib */,
+				D11B8B0F246950920073C7DE /* ITS_PickerViewComponent.h */,
+				D11B8B10246950920073C7DE /* ITS_PickerViewComponent.m */,
+				D11B8B12246950B40073C7DE /* ITS_PickerViewComponent.xib */,
 			);
-			path = TextFields;
+			path = TextFieldComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,11 +528,12 @@
 				D1D2201A2461B14D0044AC93 /* SF-Pro-Text-Semibold.otf in Resources */,
 				D1D2201B2461B14D0044AC93 /* SF-Pro-Text-Regular.otf in Resources */,
 				D1D2204824640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib in Resources */,
+				D11B8B13246950B40073C7DE /* ITS_PickerViewComponent.xib in Resources */,
+				D1DC710E246A917D00FA5402 /* ITS_TextFieldComponent.xib in Resources */,
 				D1D2201C2461B14D0044AC93 /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				D1D2201D2461B14D0044AC93 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				D1D21FDE246171C80044AC93 /* LaunchScreen.storyboard in Resources */,
 				D1D220042461759A0044AC93 /* GoogleService-Info.plist in Resources */,
-				D1D220192461AD090044AC93 /* ITS_TextFieldComponent.xib in Resources */,
 				D1D21FDB246171C80044AC93 /* Assets.xcassets in Resources */,
 				D1D21FD6246171C70044AC93 /* Main.storyboard in Resources */,
 				D11B8B0224659A180073C7DE /* ITS_SearchTableViewCell.xib in Resources */,
@@ -637,18 +664,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D2204E246454170044AC93 /* ITS_AddMedicViewController.m in Sources */,
 				D11B8B0124659A180073C7DE /* ITS_SearchTableViewCell.m in Sources */,
 				D1D21FE1246171C80044AC93 /* main.m in Sources */,
+				D11B8B11246950920073C7DE /* ITS_PickerViewComponent.m in Sources */,
 				D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */,
 				D1D22051246470F70044AC93 /* ITS_TextFieldWithTableComponent.m in Sources */,
 				D11B8AFA246575DE0073C7DE /* ITS_AddMedicViewModel.m in Sources */,
 				D1D2200F2461860F0044AC93 /* ITS_Colors.m in Sources */,
 				D1D2202F2462EBDD0044AC93 /* ITS_LoginViewModel.m in Sources */,
+				D11B8B1624695E430073C7DE /* ITS_AddViewModel.m in Sources */,
 				D1D2204B24644A8A0044AC93 /* ITS_MedicsListViewController.m in Sources */,
 				D1D22035246302B80044AC93 /* ITS_ServiceErrorHandler.m in Sources */,
 				D1D21FD9246171C70044AC93 /* MediApp.xcdatamodeld in Sources */,
 				D1D220172461ACFB0044AC93 /* ITS_TextFieldComponent.m in Sources */,
+				D11B8B0C246949C00073C7DE /* ITS_AddTableViewCell.m in Sources */,
 				D1D22056246551380044AC93 /* ITS_CarroselCollectionView.m in Sources */,
 				D1D220202462AA740044AC93 /* ITS_ViewController.m in Sources */,
 				D1D21FCD246171C70044AC93 /* AppDelegate.m in Sources */,
@@ -656,6 +685,7 @@
 				D11B8AF7246575640073C7DE /* Specialty.m in Sources */,
 				D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */,
 				D11B8B052465A2D50073C7DE /* Disease.m in Sources */,
+				D11B8B08246943810073C7DE /* ITS_AddViewController.m in Sources */,
 				D1D2202B2462D4270044AC93 /* ITS_Repository.m in Sources */,
 				D1D2204724640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.m in Sources */,
 				D1D22038246314EA0044AC93 /* ITS_MainMenuViewController.m in Sources */,

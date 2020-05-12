@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ITS_TextFieldComponent">
+            <connections>
+                <outlet property="textfield" destination="Cig-OP-CmM" id="W2k-fJ-odv"/>
+                <outlet property="titleLabel" destination="Ktb-Ic-wPA" id="Ocv-wc-Dt4"/>
+                <outlet property="view" destination="iN0-l3-epB" id="71t-bc-FRM"/>
+                <outlet property="warningLabel" destination="xBq-uy-gAH" id="a81-MS-yGV"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="390" translatesAutoresizingMaskIntoConstraints="NO" id="Ktb-Ic-wPA">
+                    <rect key="frame" x="16" y="8" width="390" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="uCd-PQ-g8e"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cig-OP-CmM">
+                    <rect key="frame" x="16" y="37" width="378" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="hEk-n3-avn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="378" translatesAutoresizingMaskIntoConstraints="NO" id="xBq-uy-gAH">
+                    <rect key="frame" x="16" y="89" width="378" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="9GY-Ox-AJD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="xBq-uy-gAH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="1J7-Y7-ZFy"/>
+                <constraint firstItem="xBq-uy-gAH" firstAttribute="top" secondItem="Cig-OP-CmM" secondAttribute="bottom" constant="8" id="5qS-Ft-uvT"/>
+                <constraint firstItem="Cig-OP-CmM" firstAttribute="top" secondItem="Ktb-Ic-wPA" secondAttribute="bottom" constant="8" id="8QA-8I-FOb"/>
+                <constraint firstAttribute="trailing" secondItem="Cig-OP-CmM" secondAttribute="trailing" constant="20" id="ID5-Op-oCm"/>
+                <constraint firstItem="Ktb-Ic-wPA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="PNA-LM-OAU"/>
+                <constraint firstAttribute="trailing" secondItem="xBq-uy-gAH" secondAttribute="trailing" constant="20" id="Qcy-hu-e0D"/>
+                <constraint firstAttribute="bottom" secondItem="xBq-uy-gAH" secondAttribute="bottom" id="RD3-pB-xHC"/>
+                <constraint firstItem="Ktb-Ic-wPA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="XCc-Sz-rGF"/>
+                <constraint firstItem="Cig-OP-CmM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Y1g-nK-GnU"/>
+                <constraint firstAttribute="trailing" secondItem="Ktb-Ic-wPA" secondAttribute="trailing" constant="8" id="g4x-YV-Gk1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="399.77678571428572"/>
+        </view>
+    </objects>
+</document>

@@ -2,8 +2,6 @@
 //  ITS_TextFieldWithTableComponent.m
 //  MediApp
 //
-//  Created by Bernardo Miguel Nunes Ribeiro on 07/05/2020.
-//  Copyright © 2020 Bernardo Miguel Nunes Ribeiro. All rights reserved.
 //
 
 #import "ITS_TextFieldWithTableComponent.h"
@@ -27,11 +25,21 @@
 @implementation ITS_TextFieldWithTableComponent
 
 - (IBAction)didAddSpecialty:(id)sender {
+     [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];
     //go through each specialty in the original array, add to the object array the valid ones that match the textfield
     for (Specialty * specialty in self.firebaseArray) {
         if ([specialty.specialtyName.lowercaseString isEqualToString:self.textfield.text.lowercaseString]) {
-            [self.objectArray addObject:specialty];
+            if (![self.objectArray containsObject:specialty]) {
+                [self.objectArray addObject:specialty];
+            }
+            else {
+                [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa especialidade já foi adicionada!"];
+            }
         }
+    }
+    //if textfield is still empty, this means nothing was found
+    if(![self textfieldHasText]){
+        [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa especialidade não existe."];
     }
     [self.selectedSpecialtiesTableView reloadData];
     [self.textfield setText:@""];
@@ -43,17 +51,31 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
-        [self addSubview:self.view];
-        [self.view.superview setBackgroundColor:[UIColor clearColor]];
+        [self buildFrame];
     }
     return self;
     
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self buildFrame];
+    }
+    return self;
+}
+
+//adds the view to the superview with a clear background
+- (void)buildFrame {
+    [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
+    [self addSubview:self.view];
+    [self.view.superview setBackgroundColor:[UIColor clearColor]];
+}
+
 //init the object with a type and find out how to set it up. Frame will set up the view properly to fit the one in Storyboard
 - (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andSearchType:(SearchType)searchType andFrame:(CGRect)frame andArray:(NSArray *)array {
-    self.view.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    self.frame = frame;
     [self.titleLabel setText:title]; //all of them have a similar title
     [self.titleLabel setTextColor:[ITS_Colors smallButtonAndTitleColor]];
     [self.warningLabel setHidden:YES]; //all warning labels should be hidden by default
@@ -83,6 +105,11 @@
     //Reload the data to display
     [self.textCompletionTableView reloadData];
     [self.selectedSpecialtiesTableView reloadData];
+}
+
+//Call this after initializing the component to set the frame properly to work with cell and subviews
+- (void)setViewFrame {
+    self.view.frame = self.frame;
 }
 
 #pragma mark - View Design
@@ -172,6 +199,7 @@
 
 //Called when textfield changes
 - (void)textFieldDidChange {
+    [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];
     self.displayArray = [[NSMutableArray alloc] init]; //erase the old array
     if ([self textfieldHasText]) {
         switch (self.searchType) {
@@ -195,12 +223,6 @@
        //if it doesn't have text, display the whole thing
         [self displayEverythingInAutoComplete];
     }
-}
-
-- (void)displayEverythingInAutoComplete {
-    self.displayArray = [NSMutableArray arrayWithArray:self.firebaseArray];
-    [self.textCompletionTableView reloadData];
-    
 }
 
 #pragma mark - UITableView Delegate
@@ -256,6 +278,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];
     switch (self.searchType) {
         case SearchSpecialty:{
             Specialty* specialty = [self.displayArray objectAtIndex:indexPath.row];
@@ -275,5 +298,19 @@
 - (void)cellRemoval:(ITS_SearchTableViewCell *)cell didRemoveObject:(id)object {
     [self.objectArray removeObject:object];
     [self.selectedSpecialtiesTableView reloadData];
+}
+
+#pragma mark - Array Managing
+- (void)removeDuplicates {
+    for (id object in self.displayArray) {
+        if ([self.objectArray containsObject:object]) {
+            [self.displayArray removeObject:object];
+        }
+    }
+}
+
+- (void)displayEverythingInAutoComplete {
+    self.displayArray = [NSMutableArray arrayWithArray:self.firebaseArray];
+    [self.textCompletionTableView reloadData];
 }
 @end

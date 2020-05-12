@@ -30,7 +30,7 @@
 
 #pragma mark -  Navigation
 - (void)didTapAddButton {
-    [self instantiateNewViewController:@"addMedicViewController"];
+    [self instantiateNewViewController:@"addViewController"];
 }
 
 //Instantiates and pushes a new view controller based on the storyboard identifier

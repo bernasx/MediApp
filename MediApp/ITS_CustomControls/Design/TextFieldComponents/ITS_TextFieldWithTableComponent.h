@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_TextFieldWithTableComponent : UIView <UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,SearchTableViewCellDelegate>
 @property (strong, nonatomic) IBOutlet UIView *view;
-- (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andSearchType:(SearchType)searchType andFrame:(CGRect)frame andArray:(NSArray *)array ;
+- (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andSearchType:(SearchType)searchType andFrame:(CGRect)frame andArray:(NSArray *)array;
+- (void)setViewFrame;
 - (void)updateComponentType:(TextFieldType)textfieldType andSearchType:(SearchType)searchType;
 - (void)updateComponentStatus:(TextFieldStatus)textFieldStatus withWarningMessage:(NSString *) warningMessage;
 - (bool)textfieldHasText;

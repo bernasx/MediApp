@@ -88,4 +88,8 @@
     [pickerLabel setMinimumScaleFactor:0.5];
     return pickerLabel;
 }
+
+- (NSString *)currentSelection {
+    return self.currentSelection;
+}
 @end

@@ -15,8 +15,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_AddTableViewCell : UITableViewCell
-- (void)setUpCellwithType:(TextFieldComponentType)textFieldComponentType andTitle:(NSString *)title andTextFieldType:(TextFieldType)textFieldType andSearchType:(SearchType)searchType andData:(NSArray*)dataArray andWidth:(CGFloat)width ;
-@property (nonatomic) UIView* componentView;
+
 @end
 
 NS_ASSUME_NONNULL_END

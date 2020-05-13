@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (bool)textfieldHasText;
 - (NSInteger)textfieldSize;
 - (NSString *)textfieldText;
+- (NSArray *)getObjectArray;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -192,6 +192,10 @@
     return self.textfield.text;
 }
 
+- (NSArray *)getObjectArray {
+    return self.objectArray;
+}
+
 #pragma mark - UITextfield Delegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];

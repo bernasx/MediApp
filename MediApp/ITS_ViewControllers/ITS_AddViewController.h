@@ -11,11 +11,14 @@
 #import "ITS_AddTableViewCell.h"
 #import "ITS_Enums.h"
 #import "ITS_HeaderViewTableViewCell.h"
+#import "ITS_TextFieldComponent.h"
+#import "ITS_TextFieldWithTableComponent.h"
+#import "ITS_PickerViewComponent.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_AddViewController : ITS_ViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *fieldsTableView;
-
+@property (nonatomic) MainMenuSelection addTypeSelection;
 @end
 
 NS_ASSUME_NONNULL_END

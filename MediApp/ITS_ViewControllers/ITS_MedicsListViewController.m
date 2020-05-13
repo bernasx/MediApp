@@ -37,6 +37,7 @@
 - (void)instantiateNewViewController:(NSString *)identifier{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:NSBundle.mainBundle];
     UIViewController* vc = [storyboard instantiateViewControllerWithIdentifier:identifier]; //Casts the initiated vc to the class it should be in
+    [(ITS_AddViewController *)vc setAddTypeSelection:MainMenuSelectionMedics];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

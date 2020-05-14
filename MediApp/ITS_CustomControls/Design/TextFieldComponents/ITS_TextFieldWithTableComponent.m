@@ -108,8 +108,8 @@
 }
 
 //Call this after initializing the component to set the frame properly to work with cell and subviews
-- (void)setViewFrame {
-    self.view.frame = self.frame;
+- (void)updateComponentViewFrame:(CGRect)frame {
+     self.view.frame = frame;
 }
 
 #pragma mark - View Design

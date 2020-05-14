@@ -52,8 +52,8 @@
     [self setCurrentSelection:[self.selectionArray objectAtIndex:0]];
 }
 
-- (void)setViewFrame {
-    self.view.frame = self.frame;
+- (void)updateComponentViewFrame:(CGRect)frame {
+     self.view.frame = frame;
 }
 
 #pragma mark - UIPickerView delegate/datasource
@@ -90,6 +90,6 @@
 }
 
 - (NSString *)currentSelection {
-    return self.currentSelection;
+    return _currentSelection;
 }
 @end

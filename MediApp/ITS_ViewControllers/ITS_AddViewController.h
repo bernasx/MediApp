@@ -14,6 +14,7 @@
 #import "ITS_TextFieldComponent.h"
 #import "ITS_TextFieldWithTableComponent.h"
 #import "ITS_PickerViewComponent.h"
+#import "ITS_BaseTextFieldComponent.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_AddViewController : ITS_ViewController<UITableViewDelegate,UITableViewDataSource>

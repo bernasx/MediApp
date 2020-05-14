@@ -12,6 +12,7 @@
 @property (nonatomic) TextFieldType textFieldType;
 @property (nonatomic) TextFieldStatus textFieldStatus;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textFieldWidthConstraint;
 @property (weak, nonatomic) IBOutlet UITextField *textfield;
 @property (weak, nonatomic) IBOutlet UILabel *warningLabel;
 @end
@@ -50,6 +51,7 @@
 //init the object with a type and find out how to set it up. Frame will set up the view properly to fit the one in Storyboard
 - (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andFrame:(CGRect)frame {
     self.frame = frame;
+  
     [self.titleLabel setText:title]; //all of them have a similar title
     [self.titleLabel setTextColor:[ITS_Colors smallButtonAndTitleColor]];
     [self.warningLabel setHidden:YES]; //all warning labels should be hidden by default
@@ -60,8 +62,12 @@
     [self updateComponentType:textfieldType];
 }
 
-- (void)setViewFrame {
-     self.view.frame = self.frame;
+- (void)updateComponentViewFrame:(CGRect)frame {
+     self.view.frame = frame;
+}
+
+- (void)updateTextFieldWidth:(int)constant {
+    self.textFieldWidthConstraint.constant = constant;
 }
 
 #pragma mark - View Design
@@ -184,8 +190,6 @@
 - (NSString *)textfieldText {
     return self.textfield.text;
 }
-
-
 
 #pragma mark - UITextfield Delegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {

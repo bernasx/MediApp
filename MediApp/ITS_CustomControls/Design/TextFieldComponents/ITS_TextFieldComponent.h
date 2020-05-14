@@ -9,18 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "ITS_Colors.h"
 #import "ITS_Enums.h"
+#import "ITS_BaseTextFieldComponent.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ITS_TextFieldComponent : UIView <UITextFieldDelegate>
+@interface ITS_TextFieldComponent : ITS_BaseTextFieldComponent <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIView *view;
 
-- (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andFrame:(CGRect)frame;
-- (void)setViewFrame;
 - (void)updateComponentType:(TextFieldType)textfieldType;
 - (void)updateComponentStatus:(TextFieldStatus)textFieldStatus withWarningMessage:(NSString *) warningMessage;
 - (bool)textfieldHasText;
 - (NSInteger)textfieldSize;
 - (NSString *)textfieldText;
+- (void)updateComponentViewFrame:(CGRect)frame;
+- (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andFrame:(CGRect)frame;
+- (void)updateTextFieldWidth:(int)constant;
 @end
 
 NS_ASSUME_NONNULL_END

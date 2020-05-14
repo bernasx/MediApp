@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ITS_Colors.h"
+#import "ITS_BaseTextFieldComponent.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ITS_PickerViewComponent : UIView <UIPickerViewDelegate,UIPickerViewDataSource>
+@interface ITS_PickerViewComponent : ITS_BaseTextFieldComponent <UIPickerViewDelegate,UIPickerViewDataSource>
 - (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame withDataArray:(NSArray *)dataArray;
-- (void)setViewFrame;
+- (void)updateComponentViewFrame:(CGRect)frame;
 - (NSString *)currentSelection;
 @end
 

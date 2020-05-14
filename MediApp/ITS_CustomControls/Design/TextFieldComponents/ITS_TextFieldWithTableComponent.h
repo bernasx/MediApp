@@ -12,19 +12,20 @@
 #import "Specialty.h"
 #import "Disease.h"
 #import "ITS_SearchTableViewCell.h"
+#import "ITS_BaseTextFieldComponent.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ITS_TextFieldWithTableComponent : UIView <UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,SearchTableViewCellDelegate>
+@interface ITS_TextFieldWithTableComponent : ITS_BaseTextFieldComponent <UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,SearchTableViewCellDelegate>
 @property (strong, nonatomic) IBOutlet UIView *view;
 - (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andSearchType:(SearchType)searchType andFrame:(CGRect)frame andArray:(NSArray *)array;
-- (void)setViewFrame;
 - (void)updateComponentType:(TextFieldType)textfieldType andSearchType:(SearchType)searchType;
 - (void)updateComponentStatus:(TextFieldStatus)textFieldStatus withWarningMessage:(NSString *) warningMessage;
 - (bool)textfieldHasText;
 - (NSInteger)textfieldSize;
 - (NSString *)textfieldText;
 - (NSArray *)getObjectArray;
+- (void)updateComponentViewFrame:(CGRect)frame;
 @end
 
 NS_ASSUME_NONNULL_END

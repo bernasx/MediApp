@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ITS_TextFieldComponent">
             <connections>
+                <outlet property="textFieldWidthConstraint" destination="OmX-6d-SPl" id="l3h-lO-xdf"/>
                 <outlet property="textfield" destination="Cig-OP-CmM" id="W2k-fJ-odv"/>
                 <outlet property="titleLabel" destination="Ktb-Ic-wPA" id="Ocv-wc-Dt4"/>
                 <outlet property="view" destination="iN0-l3-epB" id="71t-bc-FRM"/>
@@ -39,6 +40,7 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cig-OP-CmM">
                     <rect key="frame" x="16" y="37" width="378" height="44"/>
                     <constraints>
+                        <constraint firstAttribute="width" priority="750" constant="378" id="OmX-6d-SPl"/>
                         <constraint firstAttribute="height" constant="44" id="hEk-n3-avn"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -59,7 +61,7 @@
                 <constraint firstItem="xBq-uy-gAH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="1J7-Y7-ZFy"/>
                 <constraint firstItem="xBq-uy-gAH" firstAttribute="top" secondItem="Cig-OP-CmM" secondAttribute="bottom" constant="8" id="5qS-Ft-uvT"/>
                 <constraint firstItem="Cig-OP-CmM" firstAttribute="top" secondItem="Ktb-Ic-wPA" secondAttribute="bottom" constant="8" id="8QA-8I-FOb"/>
-                <constraint firstAttribute="trailing" secondItem="Cig-OP-CmM" secondAttribute="trailing" constant="20" id="ID5-Op-oCm"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Cig-OP-CmM" secondAttribute="trailing" constant="20" id="ID5-Op-oCm"/>
                 <constraint firstItem="Ktb-Ic-wPA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="PNA-LM-OAU"/>
                 <constraint firstAttribute="trailing" secondItem="xBq-uy-gAH" secondAttribute="trailing" constant="20" id="Qcy-hu-e0D"/>
                 <constraint firstAttribute="bottom" secondItem="xBq-uy-gAH" secondAttribute="bottom" id="RD3-pB-xHC"/>

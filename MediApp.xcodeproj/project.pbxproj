@@ -51,6 +51,7 @@
 		D1DC7112246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DC7110246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.m */; };
 		D1DC7113246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1DC7111246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.xib */; };
 		D1DC7116246B067200FA5402 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DC7115246B067200FA5402 /* Person.m */; };
+		D1DC7119246D59BD00FA5402 /* ITS_BaseTextFieldComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DC7118246D59BD00FA5402 /* ITS_BaseTextFieldComponent.m */; };
 		F0B7E32E8CBE8093E6099263 /* Pods_MediApp_MediAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E6221D7ED31C1D09ADE39D8 /* Pods_MediApp_MediAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +154,9 @@
 		D1DC7111246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_HeaderViewTableViewCell.xib; sourceTree = "<group>"; };
 		D1DC7114246B067200FA5402 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		D1DC7115246B067200FA5402 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		D1DC7117246D59BD00FA5402 /* ITS_BaseTextFieldComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_BaseTextFieldComponent.h; sourceTree = "<group>"; };
+		D1DC7118246D59BD00FA5402 /* ITS_BaseTextFieldComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_BaseTextFieldComponent.m; sourceTree = "<group>"; };
+		D1DC715E246D845500FA5402 /* MediApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MediApp.entitlements; sourceTree = "<group>"; };
 		DC5ACF762A90ABA92D052BBE /* Pods_MediApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -262,6 +266,7 @@
 		D1D21FCA246171C70044AC93 /* MediApp */ = {
 			isa = PBXGroup;
 			children = (
+				D1DC715E246D845500FA5402 /* MediApp.entitlements */,
 				D1D220212462B49C0044AC93 /* ITS_Utils */,
 				D1D2200B246185AD0044AC93 /* ITS_CustomControls */,
 				D1D2200724617E240044AC93 /* ITS_ViewControllers */,
@@ -420,6 +425,8 @@
 				D11B8B0F246950920073C7DE /* ITS_PickerViewComponent.h */,
 				D11B8B10246950920073C7DE /* ITS_PickerViewComponent.m */,
 				D11B8B12246950B40073C7DE /* ITS_PickerViewComponent.xib */,
+				D1DC7117246D59BD00FA5402 /* ITS_BaseTextFieldComponent.h */,
+				D1DC7118246D59BD00FA5402 /* ITS_BaseTextFieldComponent.m */,
 			);
 			path = TextFieldComponents;
 			sourceTree = "<group>";
@@ -680,6 +687,7 @@
 				D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */,
 				D1D22051246470F70044AC93 /* ITS_TextFieldWithTableComponent.m in Sources */,
 				D1D2200F2461860F0044AC93 /* ITS_Colors.m in Sources */,
+				D1DC7119246D59BD00FA5402 /* ITS_BaseTextFieldComponent.m in Sources */,
 				D1D2202F2462EBDD0044AC93 /* ITS_LoginViewModel.m in Sources */,
 				D11B8B1624695E430073C7DE /* ITS_AddViewModel.m in Sources */,
 				D1D2204B24644A8A0044AC93 /* ITS_MedicsListViewController.m in Sources */,
@@ -868,6 +876,7 @@
 			baseConfigurationReference = 17CBA3656AFF1A99ACC62390 /* Pods-MediApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MediApp/MediApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MediApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -885,6 +894,7 @@
 			baseConfigurationReference = 655A3939EC4F54B73E0177AD /* Pods-MediApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MediApp/MediApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MediApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

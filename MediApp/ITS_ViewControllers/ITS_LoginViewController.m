@@ -97,9 +97,9 @@
     [self.welcomeLabel setTextColor:[ITS_Colors secondaryColor]];
 
     //setup textfield components
-    [self.emailView initWithTitle:@"Email" andType:UITextFieldEmail andFrame:self.emailView.frame];
-    [self.passwordView initWithTitle:@"Password" andType:UITextFieldPassword andFrame:self.passwordView.frame];
-    
+    [self.emailView initWithTitle:@"Email" andType:UITextFieldEmail andFrame:CGRectMake(0, 0, self.emailView.frame.size.width, self.emailView.frame.size.height)];
+    [self.passwordView initWithTitle:@"Password" andType:UITextFieldPassword andFrame:CGRectMake(0, 0, self.passwordView.frame.size.width, self.passwordView.frame.size.height)];
+
     //setup button
     [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
     [self.loginButton setBackgroundColor:[ITS_Colors primaryColor]];

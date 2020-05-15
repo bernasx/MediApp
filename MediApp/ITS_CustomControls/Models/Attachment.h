@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Attachment : NSObject
-
+@property (nonatomic) NSString* attachmentName;
+@property (nonatomic) NSData* attachmentData;
 @end
 
 NS_ASSUME_NONNULL_END

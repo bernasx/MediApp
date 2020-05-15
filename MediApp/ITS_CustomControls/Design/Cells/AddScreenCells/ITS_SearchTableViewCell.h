@@ -10,6 +10,7 @@
 #import "ITS_Colors.h"
 #import "Specialty.h"
 #import "Disease.h"
+#import "Attachment.h"
 #import "ITS_Enums.h"
 NS_ASSUME_NONNULL_BEGIN
 @protocol SearchTableViewCellDelegate;
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ITS_SearchTableViewCell : UITableViewCell
 - (void)setSpecialty:(Specialty *)specialty;
 - (void)setDisease:(Disease *)disease;
+- (void)setAttachment:(Attachment *)attachment;
 - (void)removeButtonIsHidden:(bool) isHidden;
 - (void)setTitleLabelColor:(UIColor *)color;
 

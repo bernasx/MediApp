@@ -7,13 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Attachment.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Person : NSObject
 @property (nonatomic) NSString* firstNames;
 @property (nonatomic) NSString* lastNames;
 @property (nonatomic) int age;
+@property (nonatomic) NSString* gender;
+@property (nonatomic) NSString* address;
+@property (nonatomic) NSString* postalCode;
+@property (nonatomic) NSString* natural;
+@property (nonatomic) NSString* nationality;
+@property (nonatomic) NSString* NIF;
+@property (nonatomic) NSString* ccNumber;
+@property (nonatomic) NSString* email;
+@property (nonatomic) NSString* phoneNumber;
+@property (nonatomic) NSArray* attachmentArray;
 @end
 
 NS_ASSUME_NONNULL_END

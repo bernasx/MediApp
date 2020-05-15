@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_BaseTextFieldComponent : UIView
-- (void)updateComponentViewFrame:(CGRect)frame;
+- (id)getObjectData; //override this in any other component to grab ther respective relevant info
 @end
 
 NS_ASSUME_NONNULL_END

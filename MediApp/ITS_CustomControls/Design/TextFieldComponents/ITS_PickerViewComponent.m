@@ -46,15 +46,13 @@
 //init the object with a title and find out how to set it up. Frame will set up the view properly
 - (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame withDataArray:(NSArray *)dataArray {
     self.frame = frame;
+    self.view.frame = frame;
     [self.titleLabel setText:title];
     [self.titleLabel setTextColor:[ITS_Colors smallButtonAndTitleColor]];
     self.selectionArray = dataArray;
     [self setCurrentSelection:[self.selectionArray objectAtIndex:0]];
 }
 
-- (void)updateComponentViewFrame:(CGRect)frame {
-     self.view.frame = frame;
-}
 
 #pragma mark - UIPickerView delegate/datasource
 
@@ -89,7 +87,14 @@
     return pickerLabel;
 }
 
+
+#pragma mark - Public functions
+
 - (NSString *)currentSelection {
     return _currentSelection;
 }
+- (id)getObjectData {
+    return [self currentSelection];
+}
+
 @end

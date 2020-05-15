@@ -1,18 +1,68 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ITS_AttachmentComponent">
+            <connections>
+                <outlet property="attachmentButton" destination="MeG-fo-QYy" id="ccI-2C-xza"/>
+                <outlet property="attachmentTableView" destination="Dfh-CA-9gY" id="6oQ-qZ-0bA"/>
+                <outlet property="titleLabel" destination="VMq-1G-632" id="b2a-AO-yjA"/>
+                <outlet property="view" destination="iN0-l3-epB" id="2dh-3U-Pco"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dfh-CA-9gY">
+                    <rect key="frame" x="0.0" y="40" width="414" height="160"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMq-1G-632">
+                    <rect key="frame" x="16" y="8" width="390" height="20"/>
+                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-fo-QYy">
+                    <rect key="frame" x="382" y="8" width="24" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="Uhw-Z2-ujW"/>
+                        <constraint firstAttribute="width" constant="24" id="iku-hR-BYe"/>
+                    </constraints>
+                    <state key="normal" image="icloud.and.arrow.up" catalog="system"/>
+                    <connections>
+                        <action selector="didTapAttachmentButton:" destination="-1" eventType="touchUpInside" id="FkG-tN-olh"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <constraints>
+                <constraint firstItem="VMq-1G-632" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="2F3-gh-tOq"/>
+                <constraint firstAttribute="trailing" secondItem="VMq-1G-632" secondAttribute="trailing" constant="8" id="8hS-ww-dlh"/>
+                <constraint firstItem="MeG-fo-QYy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="8o5-tk-1aa"/>
+                <constraint firstAttribute="bottom" secondItem="Dfh-CA-9gY" secondAttribute="bottom" id="Ezl-DR-TYx"/>
+                <constraint firstAttribute="trailing" secondItem="MeG-fo-QYy" secondAttribute="trailing" constant="8" id="GNi-q5-y1l"/>
+                <constraint firstItem="VMq-1G-632" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Isl-KJ-ALc"/>
+                <constraint firstItem="Dfh-CA-9gY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LGT-z6-7T5"/>
+                <constraint firstItem="Dfh-CA-9gY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="duD-wA-Dux"/>
+                <constraint firstAttribute="trailing" secondItem="Dfh-CA-9gY" secondAttribute="trailing" id="gRE-5Z-pI7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="364.95535714285711"/>
         </view>
     </objects>
+    <resources>
+        <image name="icloud.and.arrow.up" catalog="system" width="128" height="106"/>
+    </resources>
 </document>

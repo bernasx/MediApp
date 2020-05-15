@@ -7,10 +7,20 @@
 //
 
 #import "ITS_BaseTextFieldComponent.h"
-
+#import "ITS_Colors.h"
+#import "ITS_SearchTableViewCell.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 NS_ASSUME_NONNULL_BEGIN
+@protocol AttachmentComponentDelegate;
+@interface ITS_AttachmentComponent : ITS_BaseTextFieldComponent <UITableViewDelegate,UITableViewDataSource, SearchTableViewCellDelegate,UIDocumentPickerDelegate>
+@property (strong, nonatomic) IBOutlet UIView *view;
+@property (nonatomic, weak) id<AttachmentComponentDelegate> delegate;
+- (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame;
+@end
 
-@interface ITS_AttachmentComponent : ITS_BaseTextFieldComponent
+// 3. Definition of the delegate's interface
+@protocol AttachmentComponentDelegate <NSObject>
+- (void)attachmentComponentDidTapAddAttachment:(ITS_AttachmentComponent*)attachmentComponent withDocumentPicker:(UIDocumentPickerViewController *)documentPicker;
 
 @end
 

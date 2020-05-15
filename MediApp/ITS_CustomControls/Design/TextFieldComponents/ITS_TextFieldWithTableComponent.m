@@ -76,6 +76,7 @@
 //init the object with a type and find out how to set it up. Frame will set up the view properly to fit the one in Storyboard
 - (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andSearchType:(SearchType)searchType andFrame:(CGRect)frame andArray:(NSArray *)array {
     self.frame = frame;
+    self.view.frame = frame;
     [self.titleLabel setText:title]; //all of them have a similar title
     [self.titleLabel setTextColor:[ITS_Colors smallButtonAndTitleColor]];
     [self.warningLabel setHidden:YES]; //all warning labels should be hidden by default
@@ -107,10 +108,6 @@
     [self.selectedSpecialtiesTableView reloadData];
 }
 
-//Call this after initializing the component to set the frame properly to work with cell and subviews
-- (void)updateComponentViewFrame:(CGRect)frame {
-     self.view.frame = frame;
-}
 
 #pragma mark - View Design
 
@@ -194,6 +191,10 @@
 
 - (NSArray *)getObjectArray {
     return self.objectArray;
+}
+
+- (id)getObjectData {
+    return [self getObjectArray];
 }
 
 #pragma mark - UITextfield Delegate

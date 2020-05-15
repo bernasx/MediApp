@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "ITS_Repository.h"
+#import "ITS_Enums.h"
 #import "Specialty.h"
+#import "Medic.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_AddViewModel : NSObject
 - (void)fetchSpecialties:(void (^)(NSArray * _Nullable))completion;
+- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray;
 @end
 
 NS_ASSUME_NONNULL_END

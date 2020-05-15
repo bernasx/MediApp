@@ -20,11 +20,15 @@
     return self;
 }
 
+#pragma mark - General Fetches for Static Data
+
 - (void)fetchSpecialties:(void (^)(NSArray * _Nullable))completion  {
     [[_ref child:@"specialties"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         completion(snapshot.value);
     }];
 }
+
+#pragma mark - User Creation
 
 //logs in user with an email and password, return an error if it failed
 - (void)loginUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(NSError * _Nullable))completion {
@@ -41,20 +45,30 @@
 }
 
 //registers a user and immediately logs out and back in with the old account, assuming the old password is 123123123
-- (void)registerSeparateUserWithEmail:(NSString *)email {
+- (void)registerSeparateUserWithEmail:(NSString *)email completion:(void (^)(NSString *))completion{
     NSString *tempEmail = [[FIRAuth auth] currentUser].email;
-    NSString *tempPassword = @"123123123";
     //logout
     [self logOut];
+    
     //Create a new account
     [[FIRAuth auth] createUserWithEmail:email password:@"123123123" completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
         NSLog(@"%@",error.localizedDescription);
+        //logout
+        [self logOutAndLogBackIn:tempEmail completion:^(NSString * uid) {
+            completion(uid);
+        }];
     }];
+ 
+}
+//logs out of the new fake user, logs back in to old one.
+- (void)logOutAndLogBackIn:(NSString *)email completion:(void (^)(NSString *))completion {
+      NSString *newUserUid = [[[FIRAuth auth] currentUser] uid];
     //Logout again
     [self logOut];
     //login to old account
-    [[FIRAuth auth] signInWithEmail:tempEmail password:tempPassword completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
-        NSLog(@"%@",error.localizedDescription);
+    [[FIRAuth auth] signInWithEmail:email password:@"123123123" completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
+           NSLog(@"%@",error.localizedDescription);
+        completion(newUserUid);
     }];
 }
 
@@ -66,5 +80,11 @@
         NSLog(@"Error signing out: %@", signOutError);
         return;
     }
+}
+
+#pragma mark - Medic Functions
+
+- (void)writeNewMedic:(Medic *)medic {
+    
 }
 @end

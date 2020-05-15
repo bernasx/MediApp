@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *removeButton;
 @property (nonatomic) Specialty *specialty;
 @property (nonatomic) Disease *disease;
-
+@property (nonatomic) Attachment *attachment;
 @end
 @implementation ITS_SearchTableViewCell
 - (IBAction)onRemove:(id)sender {
@@ -25,9 +25,14 @@
         if ([strongDelegate respondsToSelector:@selector(cellRemoval:didRemoveObject:)]) {
             [strongDelegate cellRemoval:self didRemoveObject:self.specialty];
         }
-    } else {
+    } else if (self.disease) {
         if ([strongDelegate respondsToSelector:@selector(cellRemoval:didRemoveObject:)]) {
             [strongDelegate cellRemoval:self didRemoveObject:self.disease];
+        }
+        
+    } else {
+        if ([strongDelegate respondsToSelector:@selector(cellRemoval:didRemoveObject:)]) {
+            [strongDelegate cellRemoval:self didRemoveObject:self.attachment];
         }
     }
     
@@ -55,6 +60,11 @@
 - (void)setDisease:(Disease *)disease {
     _disease = disease;
     [self.titleLabel setText:self.disease.diseaseName];
+}
+
+- (void)setAttachment:(Attachment *)attachment {
+    _attachment = attachment;
+    [self.titleLabel setText:self.attachment.attachmentName];
 }
 
 - (void)setTitleLabelColor:(UIColor *)color {

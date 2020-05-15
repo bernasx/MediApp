@@ -51,7 +51,7 @@
 //init the object with a type and find out how to set it up. Frame will set up the view properly to fit the one in Storyboard
 - (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andFrame:(CGRect)frame {
     self.frame = frame;
-  
+    self.view.frame = frame;
     [self.titleLabel setText:title]; //all of them have a similar title
     [self.titleLabel setTextColor:[ITS_Colors smallButtonAndTitleColor]];
     [self.warningLabel setHidden:YES]; //all warning labels should be hidden by default
@@ -60,10 +60,6 @@
     [self changeTextViewDesignWithColor:[ITS_Colors smallTextColor]]; //setup the textfield with whatever color we wish
     self.textfield.delegate = self;
     [self updateComponentType:textfieldType];
-}
-
-- (void)updateComponentViewFrame:(CGRect)frame {
-     self.view.frame = frame;
 }
 
 - (void)updateTextFieldWidth:(int)constant {
@@ -189,6 +185,10 @@
 
 - (NSString *)textfieldText {
     return self.textfield.text;
+}
+
+- (id)getObjectData {
+    return [self textfieldText];
 }
 
 #pragma mark - UITextfield Delegate

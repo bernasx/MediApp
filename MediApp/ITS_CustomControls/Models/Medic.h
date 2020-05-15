@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Medic : Person
-
+@property (nonatomic) NSArray* specialtiesArray;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -55,9 +55,10 @@
     if (creationIsValid) {
         for (NSArray* array in self.dataArray) {
             for (ITS_BaseTextFieldComponent* component in array) {
-                [buildingArray addObject:component];
+                [buildingArray addObject:[component getObjectData]];
             }
         }
+        [self.viewModel buildObjectWithType:self.addTypeSelection andWithArray:buildingArray];
     }
 }
 
@@ -114,6 +115,13 @@
     return 44;
 }
 
+#pragma mark - Attachment Delegate
+
+- (void)attachmentComponentDidTapAddAttachment:(ITS_AttachmentComponent *)attachmentComponent withDocumentPicker:(nonnull UIDocumentPickerViewController *)documentPicker {
+
+    [self presentViewController:documentPicker animated:YES completion:nil];
+}
+
 #pragma mark - Build the screen
 
 //calls a function for every type of screen that should be built
@@ -144,6 +152,7 @@
     [self addSectionToArrayWithName:@"Dados Pessoais"];
     [self addSectionToArrayWithName:@"Dados Médicos"];
     [self addSectionToArrayWithName:@"Contatos"];
+    [self addSectionToArrayWithName:@"Anexos"];
     
     [self addComponentToArrayAtSection:0 withComponentTitle:@"Primeiros Nomes" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
     
@@ -173,6 +182,7 @@
     
     [self addComponentToArrayAtSection:2 withComponentTitle:@"Telemóvel" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
 
+    [self addComponentToArrayAtSection:3 withComponentTitle:@"Anexos do médico" withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil];
 }
 
 
@@ -190,7 +200,6 @@
         case TextFieldComponentTypeNormal:
             componentView = [ITS_TextFieldComponent new];
             [(ITS_TextFieldComponent*)componentView initWithTitle:title andType:textFieldType andFrame:frame];
-            [componentView updateComponentViewFrame:frame];
             if (width) {
                  [(ITS_TextFieldComponent *)componentView updateTextFieldWidth:[width intValue]];
             }
@@ -198,13 +207,15 @@
        case TextFieldComponentTypeTableView:
             componentView = [ITS_TextFieldWithTableComponent new];
             [(ITS_TextFieldWithTableComponent*)componentView initWithTitle:title andType:textFieldType andSearchType:searchType andFrame:frame andArray:array];
-            [componentView updateComponentViewFrame:frame];
             break;
        case TextFieldComponentTypePickerView:
             componentView = [ITS_PickerViewComponent new];
             [(ITS_PickerViewComponent*)componentView initWithTitle:title andFrame:frame  withDataArray:array];
-            [componentView updateComponentViewFrame:frame];
             break;
+        case TextFieldComponentTypeAttachment:
+            componentView = [ITS_AttachmentComponent new];
+            [(ITS_AttachmentComponent*)componentView initWithTitle:title andFrame:frame];
+            [(ITS_AttachmentComponent*)componentView setDelegate:self];
         default:
             break;
     }

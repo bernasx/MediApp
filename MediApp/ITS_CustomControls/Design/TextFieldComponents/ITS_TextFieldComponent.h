@@ -20,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (bool)textfieldHasText;
 - (NSInteger)textfieldSize;
 - (NSString *)textfieldText;
-- (void)updateComponentViewFrame:(CGRect)frame;
 - (void)initWithTitle:(NSString *)title andType:(TextFieldType)textfieldType andFrame:(CGRect)frame;
 - (void)updateTextFieldWidth:(int)constant;
+- (id)getObjectData;
 @end
 
 NS_ASSUME_NONNULL_END

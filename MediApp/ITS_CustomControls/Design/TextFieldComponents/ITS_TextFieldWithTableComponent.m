@@ -197,6 +197,10 @@
     return [self getObjectArray];
 }
 
+- (CGFloat)getDefaultComponentHeight {
+    return 315;
+}
+
 #pragma mark - UITextfield Delegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];

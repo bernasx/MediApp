@@ -12,7 +12,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_LoginViewModel : NSObject
-- (void)registerUserWithEmail: (NSString *) email andPassword: (NSString *) password;
 - (void)logInUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(ITS_ServiceErrorHandler * errorHandler))completion;
 - (void)logOut;
 @end

@@ -10,8 +10,10 @@
 
 @interface ITS_AddViewController ()
 @property (nonatomic) ITS_AddViewModel *viewModel;
-@property (nonatomic) NSMutableArray* dataArray; //contains all data for building components
-@property (nonatomic) NSMutableArray* sectionArray; //contains all section titles
+@property (nonatomic) NSArray* dataArray; //contains all data for building components
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
+@property (nonatomic) NSArray* sectionArray; //contains all section titles
 @end
 
 @implementation ITS_AddViewController
@@ -19,7 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewModel = [[ITS_AddViewModel alloc] init];
-    [self buildScreen];//build the screen with textfields that represent what type of screen we're in
+    self.viewModel.delegate = self; //delegate will ensure we get the data back 
+    [self.viewModel buildScreen:self.addTypeSelection];//build the screen with textfields that represent what type of screen we're in
+    
+    //Setup for scrolling smoothly
+    self.tableViewHeight.constant = 0;
+    self.fieldsTableView.scrollEnabled = NO;
+    self.scrollView.bounces = NO;
+    self.fieldsTableView.bounces = YES;
     
     //confirm button
     UIImage *confirmButtonImage = [UIImage systemImageNamed:@"checkmark"];
@@ -32,16 +41,17 @@
     NSMutableArray* buildingArray = [NSMutableArray new]; //array that will store all the info for an object
     
     for (NSArray* array in self.dataArray) {
+        //go through each component, check if they're valid fields
         for (ITS_BaseTextFieldComponent* component in array) {
             if ([component isKindOfClass:[ITS_TextFieldComponent class]]) {
                 if (![(ITS_TextFieldComponent*)component textfieldHasText]) {
-                    [(ITS_TextFieldComponent*)component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor preencha este campo!"];
+                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor preencha este campo!"];
                     creationIsValid = NO;
                 }
             }
             if ([component isKindOfClass:[ITS_TextFieldWithTableComponent class]]) {
                 if ([[(ITS_TextFieldWithTableComponent*)component getObjectArray] count] < 1) {
-                     [(ITS_TextFieldWithTableComponent*)component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor insira pelo menos 1 elemento."];
+                     [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor insira pelo menos 1 elemento."];
                     creationIsValid = NO;
                 }
                 NSLog(@"%@",[(ITS_TextFieldWithTableComponent*)component getObjectArray]);
@@ -51,7 +61,7 @@
             }
         }
     }
-    
+    //if everything is valid, build the object and send it to the database
     if (creationIsValid) {
         for (NSArray* array in self.dataArray) {
             for (ITS_BaseTextFieldComponent* component in array) {
@@ -87,21 +97,9 @@
     return cell;
 }
 
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     ITS_BaseTextFieldComponent *component = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];//get component to check what height to give the cell
-    if ([component isKindOfClass:[ITS_TextFieldComponent class]]) {
-        return 110;
-    }
-    if ([component isKindOfClass:[ITS_TextFieldWithTableComponent class]]) {
-        return 315;
-    }
-    if ([component isKindOfClass:[ITS_PickerViewComponent class]]) {
-        return 110;
-    }
-    
-    return 110;
+    return [component getDefaultComponentHeight];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -115,111 +113,36 @@
     return 44;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    
+    if (scrollView == self.scrollView) {
+        self.fieldsTableView.scrollEnabled = (self.scrollView.contentOffset.y >= 200);
+    }
+    
+    if (scrollView == self.fieldsTableView) {
+        self.fieldsTableView.scrollEnabled = (self.fieldsTableView.contentOffset.y > 0);
+    }
+}
+
 #pragma mark - Attachment Delegate
 
 - (void)attachmentComponentDidTapAddAttachment:(ITS_AttachmentComponent *)attachmentComponent withDocumentPicker:(nonnull UIDocumentPickerViewController *)documentPicker {
-
     [self presentViewController:documentPicker animated:YES completion:nil];
 }
 
-#pragma mark - Build the screen
-
-//calls a function for every type of screen that should be built
-- (void)buildScreen {
-    switch (self.addTypeSelection) {
-        case MainMenuSelectionMedics:
-            [self buildForMedics];
-            break;
-        case MainMenuSelectionPatients:
-            //code for adding patients
-            break;
-        case MainMenuSelectionAppointments:
-            //code for adding appointments
-            break;
-        case MainMenuSelectionMedicalAppointment:
-            //code for adding medicalappointments
-            break;
-        default:
-            break;
+#pragma mark - ViewModel Delegate
+- (void)addViewModel:(ITS_AddViewModel *)viewModel didFinishBuildingScreenArray:(NSArray *)dataArray andSectionArray:(NSArray *)sectionArray{
+    self.sectionArray = sectionArray;
+    self.dataArray = dataArray;
+    double totalHeight = 0;
+    for (NSArray* array in self.dataArray) {
+        for (ITS_BaseTextFieldComponent* component in array) {
+            totalHeight += [component getDefaultComponentHeight] + 10;
+            NSLog(@"%f",[component getDefaultComponentHeight]);
+        }
     }
+    self.tableViewHeight.constant = totalHeight;
+    [self.fieldsTableView reloadData];
 }
-
-- (void)buildForMedics {
-    
-    self.dataArray = [NSMutableArray new];
-    self.sectionArray = [NSMutableArray new];
-    
-    [self addSectionToArrayWithName:@"Dados Pessoais"];
-    [self addSectionToArrayWithName:@"Dados Médicos"];
-    [self addSectionToArrayWithName:@"Contatos"];
-    [self addSectionToArrayWithName:@"Anexos"];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Primeiros Nomes" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Apelidos" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Idade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:[NSNumber numberWithInt:50]];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Sexo" withType:TextFieldComponentTypePickerView andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Feminino",@"Masculino"] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Morada" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Código Postal" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:[NSNumber numberWithInt:100]];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Naturalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nacionalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"NIF" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nº CC" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self.viewModel fetchSpecialties:^(NSArray * _Nullable specialtiesArray) {
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Especialidade" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchSpecialty andArray:specialtiesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
-        [self.fieldsTableView reloadData];
-    } ];
-    
-    [self addComponentToArrayAtSection:2 withComponentTitle:@"Email" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:2 withComponentTitle:@"Telemóvel" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-
-    [self addComponentToArrayAtSection:3 withComponentTitle:@"Anexos do médico" withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil];
-}
-
-
-
-#pragma mark - array management
-
-- (void)addSectionToArrayWithName:(NSString *)sectionName {
-    [self.sectionArray addObject:sectionName];
-    [self.dataArray addObject:[NSMutableArray new]];
-}
-
-- (void)addComponentToArrayAtSection:(NSInteger)section withComponentTitle:(NSString *)title withType:(TextFieldComponentType)textFieldComponentType andTextFieldType:(TextFieldType)textFieldType andSearchType:(SearchType)searchType andArray:(NSArray *)array andFrame:(CGRect)frame withTextFieldWidth:(NSNumber*)width {
-    ITS_BaseTextFieldComponent *componentView;
-    switch (textFieldComponentType) {
-        case TextFieldComponentTypeNormal:
-            componentView = [ITS_TextFieldComponent new];
-            [(ITS_TextFieldComponent*)componentView initWithTitle:title andType:textFieldType andFrame:frame];
-            if (width) {
-                 [(ITS_TextFieldComponent *)componentView updateTextFieldWidth:[width intValue]];
-            }
-            break;
-       case TextFieldComponentTypeTableView:
-            componentView = [ITS_TextFieldWithTableComponent new];
-            [(ITS_TextFieldWithTableComponent*)componentView initWithTitle:title andType:textFieldType andSearchType:searchType andFrame:frame andArray:array];
-            break;
-       case TextFieldComponentTypePickerView:
-            componentView = [ITS_PickerViewComponent new];
-            [(ITS_PickerViewComponent*)componentView initWithTitle:title andFrame:frame  withDataArray:array];
-            break;
-        case TextFieldComponentTypeAttachment:
-            componentView = [ITS_AttachmentComponent new];
-            [(ITS_AttachmentComponent*)componentView initWithTitle:title andFrame:frame];
-            [(ITS_AttachmentComponent*)componentView setDelegate:self];
-        default:
-            break;
-    }
-    [[self.dataArray objectAtIndex:section] addObject:componentView];
-}
-
 @end

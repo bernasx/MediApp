@@ -24,12 +24,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dfh-CA-9gY">
-                    <rect key="frame" x="0.0" y="40" width="414" height="160"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMq-1G-632">
-                    <rect key="frame" x="16" y="8" width="390" height="20"/>
+                    <rect key="frame" x="16" y="8" width="348" height="20"/>
                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -45,18 +41,35 @@
                         <action selector="didTapAttachmentButton:" destination="-1" eventType="touchUpInside" id="FkG-tN-olh"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYj-Sl-cH0">
+                    <rect key="frame" x="0.0" y="36" width="414" height="164"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dfh-CA-9gY">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="Dfh-CA-9gY" firstAttribute="top" secondItem="qYj-Sl-cH0" secondAttribute="top" id="Fv7-59-cPV"/>
+                        <constraint firstAttribute="height" constant="164" id="JbO-3l-nB2"/>
+                        <constraint firstAttribute="trailing" secondItem="Dfh-CA-9gY" secondAttribute="trailing" id="MKz-J6-0RJ"/>
+                        <constraint firstAttribute="bottom" secondItem="Dfh-CA-9gY" secondAttribute="bottom" id="NJz-e2-jsw"/>
+                        <constraint firstItem="Dfh-CA-9gY" firstAttribute="leading" secondItem="qYj-Sl-cH0" secondAttribute="leading" id="cqH-CD-35c"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="VMq-1G-632" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="2F3-gh-tOq"/>
-                <constraint firstAttribute="trailing" secondItem="VMq-1G-632" secondAttribute="trailing" constant="8" id="8hS-ww-dlh"/>
+                <constraint firstAttribute="trailing" secondItem="VMq-1G-632" secondAttribute="trailing" constant="50" id="8hS-ww-dlh"/>
                 <constraint firstItem="MeG-fo-QYy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="8o5-tk-1aa"/>
-                <constraint firstAttribute="bottom" secondItem="Dfh-CA-9gY" secondAttribute="bottom" id="Ezl-DR-TYx"/>
                 <constraint firstAttribute="trailing" secondItem="MeG-fo-QYy" secondAttribute="trailing" constant="8" id="GNi-q5-y1l"/>
                 <constraint firstItem="VMq-1G-632" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Isl-KJ-ALc"/>
-                <constraint firstItem="Dfh-CA-9gY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LGT-z6-7T5"/>
-                <constraint firstItem="Dfh-CA-9gY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="duD-wA-Dux"/>
-                <constraint firstAttribute="trailing" secondItem="Dfh-CA-9gY" secondAttribute="trailing" id="gRE-5Z-pI7"/>
+                <constraint firstAttribute="bottom" secondItem="qYj-Sl-cH0" secondAttribute="bottom" id="Lz2-f6-oJd"/>
+                <constraint firstAttribute="trailing" secondItem="qYj-Sl-cH0" secondAttribute="trailing" id="MuU-Bq-57D"/>
+                <constraint firstItem="qYj-Sl-cH0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c40-3X-MRN"/>
+                <constraint firstItem="qYj-Sl-cH0" firstAttribute="top" secondItem="VMq-1G-632" secondAttribute="bottom" constant="8" id="cf9-al-xvk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="131.8840579710145" y="364.95535714285711"/>

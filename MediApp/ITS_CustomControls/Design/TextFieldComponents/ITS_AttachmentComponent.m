@@ -114,4 +114,8 @@
 - (id)getObjectData {
     return [self attachmentArray];
 }
+
+- (CGFloat)getDefaultComponentHeight {
+    return 200;
+}
 @end

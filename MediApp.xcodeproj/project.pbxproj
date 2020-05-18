@@ -443,8 +443,8 @@
 				D1919D3B246E922800C70120 /* ITS_AttachmentComponent.h */,
 				D1919D3C246E922800C70120 /* ITS_AttachmentComponent.m */,
 				D1919D40246E92AA00C70120 /* ITS_AttachmentComponent.xib */,
-				D1DC7118246D59BD00FA5402 /* ITS_BaseTextFieldComponent.m */,
 				D1DC7117246D59BD00FA5402 /* ITS_BaseTextFieldComponent.h */,
+				D1DC7118246D59BD00FA5402 /* ITS_BaseTextFieldComponent.m */,
 			);
 			path = TextFieldComponents;
 			sourceTree = "<group>";

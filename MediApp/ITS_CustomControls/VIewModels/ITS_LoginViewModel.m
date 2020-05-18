@@ -31,13 +31,6 @@
     }];
 }
 
-
-- (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password{
-    [self.repository registerUserWithEmail:email andPassword:password completion:^(NSError * _Nullable error) {
-        [self.repository logOut];
-    }];
-}
-
 - (void)logOut {
     [self.repository logOut];
 }

@@ -10,12 +10,16 @@
 
 @implementation ITS_BaseTextFieldComponent
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (id)getObjectData {
+    return @"Failed to retrieve object Data";
 }
-*/
+
+- (void)updateComponentStatus:(TextFieldStatus)textFieldStatus withWarningMessage:(NSString *)warningMessage{
+    
+}
+
+- (CGFloat)getDefaultComponentHeight {
+    return 110;
+}
 
 @end

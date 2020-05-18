@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ITS_Enums.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_BaseTextFieldComponent : UIView
 - (id)getObjectData; //override this in any other component to grab ther respective relevant info
+- (void)updateComponentStatus:(TextFieldStatus)textFieldStatus withWarningMessage:(NSString *) warningMessage;
+- (CGFloat)getDefaultComponentHeight;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -20,7 +20,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ITS_AddViewController : ITS_ViewController<UITableViewDelegate,UITableViewDataSource, AttachmentComponentDelegate>
+@interface ITS_AddViewController : ITS_ViewController<UITableViewDelegate,UITableViewDataSource, AttachmentComponentDelegate,AddViewModelDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *fieldsTableView;
 @property (nonatomic) MainMenuSelection addTypeSelection;
 @end

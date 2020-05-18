@@ -9,6 +9,7 @@
 #import "ITS_Repository.h"
 @interface ITS_Repository()
 @property (strong, nonatomic) FIRDatabaseReference *ref;
+@property (nonatomic) FIRStorage *storage;
 @end
 
 @implementation ITS_Repository
@@ -16,6 +17,7 @@
     self = [super init];
     if (self) {
         self.ref = [[FIRDatabase database] reference];
+        self.storage  = [FIRStorage storage];
     }
     return self;
 }
@@ -33,13 +35,6 @@
 //logs in user with an email and password, return an error if it failed
 - (void)loginUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(NSError * _Nullable))completion {
     [[FIRAuth auth] signInWithEmail:email password:password completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
-        completion(error);
-    }];
-}
-
-//registers a user normally
-- (void)registerUserWithEmail:(NSString *)email andPassword:(NSString *)password completion:(void (^)(NSError * _Nullable))completion {
-    [[FIRAuth auth] createUserWithEmail:email password:password completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
         completion(error);
     }];
 }
@@ -84,7 +79,52 @@
 
 #pragma mark - Medic Functions
 
-- (void)writeNewMedic:(Medic *)medic {
+- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid {
+    [[[[self.ref child:@"medics"] child:uid] child:@"firstName"] setValue:medic.firstNames];
+    [[[[self.ref child:@"medics"] child:uid] child:@"lastName"] setValue:medic.lastNames];
+    [[[[self.ref child:@"medics"] child:uid] child:@"age"] setValue:[NSNumber numberWithInt:medic.age]];
+    [[[[self.ref child:@"medics"] child:uid] child:@"gender"] setValue:medic.gender];
+    [[[[self.ref child:@"medics"] child:uid] child:@"address"] setValue:medic.address];
+    [[[[self.ref child:@"medics"] child:uid] child:@"postalCode"] setValue:medic.postalCode];
+    [[[[self.ref child:@"medics"] child:uid] child:@"natural"] setValue:medic.natural];
+    [[[[self.ref child:@"medics"] child:uid] child:@"nationality"] setValue:medic.nationality];
+    [[[[self.ref child:@"medics"] child:uid] child:@"NIF"] setValue:medic.NIF];
+    [[[[self.ref child:@"medics"] child:uid] child:@"ccNumber"] setValue:medic.ccNumber];
+    [[[[self.ref child:@"medics"] child:uid] child:@"email"] setValue:medic.email];
+     [[[[self.ref child:@"medics"] child:uid] child:@"phoneNumber"] setValue:medic.phoneNumber];
     
+    //get only the IDs
+    NSMutableArray *specialtiesArray = [NSMutableArray new];
+    for (Specialty* specialty in medic.specialtiesArray) {
+        [specialtiesArray addObject:specialty.specialtyId];
+    }
+    //Save the IDs
+    [[[[self.ref child:@"medics"] child:uid] child:@"specialties"] setValue:specialtiesArray];
+    
+    //get all the attachments, add a uuid to each of them.
+    for (Attachment* attachment in medic.attachmentArray) {
+        NSUUID *uuid = [NSUUID UUID]; //generate a new id for the attachment
+        NSString *str = [uuid UUIDString];
+        [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@",uid,str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
+            [[[[[self.ref child:@"medics"] child:uid] child:@"attachments"] childByAutoId] setValue:url.absoluteString];
+        }];
+    }
+}
+
+
+#pragma mark - Storage Functions
+
+- (void)saveToStorageWithReferenceString:(NSString *)refString andData:(NSData *)data completion:(void (^)(NSURL *))completion {
+    FIRStorageReference *storageRef = [self.storage reference];
+    FIRStorageReference *ref = [storageRef child:refString];
+    [ref putData:data metadata:nil completion:^(FIRStorageMetadata * _Nullable metadata, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"%@",error.localizedDescription);
+        } else {
+            [ref downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error) {
+                completion(URL);
+            }];
+        }
+    }];
 }
 @end

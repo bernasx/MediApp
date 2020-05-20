@@ -25,6 +25,8 @@
 @implementation ITS_TextFieldWithTableComponent
 
 - (IBAction)didAddSpecialty:(id)sender {
+    
+     [self.addButton setEnabled:NO];
      [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];
     //go through each specialty in the original array, add to the object array the valid ones that match the textfield
     for (Specialty * specialty in self.firebaseArray) {
@@ -83,7 +85,8 @@
     [self.warningLabel setTextColor:[ITS_Colors warningColor]];
     [self.textfield setTintColor:[ITS_Colors smallTextColor]]; //makes all icons the same color
     [self changeTextViewDesignWithColor:[ITS_Colors smallTextColor]]; //setup the textfield with whatever color we wish
-    [self.addButton setTintColor:[ITS_Colors smallButtonAndTitleColor]];
+    [self.addButton setTintColor:[ITS_Colors secondaryColor]];
+    [self.addButton setEnabled:NO];
     //initialize the two arrays
     self.objectArray = [[NSMutableArray alloc] init];
     self.displayArray = [[NSMutableArray alloc] init];
@@ -208,6 +211,7 @@
 
 //Called when textfield changes
 - (void)textFieldDidChange {
+    [self.addButton setEnabled:NO];
     [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];
     self.displayArray = [[NSMutableArray alloc] init]; //erase the old array
     if ([self textfieldHasText]) {
@@ -218,6 +222,10 @@
                     if ([specialty.specialtyName.lowercaseString containsString:self.textfield.text.lowercaseString]) {
                         [self.displayArray addObject:specialty];
                     }
+                    if ([specialty.specialtyName.lowercaseString isEqualToString:self.textfield.text.lowercaseString]) {
+                        [self.addButton setEnabled:YES];
+                    }
+                    
                 }
                 [self.textCompletionTableView reloadData];
                 break;
@@ -287,26 +295,35 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];
-    switch (self.searchType) {
-        case SearchSpecialty:{
-            Specialty* specialty = [self.displayArray objectAtIndex:indexPath.row];
-            [self.textfield setText:specialty.specialtyName];
-             break;
+    
+    if (tableView == self.textCompletionTableView) {
+        [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];
+        [self.addButton setEnabled:YES];
+        switch (self.searchType) {
+            case SearchSpecialty:{
+                Specialty* specialty = [self.displayArray objectAtIndex:indexPath.row];
+                [self.textfield setText:specialty.specialtyName];
+                break;
+            }
+            case SearchDisease:{
+                Disease* disease = [self.displayArray objectAtIndex:indexPath.row];
+                [self.textfield setText:disease.diseaseName];
+                break;
+            }
+            default:
+                break;
         }
-        case SearchDisease:{
-            Disease* disease = [self.displayArray objectAtIndex:indexPath.row];
-            [self.textfield setText:disease.diseaseName];
-            break;
-        }
-        default:
-            break;
     }
+    
 }
 //delegate that lets us remove the cell we want from the specialty tableview
 - (void)cellRemoval:(ITS_SearchTableViewCell *)cell didRemoveObject:(id)object {
     [self.objectArray removeObject:object];
     [self.selectedSpecialtiesTableView reloadData];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 35;
 }
 
 #pragma mark - Array Managing

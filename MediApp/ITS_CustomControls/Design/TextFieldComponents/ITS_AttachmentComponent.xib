@@ -13,7 +13,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ITS_AttachmentComponent">
             <connections>
-                <outlet property="attachmentButton" destination="MeG-fo-QYy" id="ccI-2C-xza"/>
                 <outlet property="attachmentTableView" destination="Dfh-CA-9gY" id="6oQ-qZ-0bA"/>
                 <outlet property="titleLabel" destination="VMq-1G-632" id="b2a-AO-yjA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="2dh-3U-Pco"/>
@@ -30,17 +29,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-fo-QYy">
-                    <rect key="frame" x="382" y="8" width="24" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="Uhw-Z2-ujW"/>
-                        <constraint firstAttribute="width" constant="24" id="iku-hR-BYe"/>
-                    </constraints>
-                    <state key="normal" image="icloud.and.arrow.up" catalog="system"/>
-                    <connections>
-                        <action selector="didTapAttachmentButton:" destination="-1" eventType="touchUpInside" id="FkG-tN-olh"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYj-Sl-cH0">
                     <rect key="frame" x="0.0" y="36" width="414" height="164"/>
                     <subviews>
@@ -63,8 +51,6 @@
             <constraints>
                 <constraint firstItem="VMq-1G-632" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="2F3-gh-tOq"/>
                 <constraint firstAttribute="trailing" secondItem="VMq-1G-632" secondAttribute="trailing" constant="50" id="8hS-ww-dlh"/>
-                <constraint firstItem="MeG-fo-QYy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="8o5-tk-1aa"/>
-                <constraint firstAttribute="trailing" secondItem="MeG-fo-QYy" secondAttribute="trailing" constant="8" id="GNi-q5-y1l"/>
                 <constraint firstItem="VMq-1G-632" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Isl-KJ-ALc"/>
                 <constraint firstAttribute="bottom" secondItem="qYj-Sl-cH0" secondAttribute="bottom" id="Lz2-f6-oJd"/>
                 <constraint firstAttribute="trailing" secondItem="qYj-Sl-cH0" secondAttribute="trailing" id="MuU-Bq-57D"/>
@@ -75,7 +61,4 @@
             <point key="canvasLocation" x="131.8840579710145" y="364.95535714285711"/>
         </view>
     </objects>
-    <resources>
-        <image name="icloud.and.arrow.up" catalog="system" width="128" height="106"/>
-    </resources>
 </document>

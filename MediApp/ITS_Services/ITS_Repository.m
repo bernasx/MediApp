@@ -39,6 +39,7 @@
     }];
 }
 
+
 //registers a user and immediately logs out and back in with the old account, assuming the old password is 123123123
 - (void)registerSeparateUserWithEmail:(NSString *)email completion:(void (^)(NSString *))completion{
     NSString *tempEmail = [[FIRAuth auth] currentUser].email;
@@ -79,7 +80,9 @@
 
 #pragma mark - Medic Functions
 
-- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid {
+//uid is the new user's uid
+- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections{
+    NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
     [[[[self.ref child:@"medics"] child:uid] child:@"firstName"] setValue:medic.firstNames];
     [[[[self.ref child:@"medics"] child:uid] child:@"lastName"] setValue:medic.lastNames];
     [[[[self.ref child:@"medics"] child:uid] child:@"age"] setValue:[NSNumber numberWithInt:medic.age]];
@@ -91,7 +94,26 @@
     [[[[self.ref child:@"medics"] child:uid] child:@"NIF"] setValue:medic.NIF];
     [[[[self.ref child:@"medics"] child:uid] child:@"ccNumber"] setValue:medic.ccNumber];
     [[[[self.ref child:@"medics"] child:uid] child:@"email"] setValue:medic.email];
-     [[[[self.ref child:@"medics"] child:uid] child:@"phoneNumber"] setValue:medic.phoneNumber];
+    [[[[self.ref child:@"medics"] child:uid] child:@"phoneNumber"] setValue:medic.phoneNumber];
+    [[[[self.ref child:@"medics"] child:uid] child:@"isSuperior"] setValue:[NSNumber numberWithBool:medic.isSuperior]];
+    [[[[self.ref child:@"medics"] child:uid] child:@"superior"] setValue:currentUserUID];
+    
+    //add medic to superior medics
+    if (medic.isSuperior) {
+        [self getSuperiorMedics:^(NSArray * _Nullable superiorMedicsArray) {
+            if ([superiorMedicsArray isKindOfClass:[NSNull class]]) {
+                superiorMedicsArray = [[NSArray alloc] init];
+            }
+            NSMutableArray* newSuperiorMedicsArray = [[NSMutableArray alloc] initWithArray:superiorMedicsArray];
+            [newSuperiorMedicsArray addObject:@{@"uid":uid,@"superior":currentUserUID}]; //add
+            [[self.ref child:@"superiorMedics"] setValue:newSuperiorMedicsArray];
+        }];
+    }
+    //write the new medic to the current medic
+    [self getMedicsFromUID:currentUserUID completion:^(NSArray * _Nullable medicsArray) {
+        [[[[[self.ref child:@"medics"] child:currentUserUID] child:@"medics"] childByAutoId] setValue:@{@"uid":uid}];
+    }];
+    
     
     //get only the IDs
     NSMutableArray *specialtiesArray = [NSMutableArray new];
@@ -101,14 +123,32 @@
     //Save the IDs
     [[[[self.ref child:@"medics"] child:uid] child:@"specialties"] setValue:specialtiesArray];
     
-    //get all the attachments, add a uuid to each of them.
-    for (Attachment* attachment in medic.attachmentArray) {
-        NSUUID *uuid = [NSUUID UUID]; //generate a new id for the attachment
-        NSString *str = [uuid UUIDString];
-        [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@",uid,str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
-            [[[[[self.ref child:@"medics"] child:uid] child:@"attachments"] childByAutoId] setValue:url.absoluteString];
-        }];
+    int sectionCount = 0; //track which section we're in so we can name it for the file path
+    for (NSMutableArray* array in medic.attachmentArray) {
+        //get all the attachments, add a uuid to each of them.
+        for (Attachment* attachment in array) {
+            NSUUID *uuid = [NSUUID UUID]; //generate a new id for the attachment
+            NSString *str = [uuid UUIDString];
+            [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@/%@",uid,[sections objectAtIndex:sectionCount],str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
+                [[[[[[self.ref child:@"medics"] child:uid] child:@"attachments"] child:[sections objectAtIndex:sectionCount]]childByAutoId] setValue:url.absoluteString];
+            }];
+        }
+        sectionCount += 1;
     }
+}
+
+//get medics that someone with the uid is in charge of
+- (void)getMedicsFromUID:(NSString *)uid completion:(void (^)(NSArray * _Nullable))completion{
+    [[[[self.ref child:@"medics"] child:uid] child:@"medics"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        completion(snapshot.value);
+    }];
+}
+
+//get an array of superior medics
+- (void)getSuperiorMedics:(void (^)(NSArray * _Nullable))completion {
+    [[_ref child:@"superiorMedics"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        completion(snapshot.value);
+    }];
 }
 
 

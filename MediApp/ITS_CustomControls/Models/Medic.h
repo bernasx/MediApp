@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Medic : Person
 @property (nonatomic) NSArray* specialtiesArray;
+@property (nonatomic) bool isSuperior;
+@property (nonatomic) NSString* superior;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -256,20 +256,20 @@
             <objects>
                 <viewController storyboardIdentifier="addViewController" id="XqS-y3-OzA" customClass="ITS_AddViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5of-ty-gym">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1050"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BkN-ry-Hgm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1050"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTs-ic-2iV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1050"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MzF-X4-dNd">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="1000" id="UKv-TG-WBu"/>
+                                                    <constraint firstAttribute="height" constant="1000" id="Fj2-K3-8JE"/>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addTableViewCell" id="iGA-nS-5uk" customClass="ITS_AddTableViewCell">
@@ -288,49 +288,56 @@
                                                 </connections>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlC-12-1HT">
-                                                <rect key="frame" x="353" y="1041" width="46" height="30"/>
+                                                <rect key="frame" x="218" y="1000" width="180" height="37"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="46" id="Aia-ZL-x6w"/>
-                                                    <constraint firstAttribute="height" constant="30" id="xvA-DN-CNT"/>
+                                                    <constraint firstAttribute="height" constant="37" id="LCr-cS-sNh"/>
+                                                    <constraint firstAttribute="width" constant="180" id="uUJ-Ig-791"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                                <state key="normal" title="dd">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapConfirmButton:" destination="XqS-y3-OzA" eventType="touchUpInside" id="08i-1Y-uoV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="vlC-12-1HT" secondAttribute="trailing" constant="15" id="HBW-Te-N3V"/>
-                                            <constraint firstAttribute="bottom" secondItem="vlC-12-1HT" secondAttribute="bottom" constant="29" id="Og0-LC-ASs"/>
-                                            <constraint firstAttribute="trailing" secondItem="MzF-X4-dNd" secondAttribute="trailing" id="UoA-LC-MoS"/>
-                                            <constraint firstItem="MzF-X4-dNd" firstAttribute="top" secondItem="sTs-ic-2iV" secondAttribute="top" id="dHZ-Zt-efF"/>
-                                            <constraint firstAttribute="bottom" secondItem="MzF-X4-dNd" secondAttribute="bottom" constant="100" id="p5f-SW-bhU"/>
-                                            <constraint firstItem="MzF-X4-dNd" firstAttribute="leading" secondItem="sTs-ic-2iV" secondAttribute="leading" id="yAP-l0-uic"/>
+                                            <constraint firstAttribute="bottom" secondItem="MzF-X4-dNd" secondAttribute="bottom" constant="50" id="2TI-ib-MGB"/>
+                                            <constraint firstAttribute="bottom" secondItem="vlC-12-1HT" secondAttribute="bottom" constant="13" id="54d-nx-x1I"/>
+                                            <constraint firstAttribute="trailing" secondItem="MzF-X4-dNd" secondAttribute="trailing" id="5jS-1W-Gra"/>
+                                            <constraint firstAttribute="trailing" secondItem="vlC-12-1HT" secondAttribute="trailing" constant="16" id="IZp-qv-w1r"/>
+                                            <constraint firstItem="MzF-X4-dNd" firstAttribute="leading" secondItem="sTs-ic-2iV" secondAttribute="leading" id="Npe-CS-doB"/>
+                                            <constraint firstItem="MzF-X4-dNd" firstAttribute="top" secondItem="sTs-ic-2iV" secondAttribute="top" id="qNw-Xz-NKs"/>
+                                            <constraint firstItem="vlC-12-1HT" firstAttribute="top" secondItem="MzF-X4-dNd" secondAttribute="bottom" id="tHA-kw-Bov"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="sTs-ic-2iV" firstAttribute="height" secondItem="BkN-ry-Hgm" secondAttribute="height" priority="250" id="MF1-iR-bc6"/>
-                                    <constraint firstAttribute="bottom" secondItem="sTs-ic-2iV" secondAttribute="bottom" id="PLK-Wb-vOl"/>
-                                    <constraint firstItem="sTs-ic-2iV" firstAttribute="width" secondItem="BkN-ry-Hgm" secondAttribute="width" id="aIH-U1-207"/>
-                                    <constraint firstItem="sTs-ic-2iV" firstAttribute="top" secondItem="BkN-ry-Hgm" secondAttribute="top" id="jCh-um-j8F"/>
-                                    <constraint firstItem="sTs-ic-2iV" firstAttribute="leading" secondItem="BkN-ry-Hgm" secondAttribute="leading" id="lmF-UD-TKw"/>
-                                    <constraint firstAttribute="trailing" secondItem="sTs-ic-2iV" secondAttribute="trailing" id="mIr-mR-yDR"/>
+                                    <constraint firstItem="sTs-ic-2iV" firstAttribute="width" secondItem="BkN-ry-Hgm" secondAttribute="width" id="D2U-H4-FzK"/>
+                                    <constraint firstAttribute="bottom" secondItem="sTs-ic-2iV" secondAttribute="bottom" id="Vgb-0a-w8W"/>
+                                    <constraint firstItem="sTs-ic-2iV" firstAttribute="height" secondItem="BkN-ry-Hgm" secondAttribute="height" priority="250" id="c68-Ip-iBa"/>
+                                    <constraint firstAttribute="trailing" secondItem="sTs-ic-2iV" secondAttribute="trailing" id="hSh-Iu-gAR"/>
+                                    <constraint firstItem="sTs-ic-2iV" firstAttribute="top" secondItem="BkN-ry-Hgm" secondAttribute="top" id="mu9-4A-mBc"/>
+                                    <constraint firstItem="sTs-ic-2iV" firstAttribute="leading" secondItem="BkN-ry-Hgm" secondAttribute="leading" id="nAY-Uh-A34"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="BkN-ry-Hgm" secondAttribute="bottom" id="78c-mR-F0H"/>
-                            <constraint firstItem="BkN-ry-Hgm" firstAttribute="leading" secondItem="Fie-So-4Jg" secondAttribute="leading" id="ndD-5n-iOe"/>
-                            <constraint firstItem="BkN-ry-Hgm" firstAttribute="trailing" secondItem="Fie-So-4Jg" secondAttribute="trailing" id="uYO-6b-15i"/>
-                            <constraint firstItem="BkN-ry-Hgm" firstAttribute="top" secondItem="5of-ty-gym" secondAttribute="top" id="uyP-Lf-nQn"/>
+                            <constraint firstItem="BkN-ry-Hgm" firstAttribute="top" secondItem="5of-ty-gym" secondAttribute="top" id="Ker-od-nCs"/>
+                            <constraint firstAttribute="bottom" secondItem="BkN-ry-Hgm" secondAttribute="bottom" id="XZI-tc-9Ml"/>
+                            <constraint firstItem="BkN-ry-Hgm" firstAttribute="leading" secondItem="5of-ty-gym" secondAttribute="leading" id="bcf-3j-DQg"/>
+                            <constraint firstAttribute="trailing" secondItem="BkN-ry-Hgm" secondAttribute="trailing" id="vi2-ga-CvA"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Fie-So-4Jg"/>
                     </view>
-                    <size key="freeformSize" width="414" height="1100"/>
+                    <size key="freeformSize" width="414" height="1050"/>
                     <connections>
+                        <outlet property="addButton" destination="vlC-12-1HT" id="VXY-Z1-CfI"/>
                         <outlet property="fieldsTableView" destination="MzF-X4-dNd" id="wpx-rH-BFd"/>
                         <outlet property="scrollView" destination="BkN-ry-Hgm" id="STJ-dX-eKw"/>
-                        <outlet property="tableViewHeight" destination="UKv-TG-WBu" id="wja-VD-acY"/>
+                        <outlet property="tableViewHeight" destination="Fj2-K3-8JE" id="RQI-CZ-eDV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6W-KL-Ik0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

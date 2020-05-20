@@ -17,13 +17,15 @@
 #import "ITS_TextFieldWithTableComponent.h"
 #import "ITS_PickerViewComponent.h"
 #import "ITS_AttachmentComponent.h"
+#import "ITS_ZipCodeComponent.h"
+#import "ITS_SwitchComponent.h"
 NS_ASSUME_NONNULL_BEGIN
 @protocol AddViewModelDelegate;
 @interface ITS_AddViewModel : NSObject
 //static fetches
 - (void)fetchSpecialties:(void (^)(NSArray * _Nullable))completion;
 //build objects
-- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray;
+- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray andSections:(NSArray *)sections;
 //build screens
 - (void)buildScreen:(MainMenuSelection)addTypeSelection;
 @property (nonatomic, weak) id<AddViewModelDelegate> delegate;

@@ -18,6 +18,7 @@
 #import "ITS_AttachmentComponent.h"
 #import "Medic.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "ITS_ZipCodeComponent.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_AddViewController : ITS_ViewController<UITableViewDelegate,UITableViewDataSource, AttachmentComponentDelegate,AddViewModelDelegate,UIScrollViewDelegate>

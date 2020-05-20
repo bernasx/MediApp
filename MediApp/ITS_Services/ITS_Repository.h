@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 //static fetches
 - (void)fetchSpecialties:(void (^)(NSArray * _Nullable))completion;
 //write new data
-- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid;
+- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid andWithSections:(NSArray *)sections;
 
 @end
 

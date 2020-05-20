@@ -79,7 +79,8 @@
     [self addComponentToArrayAtSection:0 withComponentTitle:@"Sexo" withType:TextFieldComponentTypePickerView andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Feminino",@"Masculino"] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
     
     [self addComponentToArrayAtSection:0 withComponentTitle:@"Morada" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Código Postal" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:[NSNumber numberWithInt:100]];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Código Postal" withType:TextFieldComponentTypeZip andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0,0,414,110) withTextFieldWidth:nil];
     
     [self addComponentToArrayAtSection:0 withComponentTitle:@"Naturalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
     
@@ -92,6 +93,8 @@
     [self fetchSpecialties:^(NSArray * _Nullable specialtiesArray) {
         [self addComponentToArrayAtSection:1 withComponentTitle:@"Especialidade" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchSpecialty andArray:specialtiesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
         
+        [self addComponentToArrayAtSection:1 withComponentTitle:@"Médico chefe:" withType:TextFieldComponentTypeSwitch andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 60) withTextFieldWidth:nil];
+        
         if ([strongDelegate respondsToSelector:@selector(addViewModel:didFinishBuildingScreenArray:andSectionArray:)]) {
             [strongDelegate addViewModel:self didFinishBuildingScreenArray:self.dataArray andSectionArray:self.sectionArray];
         }
@@ -102,7 +105,7 @@
     
     [self addComponentToArrayAtSection:2 withComponentTitle:@"Telemóvel" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
 
-    [self addComponentToArrayAtSection:3 withComponentTitle:@"Anexos do médico" withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:3 withComponentTitle:@"Anexos do médico" withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Documentos",@"Extras"] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil];
 }
 
 
@@ -134,8 +137,16 @@
             break;
         case TextFieldComponentTypeAttachment:
             componentView = [ITS_AttachmentComponent new];
-            [(ITS_AttachmentComponent*)componentView initWithTitle:title andFrame:frame];
+            [(ITS_AttachmentComponent*)componentView initWithTitle:title andFrame:frame andSectionArray:array];
             [(ITS_AttachmentComponent*)componentView setDelegate:(id)self.delegate];
+            break;
+        case TextFieldComponentTypeZip:
+            componentView = [ITS_ZipCodeComponent new];
+            [(ITS_ZipCodeComponent*)componentView initWithTitle:title andType:textFieldType andFrame:frame];
+             break;
+        case TextFieldComponentTypeSwitch:
+            componentView = [ITS_SwitchComponent new];
+            [(ITS_SwitchComponent *)componentView initWithTitle:title andFrame:frame];
         default:
             break;
     }
@@ -144,10 +155,10 @@
 
 #pragma mark - Object Construction
 
-- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray {
+- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray andSections:(NSArray *)sections{
     switch (mainMenuSelection) {
         case MainMenuSelectionMedics:
-            [self buildMedicObject:buildingArray];
+            [self buildMedicObject:buildingArray withSections:(NSArray*)sections];
             break;
         case MainMenuSelectionPatients:
             //build patient
@@ -163,7 +174,7 @@
     }
 }
 
-- (void)buildMedicObject:(NSArray *)buildingArray {
+- (void)buildMedicObject:(NSArray *)buildingArray withSections:(NSArray*)sections{
     Medic* medic = [[Medic alloc] init];
     [medic setFirstNames:[buildingArray objectAtIndex:0]];
     [medic setLastNames:[buildingArray objectAtIndex:1]];
@@ -176,12 +187,14 @@
     [medic setNIF:[buildingArray objectAtIndex:8]];
     [medic setCcNumber:[buildingArray objectAtIndex:9]];
     [medic setSpecialtiesArray:[buildingArray objectAtIndex:10]];
-    [medic setEmail:[buildingArray objectAtIndex:11]];
-    [medic setPhoneNumber:[buildingArray objectAtIndex:12]];
-    [medic setAttachmentArray:[buildingArray objectAtIndex:13]];
-    
+    [medic setIsSuperior:[[buildingArray objectAtIndex:11] boolValue]];
+    [medic setEmail:[buildingArray objectAtIndex:12]];
+    [medic setPhoneNumber:[buildingArray objectAtIndex:13]];
+    [medic setAttachmentArray:[buildingArray objectAtIndex:14]];
+    NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
+    [medic setSuperior:currentUserUID];
     [self.repository registerSeparateUserWithEmail:medic.email completion:^(NSString * _Nonnull uid) {
-        [self.repository writeNewMedic:medic withUID:uid];
+        [self.repository writeNewMedic:medic withUID:uid andWithSections:(NSArray*)sections];
     }];
 }
 @end

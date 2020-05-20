@@ -13,6 +13,7 @@
 @property (nonatomic) NSArray* dataArray; //contains all data for building components
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (nonatomic) NSArray* sectionArray; //contains all section titles
 @end
 
@@ -30,13 +31,39 @@
     self.scrollView.bounces = NO;
     self.fieldsTableView.bounces = YES;
     
-    //confirm button
-    UIImage *confirmButtonImage = [UIImage systemImageNamed:@"checkmark"];
-    UIBarButtonItem *confirmButton = [[UIBarButtonItem alloc] initWithImage:confirmButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(didTapConfirmButton)];
-    [self.navigationItem setRightBarButtonItem:confirmButton];
+    //setup button
+    [self setupButtonTitle];
+    [self.addButton setBackgroundColor:[ITS_Colors primaryColor]];
+    [self.addButton.layer setCornerRadius:8];
+    [self.addButton setClipsToBounds:YES];
+    //button shadow
+    [self.addButton.layer setShadowColor:[[UIColor darkGrayColor] CGColor]];
+    [self.addButton.layer setShadowOffset:CGSizeMake(0, 2)];
+    [self.addButton.layer setShadowRadius:4];
+    [self.addButton.layer setShadowOpacity:0.8];
+    [self.addButton.layer setMasksToBounds:NO];
 }
 
-- (void)didTapConfirmButton{
+- (void)setupButtonTitle {
+    switch (self.addTypeSelection) {
+        case MainMenuSelectionMedics:
+            [self.addButton setTitle:@"Guardar Médico" forState:UIControlStateNormal];
+            break;
+        case MainMenuSelectionPatients:
+            [self.addButton setTitle:@"Guardar Paciente" forState:UIControlStateNormal];
+             break;
+        case MainMenuSelectionAppointments:
+            [self.addButton setTitle:@"Guardar Agendamento" forState:UIControlStateNormal];
+             break;
+        case MainMenuSelectionMedicalAppointment:
+            [self.addButton setTitle:@"Guardar Consulta" forState:UIControlStateNormal];
+             break;
+        default:
+            break;
+    }
+}
+
+- (IBAction)didTapConfirmButton:(id)sender {
     bool creationIsValid = YES;
     NSMutableArray* buildingArray = [NSMutableArray new]; //array that will store all the info for an object
     
@@ -49,9 +76,16 @@
                     creationIsValid = NO;
                 }
             }
+            
+            if ([component isKindOfClass:[ITS_ZipCodeComponent class]]) {
+                if (![(ITS_ZipCodeComponent*)component textfieldHasText]) {
+                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor preencha este campo!"];
+                    creationIsValid = NO;
+                }
+            }
             if ([component isKindOfClass:[ITS_TextFieldWithTableComponent class]]) {
                 if ([[(ITS_TextFieldWithTableComponent*)component getObjectArray] count] < 1) {
-                     [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor insira pelo menos 1 elemento."];
+                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor insira pelo menos 1 elemento."];
                     creationIsValid = NO;
                 }
                 NSLog(@"%@",[(ITS_TextFieldWithTableComponent*)component getObjectArray]);
@@ -59,18 +93,24 @@
             if ([component isKindOfClass:[ITS_PickerViewComponent class]]) {
                 NSLog(@"%@",[(ITS_PickerViewComponent*)component currentSelection]);
             }
+            
         }
     }
     //if everything is valid, build the object and send it to the database
     if (creationIsValid) {
+        NSArray* sections; //in case we have sections like in the attachments
         for (NSArray* array in self.dataArray) {
             for (ITS_BaseTextFieldComponent* component in array) {
                 [buildingArray addObject:[component getObjectData]];
+                if ([component isKindOfClass:[ITS_AttachmentComponent class]]) {
+                    sections = [(ITS_AttachmentComponent*)component getSections];
+                }
             }
         }
-        [self.viewModel buildObjectWithType:self.addTypeSelection andWithArray:buildingArray];
+    [self.viewModel buildObjectWithType:self.addTypeSelection andWithArray:buildingArray andSections:sections];
     }
 }
+
 
 #pragma mark - Tableview Delegate/Data Source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -138,7 +178,7 @@
     double totalHeight = 0;
     for (NSArray* array in self.dataArray) {
         for (ITS_BaseTextFieldComponent* component in array) {
-            totalHeight += [component getDefaultComponentHeight] + 10;
+            totalHeight += [component getDefaultComponentHeight] + 15;
             NSLog(@"%f",[component getDefaultComponentHeight]);
         }
     }

@@ -178,10 +178,11 @@
     double totalHeight = 0;
     for (NSArray* array in self.dataArray) {
         for (ITS_BaseTextFieldComponent* component in array) {
-            totalHeight += [component getDefaultComponentHeight] + 15;
+            totalHeight += [component getDefaultComponentHeight];
             NSLog(@"%f",[component getDefaultComponentHeight]);
         }
     }
+    totalHeight += 175;
     self.tableViewHeight.constant = totalHeight;
     [self.fieldsTableView reloadData];
 }

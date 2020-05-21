@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Disease : NSObject
 @property (nonatomic) NSString *diseaseName;
 @property (nonatomic) NSString *diseaseId;
+- (void)initWithDict:(NSDictionary *)dict;
 @end
 
 NS_ASSUME_NONNULL_END

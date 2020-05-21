@@ -16,23 +16,7 @@
 #pragma mark - IBActions
 
 - (IBAction)onShowAll:(id)sender {
-    //decide where to go
-    switch (self.mainMenuSelection) {
-        case MainMenuSelectionMedicalAppointment:
-            //go to medicalappointments (consultas)
-            break;
-        case MainMenuSelectionPatients:
-            //go to patients
-            break;
-        case MainMenuSelectionAppointments:
-            //go to appointments(agendamentos)
-            break;
-        case MainMenuSelectionMedics:
-            [self instantiateNewViewController:@"medicsListViewController"];
-            break;
-        default:
-            break;
-    }
+   [self instantiateNewViewController:@"listViewController"];
 }
 
 #pragma mark -  Initial Setup
@@ -81,6 +65,7 @@
 - (void)instantiateNewViewController:(NSString *)identifier{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:NSBundle.mainBundle];
     UIViewController* vc = [storyboard instantiateViewControllerWithIdentifier:identifier]; //Casts the initiated vc to the class it should be in
+    [(ITS_ListViewController *)vc setMainMenuSelection:self.mainMenuSelection];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -11,7 +11,9 @@
 #import <FirebaseDatabase.h>
 #import <FirebaseStorage.h>
 #import "Medic.h"
+#import "Patient.h"
 #import "Specialty.h"
+#import "Disease.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_Repository : NSObject
@@ -21,8 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)logOut;
 //static fetches
 - (void)fetchSpecialties:(void (^)(NSArray * _Nullable))completion;
+- (void)fetchDiseases:(void (^)(NSArray * _Nullable))completion;
 //write new data
 - (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid andWithSections:(NSArray *)sections;
+- (void)writeNewPatient:(Patient *)patient withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections;
 
 @end
 

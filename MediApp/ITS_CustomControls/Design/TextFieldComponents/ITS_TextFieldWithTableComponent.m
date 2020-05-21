@@ -24,25 +24,50 @@
 
 @implementation ITS_TextFieldWithTableComponent
 
-- (IBAction)didAddSpecialty:(id)sender {
+- (IBAction)didAdd:(id)sender {
     
      [self.addButton setEnabled:NO];
      [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];
-    //go through each specialty in the original array, add to the object array the valid ones that match the textfield
-    for (Specialty * specialty in self.firebaseArray) {
-        if ([specialty.specialtyName.lowercaseString isEqualToString:self.textfield.text.lowercaseString]) {
-            if (![self.objectArray containsObject:specialty]) {
-                [self.objectArray addObject:specialty];
-            }
-            else {
-                [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa especialidade já foi adicionada!"];
-            }
-        }
+    
+    switch (self.searchType) {
+        case SearchSpecialty:
+            //go through each specialty in the original array, add to the object array the valid ones that match the textfield
+               for (Specialty * specialty in self.firebaseArray) {
+                   if ([specialty.specialtyName.lowercaseString isEqualToString:self.textfield.text.lowercaseString]) {
+                       if (![self.objectArray containsObject:specialty]) {
+                           [self.objectArray addObject:specialty];
+                       }
+                       else {
+                           [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa especialidade já foi adicionada!"];
+                       }
+                   }
+               }
+               //if textfield is still empty, this means nothing was found
+               if(![self textfieldHasText]){
+                   [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa especialidade não existe."];
+               }
+            break;
+        case SearchDisease:
+            //go through each disease in the original array, add to the object array the valid ones that match the textfield
+               for (Disease * disease in self.firebaseArray) {
+                   if ([disease.diseaseName.lowercaseString isEqualToString:self.textfield.text.lowercaseString]) {
+                       if (![self.objectArray containsObject:disease]) {
+                           [self.objectArray addObject:disease];
+                       }
+                       else {
+                           [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa doença já foi adicionada!"];
+                       }
+                   }
+               }
+               //if textfield is still empty, this means nothing was found
+               if(![self textfieldHasText]){
+                   [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa doença não existe."];
+               }
+            break;
+        default:
+            break;
     }
-    //if textfield is still empty, this means nothing was found
-    if(![self textfieldHasText]){
-        [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa especialidade não existe."];
-    }
+   
     [self.selectedSpecialtiesTableView reloadData];
     [self.textfield setText:@""];
     [self displayEverythingInAutoComplete];
@@ -222,6 +247,7 @@
                     if ([specialty.specialtyName.lowercaseString containsString:self.textfield.text.lowercaseString]) {
                         [self.displayArray addObject:specialty];
                     }
+                    //check for exact equality
                     if ([specialty.specialtyName.lowercaseString isEqualToString:self.textfield.text.lowercaseString]) {
                         [self.addButton setEnabled:YES];
                     }
@@ -231,6 +257,18 @@
                 break;
             case SearchDisease:
                 // same as above but for disease
+                //go through each specialty in the original array, add to the display array the valid ones that match the textfield
+                for (Disease * disease in self.firebaseArray) {
+                    if ([disease.diseaseName.lowercaseString containsString:self.textfield.text.lowercaseString]) {
+                        [self.displayArray addObject:disease];
+                    }
+                    //check for exact equality
+                    if ([disease.diseaseName.lowercaseString isEqualToString:self.textfield.text.lowercaseString]) {
+                        [self.addButton setEnabled:YES];
+                    }
+                    
+                }
+                [self.textCompletionTableView reloadData];
                 break;
                 
             default:

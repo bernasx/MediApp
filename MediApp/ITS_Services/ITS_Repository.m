@@ -30,6 +30,12 @@
     }];
 }
 
+- (void)fetchDiseases:(void (^)(NSArray * _Nullable))completion  {
+    [[_ref child:@"diseases"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        completion(snapshot.value);
+    }];
+}
+
 #pragma mark - User Creation
 
 //logs in user with an email and password, return an error if it failed
@@ -81,7 +87,7 @@
 #pragma mark - Medic Functions
 
 //uid is the new user's uid
-- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections{
+- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections {
     NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
     [[[[self.ref child:@"medics"] child:uid] child:@"firstName"] setValue:medic.firstNames];
     [[[[self.ref child:@"medics"] child:uid] child:@"lastName"] setValue:medic.lastNames];
@@ -144,13 +150,64 @@
     }];
 }
 
-//get an array of superior medics
+//get an array of superior medic uids
 - (void)getSuperiorMedics:(void (^)(NSArray * _Nullable))completion {
     [[_ref child:@"superiorMedics"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         completion(snapshot.value);
     }];
 }
 
+//get all medics
+- (void)getAllMedics:(void (^)(NSArray * _Nullable))completion {
+    [[_ref child:@"medics"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        completion(snapshot.value);
+    }];
+}
+
+#pragma mark - Patient Functions
+
+//uid is the new user's uid
+- (void)writeNewPatient:(Patient *)patient withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections {
+    NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
+    [[[[self.ref child:@"patients"] child:uid] child:@"firstName"] setValue:patient.firstNames];
+    [[[[self.ref child:@"patients"] child:uid] child:@"lastName"] setValue:patient.lastNames];
+    [[[[self.ref child:@"patients"] child:uid] child:@"age"] setValue:[NSNumber numberWithInt:patient.age]];
+    [[[[self.ref child:@"patients"] child:uid] child:@"gender"] setValue:patient.gender];
+    [[[[self.ref child:@"patients"] child:uid] child:@"address"] setValue:patient.address];
+    [[[[self.ref child:@"patients"] child:uid] child:@"postalCode"] setValue:patient.postalCode];
+    [[[[self.ref child:@"patients"] child:uid] child:@"natural"] setValue:patient.natural];
+    [[[[self.ref child:@"patients"] child:uid] child:@"nationality"] setValue:patient.nationality];
+    [[[[self.ref child:@"patients"] child:uid] child:@"NIF"] setValue:patient.NIF];
+    [[[[self.ref child:@"patients"] child:uid] child:@"ccNumber"] setValue:patient.ccNumber];
+    [[[[self.ref child:@"patients"] child:uid] child:@"email"] setValue:patient.email];
+    [[[[self.ref child:@"patients"] child:uid] child:@"phoneNumber"] setValue:patient.phoneNumber];
+    [[[[self.ref child:@"patients"] child:uid] child:@"superior"] setValue:currentUserUID];
+    
+    
+    
+    //get only the IDs
+    NSMutableArray *diseasesArray = [NSMutableArray new];
+    for (Disease* disease in patient.diseasesArray) {
+        [diseasesArray addObject:disease.diseaseId];
+    }
+    //Save the IDs
+    [[[[self.ref child:@"patients"] child:uid] child:@"diseases"] setValue:diseasesArray];
+    
+    
+    //Attachments
+    int sectionCount = 0; //track which section we're in so we can name it for the file path
+    for (NSMutableArray* array in patient.attachmentArray) {
+        //get all the attachments, add a uuid to each of them.
+        for (Attachment* attachment in array) {
+            NSUUID *uuid = [NSUUID UUID]; //generate a new id for the attachment
+            NSString *str = [uuid UUIDString];
+            [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@/%@",uid,[sections objectAtIndex:sectionCount],str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
+                [[[[[[self.ref child:@"patients"] child:uid] child:@"attachments"] child:[sections objectAtIndex:sectionCount]]childByAutoId] setValue:url.absoluteString];
+            }];
+        }
+        sectionCount += 1;
+    }
+}
 
 #pragma mark - Storage Functions
 

@@ -9,5 +9,9 @@
 #import "Disease.h"
 
 @implementation Disease
-
+- (void)initWithDict:(NSDictionary *)dict {
+    
+    [self setDiseaseName:[dict objectForKey:@"name"]];
+    [self setDiseaseId:[dict objectForKey:@"id"]];
+}
 @end

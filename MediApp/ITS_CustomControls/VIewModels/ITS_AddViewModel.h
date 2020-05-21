@@ -12,6 +12,7 @@
 #import "ITS_Enums.h"
 #import "Specialty.h"
 #import "Medic.h"
+#import "Patient.h"
 #import "ITS_BaseTextFieldComponent.h"
 #import "ITS_TextFieldComponent.h"
 #import "ITS_TextFieldWithTableComponent.h"

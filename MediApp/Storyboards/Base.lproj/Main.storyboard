@@ -236,10 +236,10 @@
             </objects>
             <point key="canvasLocation" x="1980" y="-114.69265367316342"/>
         </scene>
-        <!--Medics List View Controller-->
+        <!--List View Controller-->
         <scene sceneID="uJu-qb-EZB">
             <objects>
-                <viewController storyboardIdentifier="medicsListViewController" id="va8-pG-DDs" customClass="ITS_MedicsListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="listViewController" id="va8-pG-DDs" customClass="ITS_ListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wr2-U3-Fl1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

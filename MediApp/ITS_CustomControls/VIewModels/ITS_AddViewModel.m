@@ -22,7 +22,7 @@
     return self;
 }
 
-#pragma mark - Repository Calls
+#pragma mark - Static data calls
 - (void)fetchSpecialties:(void (^)(NSArray * _Nullable))completion {
     [self.repository fetchSpecialties:^(NSArray * _Nullable arr) {
         NSMutableArray *specialtiesArray = [[NSMutableArray alloc] init];
@@ -35,6 +35,19 @@
     }];
 }
 
+- (void)fetchDiseases:(void (^)(NSArray * _Nullable))completion {
+    [self.repository fetchDiseases:^(NSArray * _Nullable arr) {
+        NSMutableArray *diseasesArray = [[NSMutableArray alloc] init];
+        for (NSDictionary *dict in arr) {
+            Disease *disease = [[Disease alloc] init];
+            [disease initWithDict:dict];
+            [diseasesArray addObject:disease];
+        }
+        completion(diseasesArray);
+    }];
+}
+
+
 #pragma mark - Screen Construction
 
 
@@ -46,7 +59,7 @@
             [self buildForMedics];
             break;
         case MainMenuSelectionPatients:
-            //code for adding patients
+            [self buildForPatients]; 
             break;
         case MainMenuSelectionAppointments:
             //code for adding appointments
@@ -57,6 +70,55 @@
         default:
             break;
     }
+}
+
+- (void)buildForPatients {
+    
+    id<AddViewModelDelegate> strongDelegate = self.delegate;
+    self.dataArray = [NSMutableArray new];
+    self.sectionArray = [NSMutableArray new];
+    
+    [self addSectionToArrayWithName:@"Dados Pessoais"];
+    [self addSectionToArrayWithName:@"Dados Médicos"];
+    [self addSectionToArrayWithName:@"Contatos"];
+    [self addSectionToArrayWithName:@"Anexos"];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Primeiros Nomes" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Apelidos" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Idade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:[NSNumber numberWithInt:50]];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Sexo" withType:TextFieldComponentTypePickerView andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Feminino",@"Masculino"] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Morada" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Código Postal" withType:TextFieldComponentTypeZip andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0,0,414,110) withTextFieldWidth:nil];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Naturalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nacionalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"NIF" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nº CC" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nº de Utente" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    
+    [self fetchDiseases:^(NSArray * _Nullable diseasesArray) {
+        [self addComponentToArrayAtSection:1 withComponentTitle:@"Doenças" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
+        
+        if ([strongDelegate respondsToSelector:@selector(addViewModel:didFinishBuildingScreenArray:andSectionArray:)]) {
+            [strongDelegate addViewModel:self didFinishBuildingScreenArray:self.dataArray andSectionArray:self.sectionArray];
+        }
+        
+    } ];
+    
+    [self addComponentToArrayAtSection:2 withComponentTitle:@"Email" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    
+    [self addComponentToArrayAtSection:2 withComponentTitle:@"Telemóvel" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+
+    [self addComponentToArrayAtSection:3 withComponentTitle:@"Anexos do paciente" withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Documentos",@"Extras"] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil];
 }
 
 - (void)buildForMedics{
@@ -154,14 +216,14 @@
 }
 
 #pragma mark - Object Construction
-
+//sections are the sections for attachments 
 - (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray andSections:(NSArray *)sections{
     switch (mainMenuSelection) {
         case MainMenuSelectionMedics:
             [self buildMedicObject:buildingArray withSections:(NSArray*)sections];
             break;
         case MainMenuSelectionPatients:
-            //build patient
+            [self buildPatientObject:buildingArray withSection:sections];
             break;
         case MainMenuSelectionAppointments:
             //build appointments
@@ -174,7 +236,7 @@
     }
 }
 
-- (void)buildMedicObject:(NSArray *)buildingArray withSections:(NSArray*)sections{
+- (void)buildMedicObject:(NSArray *)buildingArray withSections:(NSArray*)sections {
     Medic* medic = [[Medic alloc] init];
     [medic setFirstNames:[buildingArray objectAtIndex:0]];
     [medic setLastNames:[buildingArray objectAtIndex:1]];
@@ -195,6 +257,29 @@
     [medic setSuperior:currentUserUID];
     [self.repository registerSeparateUserWithEmail:medic.email completion:^(NSString * _Nonnull uid) {
         [self.repository writeNewMedic:medic withUID:uid andWithSections:(NSArray*)sections];
+    }];
+}
+
+-(void)buildPatientObject:(NSArray *)buildingArray withSection:(NSArray *)sections {
+    Patient *patient = [[Patient alloc] init];
+    [patient setFirstNames:[buildingArray objectAtIndex:0]];
+    [patient setLastNames:[buildingArray objectAtIndex:1]];
+    [patient setAge:[[buildingArray objectAtIndex:2] intValue]];
+    [patient setGender:[buildingArray objectAtIndex:3]];
+    [patient setAddress:[buildingArray objectAtIndex:4]];
+    [patient setPostalCode:[buildingArray objectAtIndex:5]];
+    [patient setNatural:[buildingArray objectAtIndex:6]];
+    [patient setNationality:[buildingArray objectAtIndex:7]];
+    [patient setNIF:[buildingArray objectAtIndex:8]];
+    [patient setCcNumber:[buildingArray objectAtIndex:9]];
+    [patient setSnsNumber:[buildingArray objectAtIndex:10]];
+    [patient setDiseasesArray:[buildingArray objectAtIndex:11]];
+    [patient setEmail:[buildingArray objectAtIndex:12]];
+    [patient setPhoneNumber:[buildingArray objectAtIndex:13]];
+    [patient setAttachmentArray:[buildingArray objectAtIndex:14]];
+    
+    [self.repository registerSeparateUserWithEmail:patient.email completion:^(NSString * _Nonnull uid) {
+        [self.repository writeNewPatient:patient withUID:uid andWithSections:(NSArray*)sections];
     }];
 }
 @end

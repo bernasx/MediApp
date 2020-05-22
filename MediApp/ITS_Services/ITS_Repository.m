@@ -182,17 +182,24 @@
     [[[[self.ref child:@"patients"] child:uid] child:@"email"] setValue:patient.email];
     [[[[self.ref child:@"patients"] child:uid] child:@"phoneNumber"] setValue:patient.phoneNumber];
     [[[[self.ref child:@"patients"] child:uid] child:@"superior"] setValue:currentUserUID];
-    
-    
+    [[[[self.ref child:@"patients"] child:uid] child:@"notes"] setValue:patient.notes];
     
     //get only the IDs
     NSMutableArray *diseasesArray = [NSMutableArray new];
-    for (Disease* disease in patient.diseasesArray) {
+    for (Disease* disease in patient.previousDiseasesArray) {
         [diseasesArray addObject:disease.diseaseId];
     }
-    //Save the IDs
-    [[[[self.ref child:@"patients"] child:uid] child:@"diseases"] setValue:diseasesArray];
+    //Save the ID
+    [[[[self.ref child:@"history"] child:uid] child:@"previousDiseases"] setValue:diseasesArray];
     
+    //Same for family history
+    NSMutableArray *familyDiseases = [NSMutableArray new];
+    for (Disease* disease in patient.familyDiseasesArray) {
+        [familyDiseases addObject:disease.diseaseId];
+    }
+    
+    //Save the ID
+    [[[[self.ref child:@"history"] child:uid] child:@"familyDiseases"] setValue:familyDiseases];
     
     //Attachments
     int sectionCount = 0; //track which section we're in so we can name it for the file path

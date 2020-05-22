@@ -106,7 +106,14 @@
     [self addComponentToArrayAtSection:0 withComponentTitle:@"Nº de Utente" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
     
     [self fetchDiseases:^(NSArray * _Nullable diseasesArray) {
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Doenças" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:@"Histórico de Doenças" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
+        
+        [self addComponentToArrayAtSection:1 withComponentTitle:@"Histórico Familiar" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
+        
+        [self addComponentToArrayAtSection:1 withComponentTitle:@"Notas" withType:TextFieldComponentTypeTextView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 350) withTextFieldWidth:nil];
+        
+        [self addComponentToArrayAtSection:1 withComponentTitle:@"Diagnóstico" withType:TextFieldComponentTypeDiagnostic andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+        
         
         if ([strongDelegate respondsToSelector:@selector(addViewModel:didFinishBuildingScreenArray:andSectionArray:)]) {
             [strongDelegate addViewModel:self didFinishBuildingScreenArray:self.dataArray andSectionArray:self.sectionArray];
@@ -209,6 +216,16 @@
         case TextFieldComponentTypeSwitch:
             componentView = [ITS_SwitchComponent new];
             [(ITS_SwitchComponent *)componentView initWithTitle:title andFrame:frame];
+            break;
+        case TextFieldComponentTypeTextView:
+            componentView = [ITS_TextViewComponent new];
+            [(ITS_TextViewComponent*)componentView initWithTitle:title andFrame:frame];
+            break;
+        case TextFieldComponentTypeDiagnostic:
+            componentView = [ITS_DiagnosticComponent new];
+            [(ITS_DiagnosticComponent*)componentView initWithTitle:title andFrame:frame];
+            [(ITS_DiagnosticComponent*)componentView setDelegate:(id)self.delegate];
+            break;
         default:
             break;
     }
@@ -273,10 +290,12 @@
     [patient setNIF:[buildingArray objectAtIndex:8]];
     [patient setCcNumber:[buildingArray objectAtIndex:9]];
     [patient setSnsNumber:[buildingArray objectAtIndex:10]];
-    [patient setDiseasesArray:[buildingArray objectAtIndex:11]];
-    [patient setEmail:[buildingArray objectAtIndex:12]];
-    [patient setPhoneNumber:[buildingArray objectAtIndex:13]];
-    [patient setAttachmentArray:[buildingArray objectAtIndex:14]];
+    [patient setPreviousDiseasesArray:[buildingArray objectAtIndex:11]];
+    [patient setFamilyDiseasesArray:[buildingArray objectAtIndex:12]];
+    [patient setNotes:[buildingArray objectAtIndex:13]];
+    [patient setEmail:[buildingArray objectAtIndex:14]];
+    [patient setPhoneNumber:[buildingArray objectAtIndex:15]];
+    [patient setAttachmentArray:[buildingArray objectAtIndex:16]];
     
     [self.repository registerSeparateUserWithEmail:patient.email completion:^(NSString * _Nonnull uid) {
         [self.repository writeNewPatient:patient withUID:uid andWithSections:(NSArray*)sections];

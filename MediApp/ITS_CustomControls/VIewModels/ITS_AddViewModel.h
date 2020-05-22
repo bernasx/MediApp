@@ -20,6 +20,8 @@
 #import "ITS_AttachmentComponent.h"
 #import "ITS_ZipCodeComponent.h"
 #import "ITS_SwitchComponent.h"
+#import "ITS_DiagnosticComponent.h"
+#import "ITS_TextViewComponent.h"
 NS_ASSUME_NONNULL_BEGIN
 @protocol AddViewModelDelegate;
 @interface ITS_AddViewModel : NSObject

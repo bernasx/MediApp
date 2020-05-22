@@ -30,7 +30,9 @@ typedef NS_ENUM(NSUInteger, TextFieldComponentType) {
     TextFieldComponentTypePickerView,
     TextFieldComponentTypeAttachment,
     TextFieldComponentTypeZip,
-    TextFieldComponentTypeSwitch
+    TextFieldComponentTypeSwitch,
+    TextFieldComponentTypeTextView,
+    TextFieldComponentTypeDiagnostic
 };
 
 //tells the textfieldcomponent which type it is handling

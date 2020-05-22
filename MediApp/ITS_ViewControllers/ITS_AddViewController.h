@@ -16,12 +16,14 @@
 #import "ITS_PickerViewComponent.h"
 #import "ITS_BaseTextFieldComponent.h"
 #import "ITS_AttachmentComponent.h"
+#import "ITS_DiagnosticComponent.h"
+#import "ITS_DiagnosticViewController.h"
 #import "Medic.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "ITS_ZipCodeComponent.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ITS_AddViewController : ITS_ViewController<UITableViewDelegate,UITableViewDataSource, AttachmentComponentDelegate,AddViewModelDelegate,UIScrollViewDelegate>
+@interface ITS_AddViewController : ITS_ViewController<UITableViewDelegate,UITableViewDataSource, AttachmentComponentDelegate,AddViewModelDelegate,UIScrollViewDelegate,DiagnosticComponentDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *fieldsTableView;
 @property (nonatomic) MainMenuSelection addTypeSelection;
 @end

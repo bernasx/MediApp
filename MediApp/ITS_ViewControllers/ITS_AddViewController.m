@@ -165,10 +165,14 @@
     }
 }
 
-#pragma mark - Attachment Delegate
+#pragma mark - Present Delegates
 
 - (void)attachmentComponentDidTapAddAttachment:(ITS_AttachmentComponent *)attachmentComponent withDocumentPicker:(nonnull UIDocumentPickerViewController *)documentPicker {
     [self presentViewController:documentPicker animated:YES completion:nil];
+}
+
+- (void)diagnosticComponentDidTapAddDiagnostic:(ITS_DiagnosticComponent *)diagnosticComponent withDiagnosticViewController:(ITS_DiagnosticViewController *)diagnosticViewController {
+    [self presentViewController:diagnosticViewController animated:YES completion:nil];
 }
 
 #pragma mark - ViewModel Delegate

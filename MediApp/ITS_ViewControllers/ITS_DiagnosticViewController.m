@@ -10,15 +10,69 @@
 #import "ITS_Enums.h"
 @interface ITS_DiagnosticViewController ()
 @property (nonatomic) NSArray* dataArray; //contains all data for building components
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (nonatomic) NSArray* sectionArray; //contains all section titles
 @end
 
 @implementation ITS_DiagnosticViewController
+- (IBAction)onCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)onSave:(id)sender {
+    bool creationIsValid = YES;
+       NSMutableArray* buildingArray = [NSMutableArray new]; //array that will store all the info for an object
+       for (NSArray* array in self.dataArray) {
+           //go through each component, check if they're valid fields
+           for (ITS_BaseTextFieldComponent* component in array) {
+               if ([component isKindOfClass:[ITS_TextFieldComponent class]]) {
+                   if (![(ITS_TextFieldComponent*)component textfieldHasText]) {
+                       [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor preencha este campo!"];
+                       creationIsValid = NO;
+                   }
+               }
+               
+               if ([component isKindOfClass:[ITS_ZipCodeComponent class]]) {
+                   if (![(ITS_ZipCodeComponent*)component textfieldHasText]) {
+                       [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor preencha este campo!"];
+                       creationIsValid = NO;
+                   }
+               }
+               if ([component isKindOfClass:[ITS_TextFieldWithTableComponent class]]) {
+                   if ([[(ITS_TextFieldWithTableComponent*)component getObjectArray] count] < 1) {
+                       [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor insira pelo menos 1 elemento."];
+                       creationIsValid = NO;
+                   }
+                   NSLog(@"%@",[(ITS_TextFieldWithTableComponent*)component getObjectArray]);
+               }
+               if ([component isKindOfClass:[ITS_PickerViewComponent class]]) {
+                   NSLog(@"%@",[(ITS_PickerViewComponent*)component currentSelection]);
+               }
+               
+           }
+       }
+       //if everything is valid, build the object and send it to the database
+       if (creationIsValid) {
+           NSArray* sections; //in case we have sections like in the attachments
+           for (NSArray* array in self.dataArray) {
+               for (ITS_BaseTextFieldComponent* component in array) {
+                   [buildingArray addObject:[component getObjectData]];
+                   if ([component isKindOfClass:[ITS_AttachmentComponent class]]) {
+                       sections = [(ITS_AttachmentComponent*)component getSections];
+                   }
+               }
+           }
+           [self.viewModel buildDiagnosticObject:buildingArray withSections:sections];
+       }
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewModel = [[ITS_DiagnosticViewModel alloc] init];
     self.viewModel.delegate = self;
+    [self.saveButton setTintColor:[ITS_Colors primaryColor]];
+    [self.cancelButton setTintColor:[ITS_Colors primaryColor]];
     NSString *cellID = @"addTableViewCell";
     [self.fieldsTableView registerNib:[UINib nibWithNibName:@"ITS_AddTableViewCell" bundle:nil] forCellReuseIdentifier:cellID];
     [self.viewModel buildScreen];
@@ -66,19 +120,31 @@
 }
 
 #pragma mark - ViewModel Delegate
-- (void)addViewModel:(ITS_DiagnosticViewModel *)viewModel didFinishBuildingScreenArray:(NSArray *)dataArray andSectionArray:(NSArray *)sectionArray{
-    self.sectionArray = sectionArray;
-    self.dataArray = dataArray;
-//    double totalHeight = 0;
-//    for (NSArray* array in self.dataArray) {
-//        for (ITS_BaseTextFieldComponent* component in array) {
-//            totalHeight += [component getDefaultComponentHeight];
-//            NSLog(@"%f",[component getDefaultComponentHeight]);
-//        }
-//    }
-//    totalHeight += 175;
-//    self.tableViewHeight.constant = totalHeight;
-    [self.fieldsTableView reloadData];
+- (void)diagnosticViewModel:(ITS_DiagnosticViewModel *)viewModel didFinishBuildingScreenArray:(NSArray *)dataArray andSectionArray:(NSArray *)sectionArray {
+      self.sectionArray = sectionArray;
+        self.dataArray = dataArray;
+    //    double totalHeight = 0;
+    //    for (NSArray* array in self.dataArray) {
+    //        for (ITS_BaseTextFieldComponent* component in array) {
+    //            totalHeight += [component getDefaultComponentHeight];
+    //            NSLog(@"%f",[component getDefaultComponentHeight]);
+    //        }
+    //    }
+    //    totalHeight += 175;
+    //    self.tableViewHeight.constant = totalHeight;
+        [self.fieldsTableView reloadData];
 }
 
+- (void)diagnosticViewModel:(ITS_DiagnosticViewModel *)viewModel didFinishBuildingDiagnostic:(Diagnostic *)diagnostic {
+    id<DiagnosticViewControllerDelegate> strongDelegate = self.delegate;
+    if ([strongDelegate respondsToSelector:@selector(diagnosticViewController:didFinishDiagnostic:)]) {
+        [strongDelegate diagnosticViewController:self didFinishDiagnostic:diagnostic];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)attachmentComponentDidTapAddAttachment:(ITS_AttachmentComponent *)attachmentComponent withDocumentPicker:(UIDocumentPickerViewController *)documentPicker {
+     [self presentViewController:documentPicker animated:YES completion:nil];
+}
 @end

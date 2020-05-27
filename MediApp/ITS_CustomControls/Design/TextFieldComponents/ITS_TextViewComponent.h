@@ -9,9 +9,10 @@
 #import "ITS_BaseTextFieldComponent.h"
 #import "ITS_Colors.h"
 #import "ITS_Enums.h"
+#import "ITS_SearchTableViewCell.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ITS_TextViewComponent : ITS_BaseTextFieldComponent
+@interface ITS_TextViewComponent : ITS_BaseTextFieldComponent <UITableViewDelegate,UITableViewDataSource,SearchTableViewCellDelegate,UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIView *view;
 - (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame;
 @end

@@ -11,6 +11,8 @@
 #import "Specialty.h"
 #import "Disease.h"
 #import "Attachment.h"
+#import "Note.h"
+#import "Diagnostic.h"
 #import "ITS_Enums.h"
 NS_ASSUME_NONNULL_BEGIN
 @protocol SearchTableViewCellDelegate;
@@ -19,9 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setSpecialty:(Specialty *)specialty;
 - (void)setDisease:(Disease *)disease;
 - (void)setAttachment:(Attachment *)attachment;
+- (void)setNote:(Note *)note;
 - (void)removeButtonIsHidden:(bool) isHidden;
 - (void)setTitleLabelColor:(UIColor *)color;
-
+- (void)setDiagnostic:(Diagnostic *)diagnostic;
 @property (nonatomic, weak) id<SearchTableViewCellDelegate> delegate;
 @end
 

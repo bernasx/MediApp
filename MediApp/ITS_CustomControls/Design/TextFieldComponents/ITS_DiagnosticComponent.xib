@@ -17,14 +17,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ITS_DiagnosticComponent">
             <connections>
                 <outlet property="addButton" destination="cCp-9Q-d0c" id="HrS-vg-lMN"/>
-                <outlet property="detailLabel" destination="CP8-v0-1Mb" id="2sF-Ui-YLh"/>
+                <outlet property="currentDiagnosticsTableView" destination="Rga-T6-mlu" id="8g9-zT-lDf"/>
                 <outlet property="titleLabel" destination="8TU-jq-bRB" id="taw-n9-9Uj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Raw-WC-2QJ"/>
+                <outlet property="warningLabel" destination="KL0-hN-gf1" id="1VF-gl-hov"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8TU-jq-bRB">
@@ -40,8 +41,16 @@
                         <action selector="onAdd:" destination="-1" eventType="touchUpInside" id="94x-0g-mOB"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CP8-v0-1Mb">
-                    <rect key="frame" x="32" y="37" width="0.0" height="0.0"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rga-T6-mlu">
+                    <rect key="frame" x="0.0" y="60" width="414" height="90"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Vj6-nz-K7O"/>
+                        <outlet property="delegate" destination="-1" id="dkA-5A-iHM"/>
+                    </connections>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KL0-hN-gf1">
+                    <rect key="frame" x="16" y="38" width="378" height="20"/>
                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -49,15 +58,20 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="CP8-v0-1Mb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="32" id="A41-0B-EKX"/>
                 <constraint firstItem="8TU-jq-bRB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="FZP-I6-lZ3"/>
+                <constraint firstItem="Rga-T6-mlu" firstAttribute="top" secondItem="cCp-9Q-d0c" secondAttribute="bottom" constant="30" id="Goj-WX-Yfq"/>
+                <constraint firstItem="KL0-hN-gf1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="IgB-MC-YY7"/>
+                <constraint firstItem="Rga-T6-mlu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P44-uR-MUY"/>
+                <constraint firstAttribute="bottom" secondItem="Rga-T6-mlu" secondAttribute="bottom" id="SSt-tH-fdH"/>
+                <constraint firstAttribute="trailing" secondItem="Rga-T6-mlu" secondAttribute="trailing" id="aSL-Hc-I6L"/>
                 <constraint firstItem="8TU-jq-bRB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="deR-E5-6Ue"/>
-                <constraint firstItem="CP8-v0-1Mb" firstAttribute="top" secondItem="8TU-jq-bRB" secondAttribute="bottom" constant="8" id="fKf-tC-P8Y"/>
+                <constraint firstItem="KL0-hN-gf1" firstAttribute="top" secondItem="cCp-9Q-d0c" secondAttribute="bottom" constant="8" id="e94-Za-aIp"/>
                 <constraint firstAttribute="trailing" secondItem="cCp-9Q-d0c" secondAttribute="trailing" constant="20" id="ido-wP-mDR"/>
                 <constraint firstItem="cCp-9Q-d0c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="jAX-U1-oyP"/>
+                <constraint firstAttribute="trailing" secondItem="KL0-hN-gf1" secondAttribute="trailing" constant="20" id="oWV-3G-8zI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="115.94202898550725" y="389.73214285714283"/>
+            <point key="canvasLocation" x="115.94202898550725" y="403.125"/>
         </view>
     </objects>
     <resources>

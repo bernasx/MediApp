@@ -9,6 +9,8 @@
 #import "ITS_ViewController.h"
 #import "ITS_AddViewController.h"
 #import "ITS_Enums.h"
+#import "ITS_BaseListCollectionViewCell.h"
+#import "ITS_PatientListCollectionViewCell.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_ListViewController : ITS_ViewController

@@ -34,10 +34,16 @@
 		D13B72322478246700FCCEBE /* ITS_DiagnosticViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D13B72312478246700FCCEBE /* ITS_DiagnosticViewModel.m */; };
 		D13B72362478328400FCCEBE /* ITS_AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D13B72342478328400FCCEBE /* ITS_AddTableViewCell.m */; };
 		D13B72372478328400FCCEBE /* ITS_AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D13B72352478328400FCCEBE /* ITS_AddTableViewCell.xib */; };
+		D161B1B4247BC22C000861C9 /* Diagnostic.m in Sources */ = {isa = PBXBuildFile; fileRef = D161B1B3247BC22C000861C9 /* Diagnostic.m */; };
+		D161B1B7247BD131000861C9 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = D161B1B6247BD131000861C9 /* Note.m */; };
+		D161B1C6247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D161B1C5247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.m */; };
+		D161B1CA247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D161B1C8247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.m */; };
+		D161B1CB247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D161B1C9247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.xib */; };
 		D1919D3D246E922800C70120 /* ITS_AttachmentComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D1919D3C246E922800C70120 /* ITS_AttachmentComponent.m */; };
 		D1919D41246E92AA00C70120 /* ITS_AttachmentComponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1919D40246E92AA00C70120 /* ITS_AttachmentComponent.xib */; };
 		D1919D44246EB95400C70120 /* Attachment.m in Sources */ = {isa = PBXBuildFile; fileRef = D1919D43246EB95400C70120 /* Attachment.m */; };
 		D1919D47246ED93D00C70120 /* Medic.m in Sources */ = {isa = PBXBuildFile; fileRef = D1919D46246ED93D00C70120 /* Medic.m */; };
+		D1CB019B247E81EB000442D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1CB019D247E81EB000442D0 /* Localizable.strings */; };
 		D1D21FCD246171C70044AC93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FCC246171C70044AC93 /* AppDelegate.m */; };
 		D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FCF246171C70044AC93 /* SceneDelegate.m */; };
 		D1D21FD6246171C70044AC93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D21FD4246171C70044AC93 /* Main.storyboard */; };
@@ -141,6 +147,16 @@
 		D13B72332478328400FCCEBE /* ITS_AddTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_AddTableViewCell.h; sourceTree = "<group>"; };
 		D13B72342478328400FCCEBE /* ITS_AddTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_AddTableViewCell.m; sourceTree = "<group>"; };
 		D13B72352478328400FCCEBE /* ITS_AddTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_AddTableViewCell.xib; sourceTree = "<group>"; };
+		D161B1B2247BC22C000861C9 /* Diagnostic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Diagnostic.h; sourceTree = "<group>"; };
+		D161B1B3247BC22C000861C9 /* Diagnostic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Diagnostic.m; sourceTree = "<group>"; };
+		D161B1B5247BD131000861C9 /* Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		D161B1B6247BD131000861C9 /* Note.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		D161B1C4247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_BaseListCollectionViewCell.h; sourceTree = "<group>"; };
+		D161B1C5247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_BaseListCollectionViewCell.m; sourceTree = "<group>"; };
+		D161B1C7247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_PatientListCollectionViewCell.h; sourceTree = "<group>"; };
+		D161B1C8247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_PatientListCollectionViewCell.m; sourceTree = "<group>"; };
+		D161B1C9247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_PatientListCollectionViewCell.xib; sourceTree = "<group>"; };
+		D161B1D2247E7FD4000861C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		D1919D3B246E922800C70120 /* ITS_AttachmentComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_AttachmentComponent.h; sourceTree = "<group>"; };
 		D1919D3C246E922800C70120 /* ITS_AttachmentComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_AttachmentComponent.m; sourceTree = "<group>"; };
 		D1919D40246E92AA00C70120 /* ITS_AttachmentComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_AttachmentComponent.xib; sourceTree = "<group>"; };
@@ -148,6 +164,11 @@
 		D1919D43246EB95400C70120 /* Attachment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Attachment.m; sourceTree = "<group>"; };
 		D1919D45246ED93D00C70120 /* Medic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Medic.h; sourceTree = "<group>"; };
 		D1919D46246ED93D00C70120 /* Medic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Medic.m; sourceTree = "<group>"; };
+		D1CB0192247E8041000442D0 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
+		D1CB0193247E8042000442D0 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		D1CB0195247E806B000442D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D1CB019C247E81EB000442D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D1CB019E247E81EF000442D0 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D1D21FC8246171C70044AC93 /* MediApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D21FCB246171C70044AC93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D1D21FCC246171C70044AC93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -275,6 +296,10 @@
 				D1919D46246ED93D00C70120 /* Medic.m */,
 				D13B721E2476854B00FCCEBE /* Patient.h */,
 				D13B721F2476854B00FCCEBE /* Patient.m */,
+				D161B1B2247BC22C000861C9 /* Diagnostic.h */,
+				D161B1B3247BC22C000861C9 /* Diagnostic.m */,
+				D161B1B5247BD131000861C9 /* Note.h */,
+				D161B1B6247BD131000861C9 /* Note.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -296,6 +321,26 @@
 				D13B72352478328400FCCEBE /* ITS_AddTableViewCell.xib */,
 			);
 			path = AddScreenCells;
+			sourceTree = "<group>";
+		};
+		D161B1B8247D6DEF000861C9 /* ListScreenCells */ = {
+			isa = PBXGroup;
+			children = (
+				D161B1C4247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.h */,
+				D161B1C5247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.m */,
+				D161B1C7247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.h */,
+				D161B1C8247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.m */,
+				D161B1C9247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.xib */,
+			);
+			path = ListScreenCells;
+			sourceTree = "<group>";
+		};
+		D1CB0196247E8183000442D0 /* Localizables */ = {
+			isa = PBXGroup;
+			children = (
+				D1CB019D247E81EB000442D0 /* Localizable.strings */,
+			);
+			path = Localizables;
 			sourceTree = "<group>";
 		};
 		D1D21FBF246171C60044AC93 = {
@@ -325,6 +370,7 @@
 		D1D21FCA246171C70044AC93 /* MediApp */ = {
 			isa = PBXGroup;
 			children = (
+				D1CB0196247E8183000442D0 /* Localizables */,
 				D1DC715E246D845500FA5402 /* MediApp.entitlements */,
 				D1D220212462B49C0044AC93 /* ITS_Utils */,
 				D1D2200B246185AD0044AC93 /* ITS_CustomControls */,
@@ -461,6 +507,7 @@
 		D1D22039246407270044AC93 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D161B1B8247D6DEF000861C9 /* ListScreenCells */,
 				D11B8B0E24694BF60073C7DE /* AddScreenCells */,
 				D1D2203A246407350044AC93 /* MainMenuCells */,
 			);
@@ -600,6 +647,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-PT",
 			);
 			mainGroup = D1D21FBF246171C60044AC93;
 			productRefGroup = D1D21FC9246171C70044AC93 /* Products */;
@@ -626,10 +674,12 @@
 				D13B722F24780EB000FCCEBE /* ITS_DiagnosticViewController.xib in Resources */,
 				D1D2201B2461B14D0044AC93 /* SF-Pro-Text-Regular.otf in Resources */,
 				D1D2204824640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.xib in Resources */,
+				D161B1CB247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.xib in Resources */,
 				D13B722A2478053A00FCCEBE /* ITS_DiagnosticComponent.xib in Resources */,
 				D11B8B13246950B40073C7DE /* ITS_PickerViewComponent.xib in Resources */,
 				D13B72152473F6AA00FCCEBE /* ITS_AttachmentHeaderTableViewCell.xib in Resources */,
 				D1DC710E246A917D00FA5402 /* ITS_TextFieldComponent.xib in Resources */,
+				D1CB019B247E81EB000442D0 /* Localizable.strings in Resources */,
 				D1D2201C2461B14D0044AC93 /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				D13B72102473DED000FCCEBE /* ITS_ZipCodeComponent.xib in Resources */,
 				D1D2201D2461B14D0044AC93 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
@@ -767,6 +817,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D161B1C6247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.m in Sources */,
 				D13B72322478246700FCCEBE /* ITS_DiagnosticViewModel.m in Sources */,
 				D13B72362478328400FCCEBE /* ITS_AddTableViewCell.m in Sources */,
 				D13B722E24780EB000FCCEBE /* ITS_DiagnosticViewController.m in Sources */,
@@ -775,12 +826,14 @@
 				D1D21FE1246171C80044AC93 /* main.m in Sources */,
 				D1DC7112246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.m in Sources */,
 				D11B8B11246950920073C7DE /* ITS_PickerViewComponent.m in Sources */,
+				D161B1B4247BC22C000861C9 /* Diagnostic.m in Sources */,
 				D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */,
 				D1D22051246470F70044AC93 /* ITS_TextFieldWithTableComponent.m in Sources */,
 				D1D2200F2461860F0044AC93 /* ITS_Colors.m in Sources */,
 				D1DC7119246D59BD00FA5402 /* ITS_BaseTextFieldComponent.m in Sources */,
 				D1D2202F2462EBDD0044AC93 /* ITS_LoginViewModel.m in Sources */,
 				D11B8B1624695E430073C7DE /* ITS_AddViewModel.m in Sources */,
+				D161B1B7247BD131000861C9 /* Note.m in Sources */,
 				D13B72182475474B00FCCEBE /* ITS_SwitchComponent.m in Sources */,
 				D1D22035246302B80044AC93 /* ITS_ServiceErrorHandler.m in Sources */,
 				D13B720E2473DEB200FCCEBE /* ITS_ZipCodeComponent.m in Sources */,
@@ -801,6 +854,7 @@
 				D13B721D24767B0A00FCCEBE /* ITS_ListViewController.m in Sources */,
 				D11B8B052465A2D50073C7DE /* Disease.m in Sources */,
 				D11B8B08246943810073C7DE /* ITS_AddViewController.m in Sources */,
+				D161B1CA247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.m in Sources */,
 				D1DC7116246B067200FA5402 /* Person.m in Sources */,
 				D1D2202B2462D4270044AC93 /* ITS_Repository.m in Sources */,
 				D1D2204724640A3E0044AC93 /* ITS_MainMenuSelectionCollectionViewCell.m in Sources */,
@@ -840,10 +894,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D1CB019D247E81EB000442D0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1CB019C247E81EB000442D0 /* en */,
+				D1CB019E247E81EF000442D0 /* pt-PT */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D1D21FD4246171C70044AC93 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D1D21FD5246171C70044AC93 /* Base */,
+				D161B1D2247E7FD4000861C9 /* en */,
+				D1CB0192247E8041000442D0 /* pt-PT */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -852,6 +917,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				D1D21FDD246171C80044AC93 /* Base */,
+				D1CB0193247E8042000442D0 /* pt-PT */,
+				D1CB0195247E806B000442D0 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -863,6 +930,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -921,6 +989,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

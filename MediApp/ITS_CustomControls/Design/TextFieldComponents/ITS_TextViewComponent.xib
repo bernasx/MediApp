@@ -6,6 +6,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
         <array key="SF-Pro-Text-Semibold.otf">
             <string>SFProText-Semibold</string>
         </array>
@@ -13,25 +16,77 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ITS_TextViewComponent">
             <connections>
+                <outlet property="addButton" destination="Pdk-yj-IiH" id="i8S-mJ-yPQ"/>
+                <outlet property="clearButton" destination="bZU-GQ-J8X" id="qoS-Kr-sNB"/>
                 <outlet property="componentTextView" destination="Ilc-yp-Lsr" id="3ns-eo-YUY"/>
+                <outlet property="listTableView" destination="pcd-Ny-aUP" id="jw4-eN-flc"/>
                 <outlet property="titleLabel" destination="7wN-H9-CTP" id="D7M-aV-fFr"/>
+                <outlet property="titleTextfield" destination="hZc-qY-Ccm" id="1TZ-eP-M6J"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Qzt-o8-Fhe"/>
+                <outlet property="warningLabel" destination="8YP-FC-PHl" id="7pm-BL-SlX"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wN-H9-CTP">
-                    <rect key="frame" x="16" y="8" width="378" height="20"/>
+                    <rect key="frame" x="16" y="8" width="314" height="20"/>
                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ilc-yp-Lsr">
-                    <rect key="frame" x="16" y="36" width="378" height="306"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-Ny-aUP">
+                    <rect key="frame" x="16" y="262" width="378" height="130"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="qJ4-Pv-VLf"/>
+                        <outlet property="delegate" destination="-1" id="acQ-pG-xo4"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdk-yj-IiH">
+                    <rect key="frame" x="374" y="8" width="20" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="dYq-PW-2N1"/>
+                        <constraint firstAttribute="height" constant="22" id="v1X-Iw-YWe"/>
+                    </constraints>
+                    <state key="normal" image="plus.circle" catalog="system"/>
+                    <connections>
+                        <action selector="didTapAddButton:" destination="-1" eventType="touchUpInside" id="gtc-yq-4Qw"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZU-GQ-J8X">
+                    <rect key="frame" x="338" y="8" width="20" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="5r6-0a-K0Y"/>
+                        <constraint firstAttribute="height" constant="22" id="Wdv-fk-WRf"/>
+                    </constraints>
+                    <state key="normal" image="trash" catalog="system"/>
+                    <connections>
+                        <action selector="didTapClearButton:" destination="-1" eventType="touchUpInside" id="8Ib-GZ-6HS"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZc-qY-Ccm">
+                    <rect key="frame" x="16" y="44" width="378" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="PRB-qM-YfH"/>
+                    </connections>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YP-FC-PHl">
+                    <rect key="frame" x="8" y="86" width="386" height="0.0"/>
+                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ilc-yp-Lsr">
+                    <rect key="frame" x="16" y="94" width="378" height="160"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="160" id="54m-p9-M2l"/>
+                    </constraints>
                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -40,15 +95,32 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="7wN-H9-CTP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="8VY-4m-8qC"/>
-                <constraint firstItem="Ilc-yp-Lsr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="En6-oC-YAG"/>
-                <constraint firstAttribute="trailing" secondItem="Ilc-yp-Lsr" secondAttribute="trailing" constant="20" id="FRs-GD-Zxs"/>
+                <constraint firstAttribute="trailing" secondItem="8YP-FC-PHl" secondAttribute="trailing" constant="20" id="8Vy-le-RV4"/>
+                <constraint firstAttribute="trailing" secondItem="Ilc-yp-Lsr" secondAttribute="trailing" constant="20" id="Bf9-z2-Kva"/>
+                <constraint firstItem="Ilc-yp-Lsr" firstAttribute="top" secondItem="8YP-FC-PHl" secondAttribute="bottom" constant="8" id="FRI-uG-4fn"/>
+                <constraint firstItem="hZc-qY-Ccm" firstAttribute="top" secondItem="7wN-H9-CTP" secondAttribute="bottom" constant="16" id="H8r-z0-TbR"/>
+                <constraint firstAttribute="trailing" secondItem="pcd-Ny-aUP" secondAttribute="trailing" constant="20" id="JLd-ns-MYh"/>
+                <constraint firstItem="bZU-GQ-J8X" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="M62-h6-t3d"/>
+                <constraint firstItem="8YP-FC-PHl" firstAttribute="top" secondItem="hZc-qY-Ccm" secondAttribute="bottom" constant="8" id="NEf-r5-jCf"/>
                 <constraint firstItem="7wN-H9-CTP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="PBd-SW-ii1"/>
-                <constraint firstItem="Ilc-yp-Lsr" firstAttribute="top" secondItem="7wN-H9-CTP" secondAttribute="bottom" constant="8" id="Psp-Gz-xfA"/>
-                <constraint firstAttribute="bottom" secondItem="Ilc-yp-Lsr" secondAttribute="bottom" constant="8" id="ckF-fh-89h"/>
-                <constraint firstAttribute="trailing" secondItem="7wN-H9-CTP" secondAttribute="trailing" constant="20" id="qSU-Qd-m3F"/>
+                <constraint firstItem="bZU-GQ-J8X" firstAttribute="leading" secondItem="7wN-H9-CTP" secondAttribute="trailing" constant="8" id="PVx-Q0-wtv"/>
+                <constraint firstItem="pcd-Ny-aUP" firstAttribute="top" secondItem="Ilc-yp-Lsr" secondAttribute="bottom" constant="8" id="QlN-DB-z8B"/>
+                <constraint firstAttribute="trailing" secondItem="hZc-qY-Ccm" secondAttribute="trailing" constant="20" id="TxV-N4-Vb4"/>
+                <constraint firstItem="Pdk-yj-IiH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Tz4-tR-U4F"/>
+                <constraint firstItem="8YP-FC-PHl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="dz2-Hi-IJc"/>
+                <constraint firstItem="pcd-Ny-aUP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="gvs-mq-0e6"/>
+                <constraint firstAttribute="bottom" secondItem="pcd-Ny-aUP" secondAttribute="bottom" constant="8" id="oza-rm-DDA"/>
+                <constraint firstItem="Pdk-yj-IiH" firstAttribute="leading" secondItem="bZU-GQ-J8X" secondAttribute="trailing" constant="16" id="poD-MK-BPS"/>
+                <constraint firstItem="hZc-qY-Ccm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="pyJ-Lw-5cp"/>
+                <constraint firstAttribute="trailing" secondItem="Pdk-yj-IiH" secondAttribute="trailing" constant="20" id="ziP-lL-Q8h"/>
+                <constraint firstItem="Ilc-yp-Lsr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="zq9-ym-GWY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="131.8840579710145" y="324.77678571428572"/>
+            <point key="canvasLocation" x="131.8840579710145" y="341.51785714285711"/>
         </view>
     </objects>
+    <resources>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
+    </resources>
 </document>

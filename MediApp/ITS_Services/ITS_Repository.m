@@ -168,6 +168,7 @@
 
 //uid is the new user's uid
 - (void)writeNewPatient:(Patient *)patient withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections {
+       /* Patient info */
     NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
     [[[[self.ref child:@"patients"] child:uid] child:@"firstName"] setValue:patient.firstNames];
     [[[[self.ref child:@"patients"] child:uid] child:@"lastName"] setValue:patient.lastNames];
@@ -181,39 +182,93 @@
     [[[[self.ref child:@"patients"] child:uid] child:@"ccNumber"] setValue:patient.ccNumber];
     [[[[self.ref child:@"patients"] child:uid] child:@"email"] setValue:patient.email];
     [[[[self.ref child:@"patients"] child:uid] child:@"phoneNumber"] setValue:patient.phoneNumber];
-    [[[[self.ref child:@"patients"] child:uid] child:@"superior"] setValue:currentUserUID];
-    [[[[self.ref child:@"patients"] child:uid] child:@"notes"] setValue:patient.notes];
+    for (Note* note in patient.notesArray) {
+        [[[[self.ref child:@"notes"] child:note.uid] child:@"title"]setValue:note.noteTitle];
+        [[[[self.ref child:@"notes"] child:note.uid] child:@"text"]setValue:note.noteTitle];
+        [[[[[self.ref child:@"patients"] child:uid] child:@"notes"] child:note.uid] setValue:note.uid];
+    }
     
+    /* Disease history */
     //get only the IDs
     NSMutableArray *diseasesArray = [NSMutableArray new];
     for (Disease* disease in patient.previousDiseasesArray) {
         [diseasesArray addObject:disease.diseaseId];
     }
     //Save the ID
-    [[[[self.ref child:@"history"] child:uid] child:@"previousDiseases"] setValue:diseasesArray];
+    [[[[[self.ref child:@"history"] child:@"patientHistory"] child:uid] child:@"previousDiseases"] setValue:diseasesArray];
     
     //Same for family history
     NSMutableArray *familyDiseases = [NSMutableArray new];
     for (Disease* disease in patient.familyDiseasesArray) {
         [familyDiseases addObject:disease.diseaseId];
     }
-    
     //Save the ID
-    [[[[self.ref child:@"history"] child:uid] child:@"familyDiseases"] setValue:familyDiseases];
+    [[[[[self.ref child:@"history"] child:@"patientHistory"] child:uid] child:@"familyDiseases"] setValue:familyDiseases];
     
-    //Attachments
-    int sectionCount = 0; //track which section we're in so we can name it for the file path
+    /* Patient attachments */
+    int patientSectionCount = 0; //track which section we're in so we can name it for the file path
     for (NSMutableArray* array in patient.attachmentArray) {
         //get all the attachments, add a uuid to each of them.
         for (Attachment* attachment in array) {
             NSUUID *uuid = [NSUUID UUID]; //generate a new id for the attachment
             NSString *str = [uuid UUIDString];
-            [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@/%@",uid,[sections objectAtIndex:sectionCount],str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
-                [[[[[[self.ref child:@"patients"] child:uid] child:@"attachments"] child:[sections objectAtIndex:sectionCount]]childByAutoId] setValue:url.absoluteString];
+            [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@/%@",uid,[sections objectAtIndex:patientSectionCount],str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
+                [[[[[[self.ref child:@"patients"] child:uid] child:@"attachments"] child:[sections objectAtIndex:patientSectionCount]]childByAutoId] setValue:url.absoluteString];
             }];
         }
-        sectionCount += 1;
+        patientSectionCount += 1;
     }
+    
+    
+    
+    /* Save Diagnostics */
+    for (Diagnostic* diagnostic in patient.diagnosticArray) {
+        NSString* historyID = [[NSUUID UUID] UUIDString];
+        NSString* creationDate = [NSString stringWithFormat:@"%f",diagnostic.creationDate.timeIntervalSince1970];
+        [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"treatment"] setValue:diagnostic.treatment];
+        [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"medic"] setValue:currentUserUID];
+        [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"creationDate"] setValue:creationDate];
+        
+        [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"treatment"] setValue:diagnostic.treatment];
+        [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"medic"] setValue:currentUserUID];
+        [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"creationDate"] setValue:creationDate];
+        
+        for (Disease* disease in diagnostic.currentDiseases) {
+            [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"currentDiseases"] setValue:disease.diseaseId];
+            
+            [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"currentDiseases"] setValue:disease.diseaseId];
+        }
+        //save diagnostic to patient path
+        [[[[self.ref child:@"patients"] child:uid] child:@"diagnostic"] setValue:diagnostic.uid.UUIDString];
+        //diagnostic attachments
+        int sectionCount = 0; //track which section we're in so we can name it for the file path
+        for (NSMutableArray* array in diagnostic.attachmentArray) {
+            //get all the attachments, add a uuid to each of them.
+            for (Attachment* attachment in array) {
+                NSUUID *uuid = [NSUUID UUID]; //generate a new id for the attachment
+                NSString *str = [uuid UUIDString];
+                [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@/%@",diagnostic.uid,[sections objectAtIndex:sectionCount],str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
+                    [[[[[[[self.ref child:@"diagnostics"] child:uid]child:diagnostic.uid.UUIDString] child:@"attachments"] child:[diagnostic.attachmentsSections objectAtIndex:sectionCount]]childByAutoId] setValue:url.absoluteString];
+                    
+                    [[[[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"attachments"] child:[diagnostic.attachmentsSections objectAtIndex:sectionCount]]childByAutoId] setValue:url.absoluteString];
+                }];
+            }
+            sectionCount += 1;
+        }
+        //diagnostic notes
+        for (Note* note in diagnostic.notesArray) {
+            [[[[self.ref child:@"notes"] child:note.uid] child:@"title"]setValue:note.noteTitle];
+            [[[[self.ref child:@"notes"] child:note.uid] child:@"text"]setValue:note.noteTitle];
+            [[[[[[self.ref child:@"diagnostics"] child:uid]child:diagnostic.uid.UUIDString] child:@"notes"] child:note.uid] setValue:note.uid];
+            
+            [[[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"currentDiseases"] child:note.uid] setValue:note.uid];
+        }
+        
+        //save diagnostic id to medic by patient
+        [[[[[self.ref child:@"medics"] child:currentUserUID] child:@"diagnostics"] child:diagnostic.uid.UUIDString] setValue:diagnostic.uid.UUIDString];
+    }
+   
+   
 }
 
 #pragma mark - Storage Functions

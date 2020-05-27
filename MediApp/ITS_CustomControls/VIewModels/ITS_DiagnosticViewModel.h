@@ -24,11 +24,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ITS_DiagnosticViewModel : NSObject
 @property (nonatomic, weak) id<DiagnosticViewModelDelegate> delegate;
 - (void)buildScreen;
+- (void)buildDiagnosticObject:(NSArray *)buildingArray withSections:(NSArray*)sections;
 @end
 
 @protocol DiagnosticViewModelDelegate<NSObject>
-- (void)addViewModel:(ITS_DiagnosticViewModel*)viewModel
+- (void)diagnosticViewModel:(ITS_DiagnosticViewModel*)viewModel
              didFinishBuildingScreenArray:(NSArray *)dataArray andSectionArray:(NSArray*)sectionArray;
+- (void)diagnosticViewModel:(ITS_DiagnosticViewModel *)viewModel didFinishBuildingDiagnostic:(Diagnostic*)diagnostic;
 @end
 
 

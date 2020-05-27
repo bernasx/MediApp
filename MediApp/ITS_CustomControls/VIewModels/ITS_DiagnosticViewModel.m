@@ -47,8 +47,6 @@
 }
 
 #pragma mark - build screen
-
-
 - (void)buildScreen {
     id<DiagnosticViewModelDelegate> strongDelegate = self.delegate;
     self.dataArray = [NSMutableArray new];
@@ -56,49 +54,22 @@
     
     [self addSectionToArrayWithName:@"Dados Pessoais"];
     [self addSectionToArrayWithName:@"Dados Médicos"];
-    [self addSectionToArrayWithName:@"Contatos"];
     [self addSectionToArrayWithName:@"Anexos"];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Primeiros Nomes" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Apelidos" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Idade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:[NSNumber numberWithInt:50]];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Sexo" withType:TextFieldComponentTypePickerView andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Feminino",@"Masculino"] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Morada" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Código Postal" withType:TextFieldComponentTypeZip andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0,0,414,110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Naturalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nacionalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"NIF" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nº CC" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nº de Utente" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:@"Tratamento" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
     
     [self fetchDiseases:^(NSArray * _Nullable diseasesArray) {
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Histórico de Doenças" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:@"Doenças" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
+    
+        [self addComponentToArrayAtSection:1 withComponentTitle:@"Notas" withType:TextFieldComponentTypeTextView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 400) withTextFieldWidth:nil];
         
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Histórico Familiar" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
-        
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Notas" withType:TextFieldComponentTypeTextView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 350) withTextFieldWidth:nil];
-        
-        if ([strongDelegate respondsToSelector:@selector(addViewModel:didFinishBuildingScreenArray:andSectionArray:)]) {
-            [strongDelegate addViewModel:self didFinishBuildingScreenArray:self.dataArray andSectionArray:self.sectionArray];
+        if ([strongDelegate respondsToSelector:@selector(diagnosticViewModel:didFinishBuildingScreenArray:andSectionArray:)]) {
+            [strongDelegate diagnosticViewModel:self didFinishBuildingScreenArray:self.dataArray andSectionArray:self.sectionArray];
         }
         
     } ];
-    
-    [self addComponentToArrayAtSection:2 withComponentTitle:@"Email" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
-    
-    [self addComponentToArrayAtSection:2 withComponentTitle:@"Telemóvel" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
 
-    [self addComponentToArrayAtSection:3 withComponentTitle:@"Anexos do paciente" withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Documentos",@"Extras"] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:2 withComponentTitle:@"Anexos do diagnostico" withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Documentos",@"Extras"] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil];
 }
 
 #pragma mark - array management
@@ -147,5 +118,28 @@
             break;
     }
     [[self.dataArray objectAtIndex:section] addObject:componentView];
+}
+
+
+#pragma mark - object building
+
+- (void)buildDiagnosticObject:(NSArray *)buildingArray withSections:(NSArray*)sections {
+  //diagnostic building
+    Diagnostic *diagnostic = [Diagnostic new];
+    NSUUID* uid = [NSUUID UUID];
+    [diagnostic setUid:uid];
+    [diagnostic setTreatment:[buildingArray objectAtIndex:0]];
+    [diagnostic setCurrentDiseases:[buildingArray objectAtIndex:1]];
+    [diagnostic setNotesArray:[buildingArray objectAtIndex:2]];
+    [diagnostic setAttachmentArray:[buildingArray objectAtIndex:3]];
+    [diagnostic setAttachmentsSections:sections];
+    [diagnostic setCreationDate:NSDate.date];
+    //call delegate
+    id<DiagnosticViewModelDelegate> strongDelegate = self.delegate;
+    if ([strongDelegate respondsToSelector:@selector(diagnosticViewModel:didFinishBuildingDiagnostic:)]) {
+        [strongDelegate diagnosticViewModel:self didFinishBuildingDiagnostic:diagnostic];
+    }
+    
+    
 }
 @end

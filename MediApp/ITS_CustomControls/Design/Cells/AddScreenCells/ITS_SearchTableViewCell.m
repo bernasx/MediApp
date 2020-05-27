@@ -13,6 +13,8 @@
 @property (nonatomic) Specialty *specialty;
 @property (nonatomic) Disease *disease;
 @property (nonatomic) Attachment *attachment;
+@property (nonatomic) Note *note;
+@property (nonatomic) Diagnostic *diagnostic;
 @end
 @implementation ITS_SearchTableViewCell
 - (IBAction)onRemove:(id)sender {
@@ -30,9 +32,17 @@
             [strongDelegate cellRemoval:self didRemoveObject:self.disease];
         }
         
-    } else {
+    } else if (self.attachment){
         if ([strongDelegate respondsToSelector:@selector(cellRemoval:didRemoveObject:)]) {
             [strongDelegate cellRemoval:self didRemoveObject:self.attachment];
+        }
+    } else if (self.note ){
+        if ([strongDelegate respondsToSelector:@selector(cellRemoval:didRemoveObject:)]) {
+            [strongDelegate cellRemoval:self didRemoveObject:self.note];
+        }
+    } else {
+        if ([strongDelegate respondsToSelector:@selector(cellRemoval:didRemoveObject:)]) {
+            [strongDelegate cellRemoval:self didRemoveObject:self.diagnostic];
         }
     }
     
@@ -65,6 +75,16 @@
 - (void)setAttachment:(Attachment *)attachment {
     _attachment = attachment;
     [self.titleLabel setText:self.attachment.attachmentName];
+}
+
+- (void)setNote:(Note *)note {
+    _note = note;
+    [self.titleLabel setText:self.note.noteTitle];
+}
+
+- (void)setDiagnostic:(Diagnostic *)diagnostic {
+    _diagnostic = diagnostic;
+    [self.titleLabel setText:self.diagnostic.treatment];
 }
 
 - (void)setTitleLabelColor:(UIColor *)color {

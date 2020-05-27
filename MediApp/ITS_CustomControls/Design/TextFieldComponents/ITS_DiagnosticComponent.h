@@ -10,12 +10,13 @@
 #import "ITS_BaseTextFieldComponent.h"
 #import "ITS_Colors.h"
 #import "ITS_Enums.h"
+#import "Diagnostic.h"
 #import "ITS_DiagnosticViewController.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 @protocol DiagnosticComponentDelegate;
-@interface ITS_DiagnosticComponent : ITS_BaseTextFieldComponent
+@interface ITS_DiagnosticComponent : ITS_BaseTextFieldComponent<DiagnosticViewControllerDelegate,UITableViewDelegate,SearchTableViewCellDelegate,UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UIView *view;
 - (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame;
 @property (nonatomic, weak) id<DiagnosticComponentDelegate> delegate;

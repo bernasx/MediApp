@@ -7,14 +7,15 @@
 //
 
 #import "Person.h"
-
+#import "Diagnostic.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Patient : Person
 @property (nonatomic) NSArray* previousDiseasesArray;
 @property (nonatomic) NSArray* familyDiseasesArray;
 @property (nonatomic) NSString* snsNumber;
-@property (nonatomic) NSString* notes;
+@property (nonatomic) NSArray* notesArray;
+@property (nonatomic) NSArray<Diagnostic *> *diagnosticArray;
 @end
 
 NS_ASSUME_NONNULL_END

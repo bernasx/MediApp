@@ -110,9 +110,9 @@
         
         [self addComponentToArrayAtSection:1 withComponentTitle:@"Histórico Familiar" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
         
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Notas" withType:TextFieldComponentTypeTextView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 350) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:@"Notas" withType:TextFieldComponentTypeTextView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 400) withTextFieldWidth:nil];
         
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Diagnóstico" withType:TextFieldComponentTypeDiagnostic andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:@"Diagnóstico" withType:TextFieldComponentTypeDiagnostic andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 150) withTextFieldWidth:nil];
         
         
         if ([strongDelegate respondsToSelector:@selector(addViewModel:didFinishBuildingScreenArray:andSectionArray:)]) {
@@ -292,10 +292,11 @@
     [patient setSnsNumber:[buildingArray objectAtIndex:10]];
     [patient setPreviousDiseasesArray:[buildingArray objectAtIndex:11]];
     [patient setFamilyDiseasesArray:[buildingArray objectAtIndex:12]];
-    [patient setNotes:[buildingArray objectAtIndex:13]];
-    [patient setEmail:[buildingArray objectAtIndex:14]];
-    [patient setPhoneNumber:[buildingArray objectAtIndex:15]];
-    [patient setAttachmentArray:[buildingArray objectAtIndex:16]];
+    [patient setNotesArray:[buildingArray objectAtIndex:13]];
+    [patient setDiagnosticArray:[buildingArray objectAtIndex:14]];
+    [patient setEmail:[buildingArray objectAtIndex:15]];
+    [patient setPhoneNumber:[buildingArray objectAtIndex:16]];
+    [patient setAttachmentArray:[buildingArray objectAtIndex:17]];
     
     [self.repository registerSeparateUserWithEmail:patient.email completion:^(NSString * _Nonnull uid) {
         [self.repository writeNewPatient:patient withUID:uid andWithSections:(NSArray*)sections];

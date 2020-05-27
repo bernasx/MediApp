@@ -9,7 +9,8 @@
 #import "ITS_ListViewController.h"
 
 @interface ITS_ListViewController ()
-
+@property (weak, nonatomic) IBOutlet UICollectionView *listCollectionView;
+@property (nonatomic) NSMutableArray* objectArray;
 @end
 
 @implementation ITS_ListViewController
@@ -20,7 +21,18 @@
     [self designViewElements];
 }
 
-- (void)designViewElements {    
+- (void)designViewElements {
+    
+    //list collectionview layout
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+    layout.itemSize = CGSizeMake(self.view.frame.size.width - 20, 160);
+    [layout setSectionInset:UIEdgeInsetsMake(5, 10, 5, 10)];
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    layout.minimumLineSpacing = 40;
+    layout.minimumInteritemSpacing = 40;
+    self.listCollectionView.collectionViewLayout = layout;
+    
+    
     //designing for each type
     switch (self.mainMenuSelection) {
         case MainMenuSelectionMedics:
@@ -48,6 +60,26 @@
     UIViewController* vc = [storyboard instantiateViewControllerWithIdentifier:identifier]; //Casts the initiated vc to the class it should be in
     [(ITS_AddViewController *)vc setAddTypeSelection:self.mainMenuSelection];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - UICollectionView
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 3;
+    //return [self.objectArray count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *cellID = @"patientListCell";
+    NSString *nibID = @"ITS_PatientListCollectionViewCell";
+    UINib *nib = [UINib nibWithNibName:nibID bundle:NSBundle.mainBundle];
+    [self.listCollectionView registerNib:nib forCellWithReuseIdentifier:cellID];
+    ITS_PatientListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
+    return cell;
 }
 
 @end

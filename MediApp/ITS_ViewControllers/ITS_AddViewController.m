@@ -93,6 +93,12 @@
             if ([component isKindOfClass:[ITS_PickerViewComponent class]]) {
                 NSLog(@"%@",[(ITS_PickerViewComponent*)component currentSelection]);
             }
+            if ([component isKindOfClass:[ITS_DiagnosticComponent class]]) {
+                if ([[(ITS_DiagnosticComponent*)component getObjectData] count] < 1) {
+                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor insira um diagnóstico!"];
+                    creationIsValid = NO;
+                }
+            }
             
         }
     }

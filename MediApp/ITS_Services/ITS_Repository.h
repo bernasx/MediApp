@@ -13,6 +13,7 @@
 #import "Medic.h"
 #import "Patient.h"
 #import "Specialty.h"
+#import "Note.h"
 #import "Disease.h"
 NS_ASSUME_NONNULL_BEGIN
 

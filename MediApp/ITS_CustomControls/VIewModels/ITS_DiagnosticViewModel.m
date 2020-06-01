@@ -52,16 +52,16 @@
     self.dataArray = [NSMutableArray new];
     self.sectionArray = [NSMutableArray new];
     
-    [self addSectionToArrayWithName:@"Dados Pessoais"];
-    [self addSectionToArrayWithName:@"Dados Médicos"];
-    [self addSectionToArrayWithName:@"Anexos"];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_personal_data", @"")];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_medical_data",@"")];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_attachments", @"")];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Tratamento" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"diagnostic_component_treatment", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
     [self fetchDiseases:^(NSArray * _Nullable diseasesArray) {
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Doenças" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:NSLocalizedString(@"diagnostic_component_diseases", @"") withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Notas" withType:TextFieldComponentTypeTextView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 400) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:NSLocalizedString(@"add_component_notes", @"") withType:TextFieldComponentTypeTextView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 400) withTextFieldWidth:nil andSectionStringsArray:nil];
         
         if ([strongDelegate respondsToSelector:@selector(diagnosticViewModel:didFinishBuildingScreenArray:andSectionArray:)]) {
             [strongDelegate diagnosticViewModel:self didFinishBuildingScreenArray:self.dataArray andSectionArray:self.sectionArray];
@@ -69,7 +69,7 @@
         
     } ];
 
-    [self addComponentToArrayAtSection:2 withComponentTitle:@"Anexos do diagnostico" withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Documentos",@"Extras"] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:2 withComponentTitle:NSLocalizedString(@"diagnostic_component_attachments", @"") withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[NSLocalizedString(@"diagnostic_component_attachment_documents", @""),NSLocalizedString(@"diagnostic_component_attachment_extras", @"")] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil andSectionStringsArray:@[@"Documents",@"Extras"]];
 }
 
 #pragma mark - array management
@@ -79,7 +79,7 @@
     [self.dataArray addObject:[NSMutableArray new]];
 }
 
-- (void)addComponentToArrayAtSection:(NSInteger)section withComponentTitle:(NSString *)title withType:(TextFieldComponentType)textFieldComponentType andTextFieldType:(TextFieldType)textFieldType andSearchType:(SearchType)searchType andArray:(NSArray *)array andFrame:(CGRect)frame withTextFieldWidth:(NSNumber*)width {
+- (void)addComponentToArrayAtSection:(NSInteger)section withComponentTitle:(NSString *)title withType:(TextFieldComponentType)textFieldComponentType andTextFieldType:(TextFieldType)textFieldType andSearchType:(SearchType)searchType andArray:(NSArray *)array andFrame:(CGRect)frame withTextFieldWidth:(NSNumber*)width andSectionStringsArray:(NSArray*)sectionStringsArray{
     ITS_BaseTextFieldComponent *componentView;
     switch (textFieldComponentType) {
         case TextFieldComponentTypeNormal:
@@ -99,7 +99,7 @@
             break;
         case TextFieldComponentTypeAttachment:
             componentView = [ITS_AttachmentComponent new];
-            [(ITS_AttachmentComponent*)componentView initWithTitle:title andFrame:frame andSectionArray:array];
+            [(ITS_AttachmentComponent*)componentView initWithTitle:title andFrame:frame andSectionArray:array andSectionStringsArray:sectionStringsArray];
             [(ITS_AttachmentComponent*)componentView setDelegate:(id)self.delegate];
             break;
         case TextFieldComponentTypeZip:

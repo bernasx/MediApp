@@ -11,10 +11,12 @@
 #import "ITS_Enums.h"
 #import "ITS_BaseListCollectionViewCell.h"
 #import "ITS_PatientListCollectionViewCell.h"
+#import "ITS_ListViewModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_ListViewController : ITS_ViewController
 @property (nonatomic) MainMenuSelection mainMenuSelection;
+@property (nonatomic) ITS_ListViewModel *viewModel;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -27,7 +27,7 @@
         note.noteTitle = [self.titleTextfield text];
         [self.objectArray addObject:note];
     } else {
-        [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor insira um titulo!"];
+        [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warning_textview_title_not_filled", @"")];
     }
     [self.listTableView reloadData];
     

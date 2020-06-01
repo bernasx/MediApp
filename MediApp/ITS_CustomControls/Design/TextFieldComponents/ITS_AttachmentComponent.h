@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ITS_AttachmentComponent : ITS_BaseTextFieldComponent <UITableViewDelegate,UITableViewDataSource, SearchTableViewCellDelegate,UIDocumentPickerDelegate,AttachmentTableViewHeaderDelegate>
 @property (strong, nonatomic) IBOutlet UIView *view;
 @property (nonatomic, weak) id<AttachmentComponentDelegate> delegate;
-- (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame andSectionArray:(NSArray *)sectionArray;
+- (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame andSectionArray:(NSArray *)sectionArray andSectionStringsArray:(NSArray *)sectionStringsArray;
 - (NSArray *)getSections;
 - (id)getObjectData;
 @end

@@ -24,6 +24,7 @@
     [super viewDidLoad];
     NSLog(@"%@",[[FIRAuth auth] currentUser].email);
     [self designViewElements];
+    [self.showAllButton setTitle:NSLocalizedString(@"main_menu_show_all", @"") forState:UIControlStateNormal];
 }
 
 //Designs the view's elements and components with the proper characteristics

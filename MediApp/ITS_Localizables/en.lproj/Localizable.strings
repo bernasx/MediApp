@@ -1,0 +1,74 @@
+/* 
+  Localizable.strings
+  MediApp
+
+  Created by Bernardo Miguel Nunes Ribeiro on 27/05/2020.
+  Copyright © 2020 Bernardo Miguel Nunes Ribeiro. All rights reserved.
+*/
+
+//warnings
+"warning_fill_in_field" = "Please fill in this field!";
+"warning_specialty_already_added" = "That specialty was already added!";
+"warnings_specialty_does_not_exist" = "That specialty does not exist.";
+"warning_disease_already_added" = "That disease was already added!";
+"warning_disease_does_not_exist" = "That disease does not exist.";
+"warning_textview_title_not_filled" = "Please insert a title.";
+
+//Main Menu
+"main_menu_medics" = "My medics";
+"main_menu_patients" = "My patients";
+"main_menu_appointments" = "My appointments";
+"main_menu_medical_appointments" = "My medical appointments";
+"main_menu_show_all" = "Show all...";
+
+
+//Login
+"login_privacy_policy" = "Privacy Policy";
+"login_terms_and_conditions" = "Terms and Conditions";
+"login_welcome_message" = "Welcome to MediApp";
+"login_password" = "Password";
+
+//Add view model
+"add_section_personal_data" = "Personal Info";
+"add_section_medical_data" = "Medical Info";
+"add_section_contacts" = "Contact Info";
+"add_section_attachments" = "Attachments";
+"add_component_first_names" = "First Name";
+"add_component_last_names" = "Surname";
+"add_component_age" = "Age";
+"add_component_gender" = "Gender";
+"add_component_male" = "Male";
+"add_component_female" = "Female";
+"add_component_address" = "Home Address";
+"add_component_postal_code" = "ZIP/Postal Code";
+"add_component_natural" = "Place of Birth";
+"add_component_nationality" = "Nationality";
+"add_component_nif" = "NIF";
+"add_component_cc_number" = "CC Nº";
+"add_component_sns_number"= "SNS Nº";
+"add_component_disease_history" = "Disease History";
+"add_component_family_history" = "Family History";
+"add_component_notes" = "Notes";
+"add_component_diagnostic" = "Diagnostic";
+"add_component_phone" = "Phone Number";
+"add_component_patient_attachments" = "Patient Attachments";
+"add_component_medic_attachments" = "Medic Attachments";
+"add_component_attachment_documents" = "Documents";
+"add_component_attachment_extras" = "Extras";
+"add_component_specialty" = "Specialty";
+"add_component_superior_check" = "Chief Medic:";
+"add_button_patient" = "Add Patient";
+"add_button_medic" = "Add Medic";
+"add_button_appointment" = "Add Appointment";
+"add_button_medical_appointment" = "Add Medical Appointment";
+
+//List Screen
+"list_medic_title" = "Medics";
+"list_patient_title" = "Patients";
+
+//Diagnostic view model
+"diagnostic_component_treatment" = "Treatment";
+"diagnostic_component_diseases" = "Diseases";
+"diagnostic_component_attachments" = "Diagnostic Attachments";
+"diagnostic_component_attachment_documents" = "Documents";
+"diagnostic_component_attachment_extras" = "Extras";

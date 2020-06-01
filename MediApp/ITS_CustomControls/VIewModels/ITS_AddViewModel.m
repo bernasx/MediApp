@@ -78,41 +78,41 @@
     self.dataArray = [NSMutableArray new];
     self.sectionArray = [NSMutableArray new];
     
-    [self addSectionToArrayWithName:@"Dados Pessoais"];
-    [self addSectionToArrayWithName:@"Dados Médicos"];
-    [self addSectionToArrayWithName:@"Contatos"];
-    [self addSectionToArrayWithName:@"Anexos"];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_personal_data", @"")];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_medical_data", @"")];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_contacts", @"")];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_attachments", @"")];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Primeiros Nomes" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_first_names", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil] ;
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Apelidos" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_last_names", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Idade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:[NSNumber numberWithInt:50]];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_age", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:[NSNumber numberWithInt:50] andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Sexo" withType:TextFieldComponentTypePickerView andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Feminino",@"Masculino"] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_gender", @"") withType:TextFieldComponentTypePickerView andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[NSLocalizedString(@"add_component_female", @""),NSLocalizedString(@"add_component_male", @"")] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Morada" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_address", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Código Postal" withType:TextFieldComponentTypeZip andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0,0,414,110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_postal_code", @"") withType:TextFieldComponentTypeZip andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0,0,414,110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Naturalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_natural", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nacionalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_nationality", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"NIF" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_nif", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nº CC" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_cc_number", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nº de Utente" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_sns_number", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
     [self fetchDiseases:^(NSArray * _Nullable diseasesArray) {
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Histórico de Doenças" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:NSLocalizedString(@"add_component_disease_history", @"") withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil andSectionStringsArray:nil];
         
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Histórico Familiar" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:NSLocalizedString(@"add_component_family_history", @"") withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:diseasesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil andSectionStringsArray:nil];
         
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Notas" withType:TextFieldComponentTypeTextView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 400) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:NSLocalizedString(@"add_component_notes", @"") withType:TextFieldComponentTypeTextView andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 400) withTextFieldWidth:nil andSectionStringsArray:nil];
         
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Diagnóstico" withType:TextFieldComponentTypeDiagnostic andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 150) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:NSLocalizedString(@"add_component_diagnostic", @"") withType:TextFieldComponentTypeDiagnostic andTextFieldType:UITextFieldSearch andSearchType:SearchDisease andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 150) withTextFieldWidth:nil andSectionStringsArray:nil];
         
         
         if ([strongDelegate respondsToSelector:@selector(addViewModel:didFinishBuildingScreenArray:andSectionArray:)]) {
@@ -121,11 +121,11 @@
         
     } ];
     
-    [self addComponentToArrayAtSection:2 withComponentTitle:@"Email" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:2 withComponentTitle:@"Email" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:2 withComponentTitle:@"Telemóvel" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:2 withComponentTitle:NSLocalizedString(@"add_component_phone", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
 
-    [self addComponentToArrayAtSection:3 withComponentTitle:@"Anexos do paciente" withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Documentos",@"Extras"] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:3 withComponentTitle:NSLocalizedString(@"add_component_patient_attachments", @"") withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[NSLocalizedString(@"add_component_attachment_documents", @""),NSLocalizedString(@"add_component_attachment_extras", @"")] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil andSectionStringsArray:@[@"Documents",@"Extras"]];
 }
 
 - (void)buildForMedics{
@@ -134,35 +134,35 @@
     self.dataArray = [NSMutableArray new];
     self.sectionArray = [NSMutableArray new];
     
-    [self addSectionToArrayWithName:@"Dados Pessoais"];
-    [self addSectionToArrayWithName:@"Dados Médicos"];
-    [self addSectionToArrayWithName:@"Contatos"];
-    [self addSectionToArrayWithName:@"Anexos"];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_personal_data", @"")];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_medical_data", @"")];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_contacts", @"")];
+    [self addSectionToArrayWithName:NSLocalizedString(@"add_section_attachments", @"")];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Primeiros Nomes" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_first_names", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Apelidos" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_last_names", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Idade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:[NSNumber numberWithInt:50]];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_age", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:[NSNumber numberWithInt:50] andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Sexo" withType:TextFieldComponentTypePickerView andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Feminino",@"Masculino"] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_gender", @"") withType:TextFieldComponentTypePickerView andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[NSLocalizedString(@"add_component_female", @""),NSLocalizedString(@"add_component_male", @"")] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Morada" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_address", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Código Postal" withType:TextFieldComponentTypeZip andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0,0,414,110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_postal_code", @"") withType:TextFieldComponentTypeZip andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0,0,414,110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Naturalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_natural", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nacionalidade" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_nationality", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"NIF" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_nif", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:0 withComponentTitle:@"Nº CC" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:0 withComponentTitle:NSLocalizedString(@"add_component_cc_number", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
     [self fetchSpecialties:^(NSArray * _Nullable specialtiesArray) {
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Especialidade" withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchSpecialty andArray:specialtiesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:NSLocalizedString(@"add_component_specialty", @"") withType:TextFieldComponentTypeTableView andTextFieldType:UITextFieldSearch andSearchType:SearchSpecialty andArray:specialtiesArray andFrame:CGRectMake(0, 0, 414, 315) withTextFieldWidth:nil andSectionStringsArray:nil];
         
-        [self addComponentToArrayAtSection:1 withComponentTitle:@"Médico chefe:" withType:TextFieldComponentTypeSwitch andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 60) withTextFieldWidth:nil];
+        [self addComponentToArrayAtSection:1 withComponentTitle:NSLocalizedString(@"add_component_superior_check", @"") withType:TextFieldComponentTypeSwitch andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 60) withTextFieldWidth:nil andSectionStringsArray:nil];
         
         if ([strongDelegate respondsToSelector:@selector(addViewModel:didFinishBuildingScreenArray:andSectionArray:)]) {
             [strongDelegate addViewModel:self didFinishBuildingScreenArray:self.dataArray andSectionArray:self.sectionArray];
@@ -170,11 +170,11 @@
         
     } ];
     
-    [self addComponentToArrayAtSection:2 withComponentTitle:@"Email" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:2 withComponentTitle:@"Email" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
     
-    [self addComponentToArrayAtSection:2 withComponentTitle:@"Telemóvel" withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:2 withComponentTitle:NSLocalizedString(@"add_component_phone", @"") withType:TextFieldComponentTypeNormal andTextFieldType:UITextFieldNumber andSearchType:SearchSpecialty andArray:[NSArray new] andFrame:CGRectMake(0, 0, 414, 110) withTextFieldWidth:nil andSectionStringsArray:nil];
 
-    [self addComponentToArrayAtSection:3 withComponentTitle:@"Anexos do médico" withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[@"Documentos",@"Extras"] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil];
+    [self addComponentToArrayAtSection:3 withComponentTitle:NSLocalizedString(@"add_component_medic_attachments", @"") withType:TextFieldComponentTypeAttachment andTextFieldType:UITextFieldDefault andSearchType:SearchSpecialty andArray:@[NSLocalizedString(@"add_component_attachment_documents", @""),NSLocalizedString(@"add_component_attachment_extras", @"")] andFrame:CGRectMake(0, 0, 414, 200) withTextFieldWidth:nil andSectionStringsArray:@[@"Documents",@"Extras"]];
 }
 
 
@@ -186,7 +186,7 @@
     [self.dataArray addObject:[NSMutableArray new]];
 }
 
-- (void)addComponentToArrayAtSection:(NSInteger)section withComponentTitle:(NSString *)title withType:(TextFieldComponentType)textFieldComponentType andTextFieldType:(TextFieldType)textFieldType andSearchType:(SearchType)searchType andArray:(NSArray *)array andFrame:(CGRect)frame withTextFieldWidth:(NSNumber*)width {
+- (void)addComponentToArrayAtSection:(NSInteger)section withComponentTitle:(NSString *)title withType:(TextFieldComponentType)textFieldComponentType andTextFieldType:(TextFieldType)textFieldType andSearchType:(SearchType)searchType andArray:(NSArray *)array andFrame:(CGRect)frame withTextFieldWidth:(NSNumber*)width andSectionStringsArray:(NSArray *)sectionStringsArray {
     ITS_BaseTextFieldComponent *componentView;
     switch (textFieldComponentType) {
         case TextFieldComponentTypeNormal:
@@ -206,7 +206,7 @@
             break;
         case TextFieldComponentTypeAttachment:
             componentView = [ITS_AttachmentComponent new];
-            [(ITS_AttachmentComponent*)componentView initWithTitle:title andFrame:frame andSectionArray:array];
+            [(ITS_AttachmentComponent*)componentView initWithTitle:title andFrame:frame andSectionArray:array andSectionStringsArray:sectionStringsArray];
             [(ITS_AttachmentComponent*)componentView setDelegate:(id)self.delegate];
             break;
         case TextFieldComponentTypeZip:

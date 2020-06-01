@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,7 +23,66 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRG-JB-a08">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRw-gN-y88">
+                                <rect key="frame" x="8" y="8" width="57" height="27"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mze-IA-2R4">
+                                <rect key="frame" x="386" y="8" width="20" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="pencil.circle" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVR-q5-jae">
+                                <rect key="frame" x="358" y="8" width="20" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="trash.circle" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6t-6q-0es">
+                                <rect key="frame" x="8" y="39" width="398" height="16"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o49-75-hWZ">
+                                <rect key="frame" x="8" y="63" width="398" height="16"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1SL-sh-4dj">
+                                <rect key="frame" x="8" y="83" width="386" height="73"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZRw-gN-y88" firstAttribute="top" secondItem="LRG-JB-a08" secondAttribute="top" constant="8" id="5hd-Tu-ZxQ"/>
+                            <constraint firstItem="mze-IA-2R4" firstAttribute="top" secondItem="LRG-JB-a08" secondAttribute="top" constant="8" id="Ecy-cw-OIq"/>
+                            <constraint firstAttribute="trailing" secondItem="o49-75-hWZ" secondAttribute="trailing" constant="8" id="Eef-sd-HhD"/>
+                            <constraint firstAttribute="trailing" secondItem="A6t-6q-0es" secondAttribute="trailing" constant="8" id="RlB-Lb-4fm"/>
+                            <constraint firstItem="rVR-q5-jae" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZRw-gN-y88" secondAttribute="trailing" constant="8" id="UKn-Mc-qco"/>
+                            <constraint firstAttribute="trailing" secondItem="mze-IA-2R4" secondAttribute="trailing" constant="8" id="VPL-GV-fGP"/>
+                            <constraint firstAttribute="trailing" secondItem="1SL-sh-4dj" secondAttribute="trailing" constant="20" id="Xvn-lt-1A5"/>
+                            <constraint firstItem="o49-75-hWZ" firstAttribute="leading" secondItem="LRG-JB-a08" secondAttribute="leading" constant="8" id="bI8-i8-mD6"/>
+                            <constraint firstItem="mze-IA-2R4" firstAttribute="leading" secondItem="rVR-q5-jae" secondAttribute="trailing" constant="8" id="bIf-Z5-qpe"/>
+                            <constraint firstItem="o49-75-hWZ" firstAttribute="top" secondItem="A6t-6q-0es" secondAttribute="bottom" constant="8" id="duR-8x-tpf"/>
+                            <constraint firstItem="A6t-6q-0es" firstAttribute="leading" secondItem="LRG-JB-a08" secondAttribute="leading" constant="8" id="eF7-Ca-nnP"/>
+                            <constraint firstItem="A6t-6q-0es" firstAttribute="top" secondItem="ZRw-gN-y88" secondAttribute="bottom" constant="4" id="fYZ-xz-64F"/>
+                            <constraint firstItem="rVR-q5-jae" firstAttribute="top" secondItem="LRG-JB-a08" secondAttribute="top" constant="8" id="iOk-re-CAd"/>
+                            <constraint firstItem="1SL-sh-4dj" firstAttribute="top" secondItem="o49-75-hWZ" secondAttribute="bottom" constant="4" id="k9T-mU-cDX"/>
+                            <constraint firstItem="1SL-sh-4dj" firstAttribute="leading" secondItem="LRG-JB-a08" secondAttribute="leading" constant="8" id="odO-P2-cwe"/>
+                            <constraint firstAttribute="bottom" secondItem="1SL-sh-4dj" secondAttribute="bottom" constant="4" id="zRp-hO-MF4"/>
+                            <constraint firstItem="ZRw-gN-y88" firstAttribute="leading" secondItem="LRG-JB-a08" secondAttribute="leading" constant="8" id="zc7-wf-xCq"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
@@ -31,9 +95,17 @@
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="414" height="160"/>
             <connections>
+                <outlet property="ageLabel" destination="A6t-6q-0es" id="Ff8-L3-Cxq"/>
                 <outlet property="containerView" destination="LRG-JB-a08" id="8Mh-77-caV"/>
+                <outlet property="diseasesTableView" destination="1SL-sh-4dj" id="oMA-Bg-Lmq"/>
+                <outlet property="nameLabel" destination="ZRw-gN-y88" id="b5X-OK-TLI"/>
+                <outlet property="phoneNumberLabel" destination="o49-75-hWZ" id="hMu-E1-Zxc"/>
             </connections>
             <point key="canvasLocation" x="395.6521739130435" y="178.125"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="pencil.circle" catalog="system" width="128" height="121"/>
+        <image name="trash.circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

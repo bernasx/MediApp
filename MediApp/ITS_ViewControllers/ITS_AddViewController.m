@@ -47,16 +47,16 @@
 - (void)setupButtonTitle {
     switch (self.addTypeSelection) {
         case MainMenuSelectionMedics:
-            [self.addButton setTitle:@"Guardar Médico" forState:UIControlStateNormal];
+            [self.addButton setTitle:NSLocalizedString(@"add_button_medic", @"") forState:UIControlStateNormal];
             break;
         case MainMenuSelectionPatients:
-            [self.addButton setTitle:@"Guardar Paciente" forState:UIControlStateNormal];
+            [self.addButton setTitle:NSLocalizedString(@"add_button_patient", @"") forState:UIControlStateNormal];
              break;
         case MainMenuSelectionAppointments:
-            [self.addButton setTitle:@"Guardar Agendamento" forState:UIControlStateNormal];
+            [self.addButton setTitle:NSLocalizedString(@"add_button_appointment", @"") forState:UIControlStateNormal];
              break;
         case MainMenuSelectionMedicalAppointment:
-            [self.addButton setTitle:@"Guardar Consulta" forState:UIControlStateNormal];
+            [self.addButton setTitle:NSLocalizedString(@"add_button_medical_appointment", @"") forState:UIControlStateNormal];
              break;
         default:
             break;

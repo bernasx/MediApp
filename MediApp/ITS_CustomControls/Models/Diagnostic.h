@@ -11,13 +11,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Diagnostic : NSObject
 @property (nonatomic) NSString* treatment;
-@property (nonatomic) NSArray* currentDiseases;
+@property (nonatomic) NSMutableArray* currentDiseases;
+@property (nonatomic) NSArray* currentDiseasesIds;
 @property (nonatomic) NSArray* notesArray;
 @property (nonatomic) NSArray* attachmentArray;
 @property (nonatomic) NSUUID* uid;
 @property (nonatomic) NSDate* creationDate;
 //sections for the attachment array
 @property (nonatomic)NSArray* attachmentsSections;
+- (void)initWithDict:(NSDictionary *)dict andUid:(NSString*)uid;
 @end
 
 NS_ASSUME_NONNULL_END

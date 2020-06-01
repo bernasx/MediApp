@@ -9,6 +9,10 @@
 #import "ITS_LoginViewController.h"
 
 @interface ITS_LoginViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *privacyPolicyButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *termsAndConditionsButton;
+
 @end
 
 @implementation ITS_LoginViewController
@@ -18,11 +22,11 @@
     bool validLogin = YES;
     //check textfields for text
     if (![self.emailView textfieldHasText]) {
-        [self.emailView updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor preencha este campo!"];
+        [self.emailView updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warning_fill_in_field",@"")];
         validLogin = NO;
     }
     if (![self.passwordView textfieldHasText]) {
-        [self.passwordView updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor preencha este campo!"];
+        [self.passwordView updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warning_fill_in_field",@"")];
         validLogin = NO;
     }
     //if textfields were ok
@@ -72,6 +76,9 @@
     [super viewDidLoad];
     [self designViewElements];
     self.viewModel = [[ITS_LoginViewModel alloc] init];
+    [self.termsAndConditionsButton setTitle:NSLocalizedString(@"login_terms_and_conditions", @"") forState:UIControlStateNormal];
+    [self.privacyPolicyButton setTitle:NSLocalizedString(@"login_privacy_policy", @"") forState:UIControlStateNormal];
+    
     //[self.viewModel logOut];
     //[self.viewModel registerUserWithEmail:@"bernas@gmail.com" andPassword:@"123123123"];
     
@@ -93,12 +100,12 @@
 //Designs the view's elements and components with the proper characteristics
 - (void)designViewElements {
     [self.navigationItem setTitle:@"Login"];
-    [self.welcomeLabel setText:@"Bem-vindo à MediApp"];
+    [self.welcomeLabel setText:NSLocalizedString(@"login_welcome_message", @"")];
     [self.welcomeLabel setTextColor:[ITS_Colors secondaryColor]];
 
     //setup textfield components
     [self.emailView initWithTitle:@"Email" andType:UITextFieldEmail andFrame:CGRectMake(0, 0, self.emailView.frame.size.width, self.emailView.frame.size.height)];
-    [self.passwordView initWithTitle:@"Password" andType:UITextFieldPassword andFrame:CGRectMake(0, 0, self.passwordView.frame.size.width, self.passwordView.frame.size.height)];
+    [self.passwordView initWithTitle:NSLocalizedString(@"login_password", @"") andType:UITextFieldPassword andFrame:CGRectMake(0, 0, self.passwordView.frame.size.width, self.passwordView.frame.size.height)];
 
     //setup button
     [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];

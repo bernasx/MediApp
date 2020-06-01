@@ -10,7 +10,7 @@
 
 @interface ITS_ListViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *listCollectionView;
-@property (nonatomic) NSMutableArray* objectArray;
+@property (nonatomic) NSArray* objectArray;
 @end
 
 @implementation ITS_ListViewController
@@ -18,7 +18,12 @@
 #pragma mark -  Initial Setup
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewModel = [[ITS_ListViewModel alloc] init];
     [self designViewElements];
+    [self.viewModel getPatients:^(NSArray * _Nullable array) {
+        self.objectArray = array;
+        [self.listCollectionView reloadData];
+    }];
 }
 
 - (void)designViewElements {
@@ -36,10 +41,10 @@
     //designing for each type
     switch (self.mainMenuSelection) {
         case MainMenuSelectionMedics:
-            [self.navigationItem setTitle:@"Médicos"];
+            [self.navigationItem setTitle:NSLocalizedString(@"list_medic_title", @"")];
             break;
         case MainMenuSelectionPatients:
-            [self.navigationItem setTitle:@"Pacientes"];
+            [self.navigationItem setTitle:NSLocalizedString(@"list_patient_title", @"")];
             break;
         default:
             break;
@@ -69,7 +74,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+    return [self.objectArray count];
     //return [self.objectArray count];
 }
 
@@ -79,6 +84,7 @@
     UINib *nib = [UINib nibWithNibName:nibID bundle:NSBundle.mainBundle];
     [self.listCollectionView registerNib:nib forCellWithReuseIdentifier:cellID];
     ITS_PatientListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
+    [cell fillCellWithPatient:[self.objectArray objectAtIndex:indexPath.row]];
     return cell;
 }
 

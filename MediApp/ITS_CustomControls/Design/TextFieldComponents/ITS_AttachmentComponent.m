@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *attachmentButton;
 @property (nonatomic) NSMutableArray *attachmentArray;
 @property (nonatomic) NSArray *sectionArray;
+@property (nonatomic) NSArray *sectionStringsArray;
 @property (nonatomic) int currentIndex;
 @end
 @implementation ITS_AttachmentComponent
@@ -59,7 +60,7 @@
 }
 
 //init the object with a type and find out how to set it up. Frame will set up the view properly to fit the one in Storyboard
-- (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame andSectionArray:(NSArray *)sectionArray{
+- (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame andSectionArray:(NSArray *)sectionArray andSectionStringsArray:(NSArray *)sectionStringsArray{
     self.frame = frame;
     self.view.frame = frame;
     [self.titleLabel setText:title];
@@ -67,6 +68,7 @@
     self.attachmentTableView.delegate = self;
     self.attachmentTableView.dataSource = self;
     self.attachmentArray = [[NSMutableArray alloc] init];
+    self.sectionStringsArray = sectionStringsArray;
     self.sectionArray = [[NSArray alloc] initWithArray:sectionArray];
     for (int i = 0; i < [self.sectionArray count]; i++) { //add an array for every section
         [self.attachmentArray addObject:[NSMutableArray new]];
@@ -140,7 +142,7 @@
 }
 
 - (NSArray *)getSections {
-    return [NSArray arrayWithArray:self.sectionArray];
+    return self.sectionStringsArray;
 }
 
 - (CGFloat)getDefaultComponentHeight {

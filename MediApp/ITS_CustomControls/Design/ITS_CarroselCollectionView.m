@@ -35,10 +35,10 @@
 - (void)setUpArrays {    
     self.selectionImages = [[NSMutableArray alloc] init];
     self.selectionTitles = [[NSMutableArray alloc] init];
-    [self fillSelectionArraysWithSingleImageName:@"calendar" andTitle:@"As minhas consultas"];
-    [self fillSelectionArraysWithSingleImageName:@"person.2.fill" andTitle:@"Os meus pacientes"];
-    [self fillSelectionArraysWithSingleImageName:@"calendar.badge.plus" andTitle:@"Os meus agendamentos"];
-    [self fillSelectionArraysWithSingleImageName:@"person.3.fill" andTitle:@"Os meus médicos"];
+    [self fillSelectionArraysWithSingleImageName:@"calendar" andTitle:NSLocalizedString(@"main_menu_medical_appointments", @"")];
+    [self fillSelectionArraysWithSingleImageName:@"person.2.fill" andTitle:NSLocalizedString(@"main_menu_patients", @"")];
+    [self fillSelectionArraysWithSingleImageName:@"calendar.badge.plus" andTitle:NSLocalizedString(@"main_menu_appointments", @"")];
+    [self fillSelectionArraysWithSingleImageName:@"person.3.fill" andTitle:NSLocalizedString(@"main_menu_medics", @"")];
 }
 
 

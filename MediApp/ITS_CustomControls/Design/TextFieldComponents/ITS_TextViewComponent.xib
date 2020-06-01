@@ -38,7 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-Ny-aUP">
-                    <rect key="frame" x="16" y="262" width="378" height="130"/>
+                    <rect key="frame" x="0.0" y="262" width="414" height="130"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="qJ4-Pv-VLf"/>
@@ -99,7 +99,7 @@
                 <constraint firstAttribute="trailing" secondItem="Ilc-yp-Lsr" secondAttribute="trailing" constant="20" id="Bf9-z2-Kva"/>
                 <constraint firstItem="Ilc-yp-Lsr" firstAttribute="top" secondItem="8YP-FC-PHl" secondAttribute="bottom" constant="8" id="FRI-uG-4fn"/>
                 <constraint firstItem="hZc-qY-Ccm" firstAttribute="top" secondItem="7wN-H9-CTP" secondAttribute="bottom" constant="16" id="H8r-z0-TbR"/>
-                <constraint firstAttribute="trailing" secondItem="pcd-Ny-aUP" secondAttribute="trailing" constant="20" id="JLd-ns-MYh"/>
+                <constraint firstAttribute="trailing" secondItem="pcd-Ny-aUP" secondAttribute="trailing" id="JLd-ns-MYh"/>
                 <constraint firstItem="bZU-GQ-J8X" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="M62-h6-t3d"/>
                 <constraint firstItem="8YP-FC-PHl" firstAttribute="top" secondItem="hZc-qY-Ccm" secondAttribute="bottom" constant="8" id="NEf-r5-jCf"/>
                 <constraint firstItem="7wN-H9-CTP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="PBd-SW-ii1"/>
@@ -108,7 +108,7 @@
                 <constraint firstAttribute="trailing" secondItem="hZc-qY-Ccm" secondAttribute="trailing" constant="20" id="TxV-N4-Vb4"/>
                 <constraint firstItem="Pdk-yj-IiH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Tz4-tR-U4F"/>
                 <constraint firstItem="8YP-FC-PHl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="dz2-Hi-IJc"/>
-                <constraint firstItem="pcd-Ny-aUP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="gvs-mq-0e6"/>
+                <constraint firstItem="pcd-Ny-aUP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gvs-mq-0e6"/>
                 <constraint firstAttribute="bottom" secondItem="pcd-Ny-aUP" secondAttribute="bottom" constant="8" id="oza-rm-DDA"/>
                 <constraint firstItem="Pdk-yj-IiH" firstAttribute="leading" secondItem="bZU-GQ-J8X" secondAttribute="trailing" constant="16" id="poD-MK-BPS"/>
                 <constraint firstItem="hZc-qY-Ccm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="pyJ-Lw-5cp"/>

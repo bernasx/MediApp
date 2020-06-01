@@ -94,7 +94,7 @@
     return _currentSelection;
 }
 - (id)getObjectData {
-    return [self currentSelection];
+    return [NSNumber numberWithInteger:[self.selectionArray indexOfObject:self.currentSelection]];
 }
 
 @end

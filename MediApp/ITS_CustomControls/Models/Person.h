@@ -23,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSString* ccNumber;
 @property (nonatomic) NSString* email;
 @property (nonatomic) NSString* phoneNumber;
-@property (nonatomic) NSArray* attachmentArray;
+@property (nonatomic) NSArray* attachmentArray; //comes from the DB as
+@property (nonatomic) NSString* uid;
 @end
 
 NS_ASSUME_NONNULL_END

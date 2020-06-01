@@ -44,6 +44,9 @@
 		D1919D44246EB95400C70120 /* Attachment.m in Sources */ = {isa = PBXBuildFile; fileRef = D1919D43246EB95400C70120 /* Attachment.m */; };
 		D1919D47246ED93D00C70120 /* Medic.m in Sources */ = {isa = PBXBuildFile; fileRef = D1919D46246ED93D00C70120 /* Medic.m */; };
 		D1CB019B247E81EB000442D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1CB019D247E81EB000442D0 /* Localizable.strings */; };
+		D1CB01A4247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CB01A2247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.m */; };
+		D1CB01A5247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1CB01A3247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.xib */; };
+		D1CB01A8247FF78A000442D0 /* ITS_ListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CB01A7247FF78A000442D0 /* ITS_ListViewModel.m */; };
 		D1D21FCD246171C70044AC93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FCC246171C70044AC93 /* AppDelegate.m */; };
 		D1D21FD0246171C70044AC93 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D21FCF246171C70044AC93 /* SceneDelegate.m */; };
 		D1D21FD6246171C70044AC93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D21FD4246171C70044AC93 /* Main.storyboard */; };
@@ -156,7 +159,6 @@
 		D161B1C7247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_PatientListCollectionViewCell.h; sourceTree = "<group>"; };
 		D161B1C8247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_PatientListCollectionViewCell.m; sourceTree = "<group>"; };
 		D161B1C9247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_PatientListCollectionViewCell.xib; sourceTree = "<group>"; };
-		D161B1D2247E7FD4000861C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		D1919D3B246E922800C70120 /* ITS_AttachmentComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_AttachmentComponent.h; sourceTree = "<group>"; };
 		D1919D3C246E922800C70120 /* ITS_AttachmentComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_AttachmentComponent.m; sourceTree = "<group>"; };
 		D1919D40246E92AA00C70120 /* ITS_AttachmentComponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_AttachmentComponent.xib; sourceTree = "<group>"; };
@@ -164,11 +166,13 @@
 		D1919D43246EB95400C70120 /* Attachment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Attachment.m; sourceTree = "<group>"; };
 		D1919D45246ED93D00C70120 /* Medic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Medic.h; sourceTree = "<group>"; };
 		D1919D46246ED93D00C70120 /* Medic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Medic.m; sourceTree = "<group>"; };
-		D1CB0192247E8041000442D0 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
-		D1CB0193247E8042000442D0 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		D1CB0195247E806B000442D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D1CB019C247E81EB000442D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D1CB019E247E81EF000442D0 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D1CB01A1247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_ListLabelOnlyTableViewCell.h; sourceTree = "<group>"; };
+		D1CB01A2247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_ListLabelOnlyTableViewCell.m; sourceTree = "<group>"; };
+		D1CB01A3247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_ListLabelOnlyTableViewCell.xib; sourceTree = "<group>"; };
+		D1CB01A6247FF78A000442D0 /* ITS_ListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_ListViewModel.h; sourceTree = "<group>"; };
+		D1CB01A7247FF78A000442D0 /* ITS_ListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_ListViewModel.m; sourceTree = "<group>"; };
 		D1D21FC8246171C70044AC93 /* MediApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D21FCB246171C70044AC93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D1D21FCC246171C70044AC93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -326,6 +330,9 @@
 		D161B1B8247D6DEF000861C9 /* ListScreenCells */ = {
 			isa = PBXGroup;
 			children = (
+				D1CB01A1247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.h */,
+				D1CB01A2247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.m */,
+				D1CB01A3247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.xib */,
 				D161B1C4247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.h */,
 				D161B1C5247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.m */,
 				D161B1C7247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.h */,
@@ -335,12 +342,12 @@
 			path = ListScreenCells;
 			sourceTree = "<group>";
 		};
-		D1CB0196247E8183000442D0 /* Localizables */ = {
+		D1CB0196247E8183000442D0 /* ITS_Localizables */ = {
 			isa = PBXGroup;
 			children = (
 				D1CB019D247E81EB000442D0 /* Localizable.strings */,
 			);
-			path = Localizables;
+			path = ITS_Localizables;
 			sourceTree = "<group>";
 		};
 		D1D21FBF246171C60044AC93 = {
@@ -370,8 +377,8 @@
 		D1D21FCA246171C70044AC93 /* MediApp */ = {
 			isa = PBXGroup;
 			children = (
-				D1CB0196247E8183000442D0 /* Localizables */,
 				D1DC715E246D845500FA5402 /* MediApp.entitlements */,
+				D1CB0196247E8183000442D0 /* ITS_Localizables */,
 				D1D220212462B49C0044AC93 /* ITS_Utils */,
 				D1D2200B246185AD0044AC93 /* ITS_CustomControls */,
 				D1D2200724617E240044AC93 /* ITS_ViewControllers */,
@@ -500,6 +507,8 @@
 				D11B8B1524695E430073C7DE /* ITS_AddViewModel.m */,
 				D13B72302478246700FCCEBE /* ITS_DiagnosticViewModel.h */,
 				D13B72312478246700FCCEBE /* ITS_DiagnosticViewModel.m */,
+				D1CB01A6247FF78A000442D0 /* ITS_ListViewModel.h */,
+				D1CB01A7247FF78A000442D0 /* ITS_ListViewModel.m */,
 			);
 			path = VIewModels;
 			sourceTree = "<group>";
@@ -667,6 +676,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1DC7113246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.xib in Resources */,
+				D1CB01A5247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.xib in Resources */,
 				D13B72252477DEA200FCCEBE /* ITS_TextViewComponent.xib in Resources */,
 				D1D22053246472310044AC93 /* ITS_TextFieldWithTableComponent.xib in Resources */,
 				D1D2201A2461B14D0044AC93 /* SF-Pro-Text-Semibold.otf in Resources */,
@@ -826,6 +836,7 @@
 				D1D21FE1246171C80044AC93 /* main.m in Sources */,
 				D1DC7112246AF1D700FA5402 /* ITS_HeaderViewTableViewCell.m in Sources */,
 				D11B8B11246950920073C7DE /* ITS_PickerViewComponent.m in Sources */,
+				D1CB01A8247FF78A000442D0 /* ITS_ListViewModel.m in Sources */,
 				D161B1B4247BC22C000861C9 /* Diagnostic.m in Sources */,
 				D1D2200A24617E700044AC93 /* ITS_LoginViewController.m in Sources */,
 				D1D22051246470F70044AC93 /* ITS_TextFieldWithTableComponent.m in Sources */,
@@ -846,6 +857,7 @@
 				D1D220202462AA740044AC93 /* ITS_ViewController.m in Sources */,
 				D1919D47246ED93D00C70120 /* Medic.m in Sources */,
 				D13B72232477DE9000FCCEBE /* ITS_TextViewComponent.m in Sources */,
+				D1CB01A4247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.m in Sources */,
 				D1D21FCD246171C70044AC93 /* AppDelegate.m in Sources */,
 				D1D220242462B4AC0044AC93 /* ITS_Enums.m in Sources */,
 				D1919D44246EB95400C70120 /* Attachment.m in Sources */,
@@ -907,8 +919,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D1D21FD5246171C70044AC93 /* Base */,
-				D161B1D2247E7FD4000861C9 /* en */,
-				D1CB0192247E8041000442D0 /* pt-PT */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -917,8 +927,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D1D21FDD246171C80044AC93 /* Base */,
-				D1CB0193247E8042000442D0 /* pt-PT */,
-				D1CB0195247E806B000442D0 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

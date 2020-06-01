@@ -1,0 +1,73 @@
+/* 
+  Localizable.strings
+  MediApp
+
+  Created by Bernardo Miguel Nunes Ribeiro on 27/05/2020.
+  Copyright © 2020 Bernardo Miguel Nunes Ribeiro. All rights reserved.
+*/
+
+//warnings
+"warning_fill_in_field" = "Por favor preencha este campo!";
+"warning_specialty_already_added" = "Essa especialidade já foi adicionada!";
+"warnings_specialty_does_not_exist" = "Essa especialidade não existe.";
+"warning_disease_already_added" = "Essa doença já foi adicionada!";
+"warning_disease_does_not_exist" = "Essa doença não existe.";
+"warning_textview_title_not_filled" = "Por favor insira um titulo!";
+
+//Main Menu
+"main_menu_medics" = "Os meus médicos";
+"main_menu_patients" = "Os meus pacientes";
+"main_menu_appointments" = "Os meus agendamentos";
+"main_menu_medical_appointments" = "As minhas consultas";
+"main_menu_show_all" = "Mostrar tudo...";
+
+//Login
+"login_privacy_policy" = "Politica de Privacidade";
+"login_terms_and_conditions" = "Termos de Utilização";
+"login_welcome_message" = "Bem-vindo à MediApp";
+"login_password" = "Palavra-chave";
+
+//Add view model
+"add_section_personal_data" = "Dados Pessoais";
+"add_section_medical_data" = "Dados Medicos";
+"add_section_contacts" = "Contatos";
+"add_section_attachments" = "Anexos";
+"add_component_first_names" = "Primeiros Nomes";
+"add_component_last_names" = "Apelidos";
+"add_component_age" = "Idade";
+"add_component_gender" = "Sexo";
+"add_component_male" = "Masculino";
+"add_component_female" = "Feminino";
+"add_component_address" = "Morada";
+"add_component_postal_code" = "Código Postal";
+"add_component_natural" = "Naturalidade";
+"add_component_nationality" = "Nacionalidade";
+"add_component_nif" = "NIF";
+"add_component_cc_number" = "Nº CC";
+"add_component_sns_number" = "Nº de Utente";
+"add_component_disease_history" = "Histórico de Doenças";
+"add_component_family_history" = "Histórico Familiar";
+"add_component_notes" = "Notas";
+"add_component_diagnostic" = "Diagnóstico";
+"add_component_phone" = "Telemóvel";
+"add_component_patient_attachments" = "Anexos do Paciente";
+"add_component_medic_attachments" = "Anexos do Médico";
+"add_component_attachment_documents" = "Documentos";
+"add_component_attachment_extras" = "Extras";
+"add_component_specialty" = "Especialidade";
+"add_component_superior_check" = "Médico Chefe:";
+"add_button_patient" = "Adicionar paciente";
+"add_button_medic" = "Adicionar médico";
+"add_button_appointment" = "Adicionar Agendamento";
+"add_button_medical_appointment" = "Adicionar Consulta";
+
+//List Screen
+"list_medic_title" = "Médicos";
+"list_patient_title" = "Pacientes";
+
+//Diagnostic view model
+"diagnostic_component_treatment" = "Tratamento";
+"diagnostic_component_diseases" = "Doenças";
+"diagnostic_component_attachments" = "Anexos do Diagnóstico";
+"diagnostic_component_attachment_documents" = "Documentos";
+"diagnostic_component_attachment_extras" = "Extras";

@@ -38,13 +38,13 @@
                            [self.objectArray addObject:specialty];
                        }
                        else {
-                           [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa especialidade já foi adicionada!"];
+                           [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warning_specialty_already_added", @"")];
                        }
                    }
                }
                //if textfield is still empty, this means nothing was found
                if(![self textfieldHasText]){
-                   [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa especialidade não existe."];
+                   [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warnings_specialty_does_not_exist", @"")];
                }
             break;
         case SearchDisease:
@@ -55,13 +55,13 @@
                            [self.objectArray addObject:disease];
                        }
                        else {
-                           [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa doença já foi adicionada!"];
+                           [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warning_disease_already_added", @"")];
                        }
                    }
                }
                //if textfield is still empty, this means nothing was found
                if(![self textfieldHasText]){
-                   [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Essa doença não existe."];
+                   [self updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warning_disease_does_not_exist", @"")];
                }
             break;
         default:

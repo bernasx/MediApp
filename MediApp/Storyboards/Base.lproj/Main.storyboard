@@ -123,6 +123,8 @@
                         <outlet property="emailView" destination="M2E-Rx-FRB" id="1fK-Rw-zkc"/>
                         <outlet property="loginButton" destination="Qy0-Vy-HzS" id="DGJ-ED-2zd"/>
                         <outlet property="passwordView" destination="8iw-E9-wzp" id="cVA-96-eMD"/>
+                        <outlet property="privacyPolicyButton" destination="lnE-cg-65y" id="ugX-L3-udN"/>
+                        <outlet property="termsAndConditionsButton" destination="GOk-91-T2s" id="qNp-SH-f8D"/>
                         <outlet property="welcomeLabel" destination="aO5-uq-BDz" id="zqB-rx-tzi"/>
                     </connections>
                 </viewController>

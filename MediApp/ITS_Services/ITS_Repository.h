@@ -25,10 +25,14 @@ NS_ASSUME_NONNULL_BEGIN
 //static fetches
 - (void)fetchSpecialties:(void (^)(NSArray * _Nullable))completion;
 - (void)fetchDiseases:(void (^)(NSArray * _Nullable))completion;
+- (void)fetchDiseaseWithID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion;
 //write new data
 - (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid andWithSections:(NSArray *)sections;
 - (void)writeNewPatient:(Patient *)patient withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections;
-
+//patients
+- (void)getAllPatients:(void (^)(NSDictionary * _Nullable))completion;
+//Diagnostic
+- (void)getDiagnosticsFromPatientUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion;
 @end
 
 NS_ASSUME_NONNULL_END

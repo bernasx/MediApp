@@ -30,8 +30,14 @@
     }];
 }
 
-- (void)fetchDiseases:(void (^)(NSArray * _Nullable))completion  {
+- (void)fetchDiseases:(void (^)(NSArray * _Nullable))completion {
     [[_ref child:@"diseases"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        completion(snapshot.value);
+    }];
+}
+
+- (void)fetchDiseaseWithID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion {
+    [[[_ref child:@"diseases"] child:uid] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         completion(snapshot.value);
     }];
 }
@@ -182,6 +188,8 @@
     [[[[self.ref child:@"patients"] child:uid] child:@"ccNumber"] setValue:patient.ccNumber];
     [[[[self.ref child:@"patients"] child:uid] child:@"email"] setValue:patient.email];
     [[[[self.ref child:@"patients"] child:uid] child:@"phoneNumber"] setValue:patient.phoneNumber];
+    [[[[self.ref child:@"patients"] child:uid] child:@"snsNumber"] setValue:patient.snsNumber];
+
     for (Note* note in patient.notesArray) {
         [[[[self.ref child:@"notes"] child:note.uid] child:@"title"]setValue:note.noteTitle];
         [[[[self.ref child:@"notes"] child:note.uid] child:@"text"]setValue:note.noteTitle];
@@ -233,11 +241,15 @@
         [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"medic"] setValue:currentUserUID];
         [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"creationDate"] setValue:creationDate];
         
+        NSMutableArray* currentDiseases = [[NSMutableArray alloc] init];
         for (Disease* disease in diagnostic.currentDiseases) {
-            [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"currentDiseases"] setValue:disease.diseaseId];
-            
-            [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"currentDiseases"] setValue:disease.diseaseId];
+            [currentDiseases addObject:disease.diseaseId];
         }
+        
+        [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"currentDiseases"] setValue:currentDiseases];
+                   
+        [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"currentDiseases"] setValue:currentDiseases];
+        
         //save diagnostic to patient path
         [[[[self.ref child:@"patients"] child:uid] child:@"diagnostic"] setValue:diagnostic.uid.UUIDString];
         //diagnostic attachments
@@ -269,6 +281,21 @@
     }
    
    
+}
+
+
+- (void)getAllPatients:(void (^)(NSDictionary * _Nullable))completion {
+    [[_ref child:@"patients"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        completion(snapshot.value);
+    }];
+}
+
+#pragma mark - Diagnostic Functions
+
+- (void)getDiagnosticsFromPatientUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion {
+    [[[_ref child:@"diagnostics"] child:uid] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        completion(snapshot.value);
+    }];
 }
 
 #pragma mark - Storage Functions

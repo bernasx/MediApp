@@ -7,11 +7,13 @@
 //
 
 #import "ITS_BaseListCollectionViewCell.h"
-
+#import "Patient.h"
+#import "Disease.h"
+#import "ITS_ListLabelOnlyTableViewCell.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ITS_PatientListCollectionViewCell : ITS_BaseListCollectionViewCell
-
+@interface ITS_PatientListCollectionViewCell : ITS_BaseListCollectionViewCell<UITableViewDelegate,UITableViewDataSource>
+-(void)fillCellWithPatient:(Patient *)patient;
 @end
 
 NS_ASSUME_NONNULL_END

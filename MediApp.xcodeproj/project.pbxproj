@@ -34,6 +34,8 @@
 		D13B72322478246700FCCEBE /* ITS_DiagnosticViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D13B72312478246700FCCEBE /* ITS_DiagnosticViewModel.m */; };
 		D13B72362478328400FCCEBE /* ITS_AddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D13B72342478328400FCCEBE /* ITS_AddTableViewCell.m */; };
 		D13B72372478328400FCCEBE /* ITS_AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D13B72352478328400FCCEBE /* ITS_AddTableViewCell.xib */; };
+		D142EAD924854ABA000F6E05 /* ITS_MedicListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D142EAD724854ABA000F6E05 /* ITS_MedicListCollectionViewCell.m */; };
+		D142EADA24854ABA000F6E05 /* ITS_MedicListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D142EAD824854ABA000F6E05 /* ITS_MedicListCollectionViewCell.xib */; };
 		D161B1B4247BC22C000861C9 /* Diagnostic.m in Sources */ = {isa = PBXBuildFile; fileRef = D161B1B3247BC22C000861C9 /* Diagnostic.m */; };
 		D161B1B7247BD131000861C9 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = D161B1B6247BD131000861C9 /* Note.m */; };
 		D161B1C6247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D161B1C5247D6FD1000861C9 /* ITS_BaseListCollectionViewCell.m */; };
@@ -150,6 +152,9 @@
 		D13B72332478328400FCCEBE /* ITS_AddTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_AddTableViewCell.h; sourceTree = "<group>"; };
 		D13B72342478328400FCCEBE /* ITS_AddTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_AddTableViewCell.m; sourceTree = "<group>"; };
 		D13B72352478328400FCCEBE /* ITS_AddTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_AddTableViewCell.xib; sourceTree = "<group>"; };
+		D142EAD624854ABA000F6E05 /* ITS_MedicListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITS_MedicListCollectionViewCell.h; sourceTree = "<group>"; };
+		D142EAD724854ABA000F6E05 /* ITS_MedicListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITS_MedicListCollectionViewCell.m; sourceTree = "<group>"; };
+		D142EAD824854ABA000F6E05 /* ITS_MedicListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITS_MedicListCollectionViewCell.xib; sourceTree = "<group>"; };
 		D161B1B2247BC22C000861C9 /* Diagnostic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Diagnostic.h; sourceTree = "<group>"; };
 		D161B1B3247BC22C000861C9 /* Diagnostic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Diagnostic.m; sourceTree = "<group>"; };
 		D161B1B5247BD131000861C9 /* Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
@@ -338,6 +343,9 @@
 				D161B1C7247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.h */,
 				D161B1C8247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.m */,
 				D161B1C9247D6FE4000861C9 /* ITS_PatientListCollectionViewCell.xib */,
+				D142EAD624854ABA000F6E05 /* ITS_MedicListCollectionViewCell.h */,
+				D142EAD724854ABA000F6E05 /* ITS_MedicListCollectionViewCell.m */,
+				D142EAD824854ABA000F6E05 /* ITS_MedicListCollectionViewCell.xib */,
 			);
 			path = ListScreenCells;
 			sourceTree = "<group>";
@@ -679,6 +687,7 @@
 				D1CB01A5247FE952000442D0 /* ITS_ListLabelOnlyTableViewCell.xib in Resources */,
 				D13B72252477DEA200FCCEBE /* ITS_TextViewComponent.xib in Resources */,
 				D1D22053246472310044AC93 /* ITS_TextFieldWithTableComponent.xib in Resources */,
+				D142EADA24854ABA000F6E05 /* ITS_MedicListCollectionViewCell.xib in Resources */,
 				D1D2201A2461B14D0044AC93 /* SF-Pro-Text-Semibold.otf in Resources */,
 				D1919D41246E92AA00C70120 /* ITS_AttachmentComponent.xib in Resources */,
 				D13B722F24780EB000FCCEBE /* ITS_DiagnosticViewController.xib in Resources */,
@@ -831,6 +840,7 @@
 				D13B72322478246700FCCEBE /* ITS_DiagnosticViewModel.m in Sources */,
 				D13B72362478328400FCCEBE /* ITS_AddTableViewCell.m in Sources */,
 				D13B722E24780EB000FCCEBE /* ITS_DiagnosticViewController.m in Sources */,
+				D142EAD924854ABA000F6E05 /* ITS_MedicListCollectionViewCell.m in Sources */,
 				D11B8B0124659A180073C7DE /* ITS_SearchTableViewCell.m in Sources */,
 				D13B72202476854B00FCCEBE /* Patient.m in Sources */,
 				D1D21FE1246171C80044AC93 /* main.m in Sources */,

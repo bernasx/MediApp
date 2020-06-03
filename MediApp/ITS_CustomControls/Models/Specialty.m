@@ -10,7 +10,6 @@
 
 @implementation Specialty
 - (void)initWithDict:(NSDictionary *)dict {
-    
     [self setSpecialtyName:[dict objectForKey:@"name"]];
     [self setSpecialtyJob:[dict objectForKey:@"job"]];
     [self setSpecialtyId:[dict objectForKey:@"id"]];

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ITS_ListViewModel : NSObject
 - (void)getPatients:(void (^)(NSArray * _Nullable))completion;
+- (void)getMedics:(void (^)(NSArray * _Nullable))completion;
 @end
 
 NS_ASSUME_NONNULL_END

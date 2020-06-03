@@ -10,11 +10,11 @@
 
 @implementation Diagnostic
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
-        self.currentDiseases = [[NSMutableArray alloc] init]; 
+        self.currentDiseases = [[NSMutableArray alloc] init];
+        self.notesArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -26,11 +26,8 @@
     [self setTreatment:dict[@"treatment"]];
     [self setCurrentDiseasesIds:dict[@"currentDiseases"]];
     
-    //handle notes maybe
-    [self setNotesArray:dict[@"notes"]];
+
     
-    //handle attachments maybe
-    [self setAttachmentArray:dict[@"attachments"]];
     [self setCreationDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[dict[@"creationDate"] doubleValue]]];
 }
 @end

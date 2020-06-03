@@ -30,6 +30,12 @@
     }];
 }
 
+- (void)fetchSpecialtyWithID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion {
+    [[[_ref child:@"specialties"] child:uid] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        completion(snapshot.value);
+    }];
+}
+
 - (void)fetchDiseases:(void (^)(NSArray * _Nullable))completion {
     [[_ref child:@"diseases"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         completion(snapshot.value);
@@ -121,10 +127,9 @@
             [[self.ref child:@"superiorMedics"] setValue:newSuperiorMedicsArray];
         }];
     }
-    //write the new medic to the current medic
-    [self getMedicsFromUID:currentUserUID completion:^(NSArray * _Nullable medicsArray) {
-        [[[[[self.ref child:@"medics"] child:currentUserUID] child:@"medics"] childByAutoId] setValue:@{@"uid":uid}];
-    }];
+  
+    [[[[[self.ref child:@"medics"] child:currentUserUID] child:@"medics"] childByAutoId] setValue:@{@"uid":uid}];
+
     
     
     //get only the IDs
@@ -150,7 +155,7 @@
 }
 
 //get medics that someone with the uid is in charge of
-- (void)getMedicsFromUID:(NSString *)uid completion:(void (^)(NSArray * _Nullable))completion{
+- (void)getMedicsFromUID:(NSString *)uid completion:(void (^)(NSDictionary * _Nullable))completion {
     [[[[self.ref child:@"medics"] child:uid] child:@"medics"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         completion(snapshot.value);
     }];
@@ -164,10 +169,16 @@
 }
 
 //get all medics
-- (void)getAllMedics:(void (^)(NSArray * _Nullable))completion {
+- (void)getAllMedics:(void (^)(NSDictionary * _Nullable))completion {
     [[_ref child:@"medics"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         completion(snapshot.value);
     }];
+}
+
+- (void)getMedicForUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion {
+    [[[_ref child:@"medics"] child:uid] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+           completion(snapshot.value);
+       }];
 }
 
 #pragma mark - Patient Functions
@@ -226,19 +237,36 @@
         }
         patientSectionCount += 1;
     }
-    
-    
-    
+   
+    [self writeNewDiagnosticWithArray:patient.diagnosticArray withPatientUid:uid andCurrentUserUid:currentUserUID andSections:sections];
+}
+
+
+- (void)getAllPatients:(void (^)(NSDictionary * _Nullable))completion {
+    [[_ref child:@"patients"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        completion(snapshot.value);
+    }];
+}
+
+#pragma mark - Diagnostic Functions
+
+- (void)getDiagnosticsFromPatientUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion {
+    [[[_ref child:@"diagnostics"] child:uid] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        completion(snapshot.value);
+    }];
+}
+
+- (void)writeNewDiagnosticWithArray:(NSArray*)diagnosticArray withPatientUid:(NSString*)uid andCurrentUserUid:(NSString*)currentUserUid andSections:(NSArray*)sections {
     /* Save Diagnostics */
-    for (Diagnostic* diagnostic in patient.diagnosticArray) {
+    for (Diagnostic* diagnostic in diagnosticArray) {
         NSString* historyID = [[NSUUID UUID] UUIDString];
         NSString* creationDate = [NSString stringWithFormat:@"%f",diagnostic.creationDate.timeIntervalSince1970];
         [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"treatment"] setValue:diagnostic.treatment];
-        [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"medic"] setValue:currentUserUID];
+        [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"medic"] setValue:currentUserUid];
         [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"creationDate"] setValue:creationDate];
         
         [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"treatment"] setValue:diagnostic.treatment];
-        [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"medic"] setValue:currentUserUID];
+        [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"medic"] setValue:currentUserUid];
         [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"creationDate"] setValue:creationDate];
         
         NSMutableArray* currentDiseases = [[NSMutableArray alloc] init];
@@ -247,7 +275,7 @@
         }
         
         [[[[[self.ref child:@"diagnostics"] child:uid] child:diagnostic.uid.UUIDString] child:@"currentDiseases"] setValue:currentDiseases];
-                   
+        
         [[[[[[self.ref child:@"history"] child:@"diagnostics"] child:diagnostic.uid.UUIDString] child:historyID] child:@"currentDiseases"] setValue:currentDiseases];
         
         //save diagnostic to patient path
@@ -277,23 +305,15 @@
         }
         
         //save diagnostic id to medic by patient
-        [[[[[self.ref child:@"medics"] child:currentUserUID] child:@"diagnostics"] child:diagnostic.uid.UUIDString] setValue:diagnostic.uid.UUIDString];
+        [[[[[self.ref child:@"medics"] child:currentUserUid] child:@"diagnostics"] child:diagnostic.uid.UUIDString] setValue:diagnostic.uid.UUIDString];
     }
-   
-   
 }
 
 
-- (void)getAllPatients:(void (^)(NSDictionary * _Nullable))completion {
-    [[_ref child:@"patients"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        completion(snapshot.value);
-    }];
-}
+#pragma mark - Other fetches
 
-#pragma mark - Diagnostic Functions
-
-- (void)getDiagnosticsFromPatientUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion {
-    [[[_ref child:@"diagnostics"] child:uid] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+- (void)getNoteFromUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion {
+    [[[_ref child:@"notes"] child:uid] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         completion(snapshot.value);
     }];
 }

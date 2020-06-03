@@ -15,6 +15,10 @@
     
 }
 
+- (void)fillCellWithData:(id)data {
+    
+}
+
 
 - (void)initContainerView:(CAGradientLayer *)gradient {
     CAGradientLayer *gradientLayer = gradient;

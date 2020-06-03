@@ -13,8 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSString* treatment;
 @property (nonatomic) NSMutableArray* currentDiseases;
 @property (nonatomic) NSArray* currentDiseasesIds;
-@property (nonatomic) NSArray* notesArray;
+@property (nonatomic) NSMutableArray* notesArray;
 @property (nonatomic) NSArray* attachmentArray;
+@property (nonatomic) NSArray* attachmentURLArray;
 @property (nonatomic) NSUUID* uid;
 @property (nonatomic) NSDate* creationDate;
 //sections for the attachment array

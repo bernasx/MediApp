@@ -25,7 +25,9 @@
     [self.diseasesTableView registerNib:[UINib nibWithNibName:@"ITS_ListLabelOnlyTableViewCell" bundle:nil] forCellReuseIdentifier:cellID];
 }
 
--(void)fillCellWithPatient:(Patient *)patient {
+
+- (void)fillCellWithData:(id)data {
+    Patient* patient = data;
     self.diseasesTableView.delegate = self;
     self.diseasesTableView.dataSource = self;
     self.patient = patient;
@@ -43,8 +45,10 @@
     [self.ageLabel setText:[NSString stringWithFormat:@"%d anos",self.patient.age]];
     NSString *phoneIconAndNumber = [NSString stringWithFormat:@"􀌿%@",self.patient.phoneNumber];
     [self.phoneNumberLabel setText:phoneIconAndNumber];
+    
 }
 
+#pragma mark - UITableView Delegate/Datasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }

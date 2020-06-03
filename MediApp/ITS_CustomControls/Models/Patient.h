@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSArray* previousDiseasesArray;
 @property (nonatomic) NSArray* familyDiseasesArray;
 @property (nonatomic) NSString* snsNumber;
-@property (nonatomic) NSArray* notesArray;
+@property (nonatomic) NSMutableArray* notesArray;
 @property (nonatomic) NSArray<Diagnostic *> *diagnosticArray;
 - (void)initWithDict:(NSDictionary *)dict andUid:(NSString*)uid;
 @end

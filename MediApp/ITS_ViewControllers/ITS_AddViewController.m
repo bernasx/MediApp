@@ -25,6 +25,7 @@
     self.viewModel.delegate = self; //delegate will ensure we get the data back 
     [self.viewModel buildScreen:self.addTypeSelection];//build the screen with textfields that represent what type of screen we're in
     
+    
     //Setup for scrolling smoothly
     self.tableViewHeight.constant = 0;
     self.fieldsTableView.scrollEnabled = NO;

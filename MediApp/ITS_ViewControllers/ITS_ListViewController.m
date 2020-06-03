@@ -20,30 +20,34 @@
     [super viewDidLoad];
     self.viewModel = [[ITS_ListViewModel alloc] init];
     [self designViewElements];
-    [self.viewModel getPatients:^(NSArray * _Nullable array) {
-        self.objectArray = array;
-        [self.listCollectionView reloadData];
-    }];
+    
+    switch (self.mainMenuSelection) {
+        case MainMenuSelectionMedics:{
+            [self.viewModel getMedics:^(NSArray * _Nullable array) {
+                self.objectArray = array;
+                [self.listCollectionView reloadData];
+            }];
+        }
+            break;
+        case MainMenuSelectionPatients:{
+            [self.viewModel getPatients:^(NSArray * _Nullable array) {
+                self.objectArray = array;
+                [self.listCollectionView reloadData];
+            }];
+        }
+            break;
+    }
 }
 
 - (void)designViewElements {
-    
-    //list collectionview layout
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(self.view.frame.size.width - 20, 160);
-    [layout setSectionInset:UIEdgeInsetsMake(5, 10, 5, 10)];
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.minimumLineSpacing = 40;
-    layout.minimumInteritemSpacing = 40;
-    self.listCollectionView.collectionViewLayout = layout;
-    
-    
     //designing for each type
     switch (self.mainMenuSelection) {
         case MainMenuSelectionMedics:
+            [self collectionViewLayoutWithHeight:192];
             [self.navigationItem setTitle:NSLocalizedString(@"list_medic_title", @"")];
             break;
         case MainMenuSelectionPatients:
+            [self collectionViewLayoutWithHeight:160];
             [self.navigationItem setTitle:NSLocalizedString(@"list_patient_title", @"")];
             break;
         default:
@@ -52,6 +56,17 @@
       UIImage *addButtonImage = [UIImage systemImageNamed:@"plus.circle"];
       UIBarButtonItem *addBarButton = [[UIBarButtonItem alloc] initWithImage:addButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(didTapAddButton)];
       [self.navigationItem setRightBarButtonItem:addBarButton];
+}
+
+- (void)collectionViewLayoutWithHeight:(double)height {
+    //list collectionview layout
+       UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+       layout.itemSize = CGSizeMake(self.view.frame.size.width - 20, height);
+       [layout setSectionInset:UIEdgeInsetsMake(5, 10, 5, 10)];
+       layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+       layout.minimumLineSpacing = 40;
+       layout.minimumInteritemSpacing = 40;
+       self.listCollectionView.collectionViewLayout = layout;
 }
 
 #pragma mark -  Navigation
@@ -79,13 +94,38 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellID = @"patientListCell";
-    NSString *nibID = @"ITS_PatientListCollectionViewCell";
-    UINib *nib = [UINib nibWithNibName:nibID bundle:NSBundle.mainBundle];
-    [self.listCollectionView registerNib:nib forCellWithReuseIdentifier:cellID];
-    ITS_PatientListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
-    [cell fillCellWithPatient:[self.objectArray objectAtIndex:indexPath.row]];
+    ITS_BaseListCollectionViewCell* cell = [self buildCellForCollectionView:collectionView withIndexPath:indexPath];
     return cell;
+}
+
+
+//build each cell for a particular list type
+
+- (ITS_BaseListCollectionViewCell *)buildCellForCollectionView:(UICollectionView *)collectionView withIndexPath:(NSIndexPath *)indexPath {
+    
+    ITS_BaseListCollectionViewCell *cell;
+    switch (self.mainMenuSelection) {
+        case MainMenuSelectionPatients:{
+            NSString *cellID = @"patientListCell";
+            NSString *nibID = @"ITS_PatientListCollectionViewCell";
+            UINib *nib = [UINib nibWithNibName:nibID bundle:NSBundle.mainBundle];
+            [self.listCollectionView registerNib:nib forCellWithReuseIdentifier:cellID];
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
+        }
+            break;
+        case MainMenuSelectionMedics:{
+            NSString *cellID = @"medicListCell";
+            NSString *nibID = @"ITS_MedicListCollectionViewCell";
+            UINib *nib = [UINib nibWithNibName:nibID bundle:NSBundle.mainBundle];
+            [self.listCollectionView registerNib:nib forCellWithReuseIdentifier:cellID];
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
+        }
+            break;
+    }
+    
+    [cell fillCellWithData:[self.objectArray objectAtIndex:indexPath.row]];
+    return cell;
+    
 }
 
 @end

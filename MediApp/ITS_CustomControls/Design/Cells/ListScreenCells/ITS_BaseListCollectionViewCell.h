@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ITS_BaseListCollectionViewCell : UICollectionViewCell
 @property (nonatomic,weak) IBOutlet UIView *containerView;
 - (void)initContainerView:(CAGradientLayer *)gradient;
+- (void)fillCellWithData:(id)data;
 @end
 
 NS_ASSUME_NONNULL_END

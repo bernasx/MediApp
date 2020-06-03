@@ -9,6 +9,16 @@
 #import "Patient.h"
 
 @implementation Patient
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+         self.notesArray = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+
 - (void)initWithDict:(NSDictionary *)dict andUid:(NSString*)uid{
     [self setFirstNames:dict[@"firstName"]];
     [self setLastNames:dict[@"lastName"]];
@@ -24,15 +34,8 @@
     [self setCcNumber:dict[@"ccNumber"]];
     [self setEmail:dict[@"email"]];
     
-    
-    //handle attachments maybe
-    [self setAttachmentArray:dict[@"attachments"]];
-    
     //patient specific
     [self setSnsNumber:dict[@"snsNumber"]];
-    
-    //handle notes maybe
-    [self setNotesArray:dict[@"notes"]];
     
     //NOTE - Previous diseases and family history are not set here to save API calls when possible
 }

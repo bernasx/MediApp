@@ -11,6 +11,7 @@
 #import "ITS_Enums.h"
 #import "ITS_BaseListCollectionViewCell.h"
 #import "ITS_PatientListCollectionViewCell.h"
+#import "ITS_MedicListCollectionViewCell.h"
 #import "ITS_ListViewModel.h"
 NS_ASSUME_NONNULL_BEGIN
 

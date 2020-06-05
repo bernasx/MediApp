@@ -59,4 +59,12 @@
 - (CGFloat)getDefaultComponentHeight {
     return 60;
 }
+- (void)setSwitch:(NSNumber *)boolNumber {
+   
+}
+
+- (void)setDefaultValueFromUser:(id)defaultValue {
+    bool isOn = [defaultValue boolValue];
+    [self.componentSwitch setOn:isOn];
+}
 @end

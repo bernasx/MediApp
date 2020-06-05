@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,weak) IBOutlet UIView *containerView;
 - (void)initContainerView:(CAGradientLayer *)gradient;
 - (void)fillCellWithData:(id)data;
+@property (nonatomic, weak) id delegate;
 @end
 
 NS_ASSUME_NONNULL_END

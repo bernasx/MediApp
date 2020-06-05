@@ -30,4 +30,14 @@
     
     [self setCreationDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[dict[@"creationDate"] doubleValue]]];
 }
+
+//Returns an array that will be used to fill in the EDIT screen
+- (NSMutableArray *)arrayWithFullData {
+    NSMutableArray* buildingArray = [[NSMutableArray alloc] init];
+    [buildingArray addObject:self.treatment];
+    [buildingArray addObject:self.currentDiseases];
+    [buildingArray addObject:self.notesArray];
+    [buildingArray addObject:self.attachmentArray];
+    return buildingArray;
+}
 @end

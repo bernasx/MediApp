@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)textfieldSize;
 - (NSString *)textfieldText;
 - (NSArray *)getObjectArray;
+- (void)setObjectArray:(NSMutableArray *)objectArray;
 - (id)getObjectData;
 @end
 

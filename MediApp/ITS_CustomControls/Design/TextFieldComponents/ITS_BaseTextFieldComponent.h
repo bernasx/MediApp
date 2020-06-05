@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)getObjectData; //override this in any other component to grab ther respective relevant info
 - (void)updateComponentStatus:(TextFieldStatus)textFieldStatus withWarningMessage:(NSString *) warningMessage;
 - (CGFloat)getDefaultComponentHeight;
+- (void)setDefaultValueFromUser:(id) defaultValue;
 @end
 
 NS_ASSUME_NONNULL_END

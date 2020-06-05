@@ -15,7 +15,7 @@
 #import "ITS_ListViewModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ITS_ListViewController : ITS_ViewController
+@interface ITS_ListViewController : ITS_ViewController <MedicListCellDelegate,PatientListCellDelegate>
 @property (nonatomic) MainMenuSelection mainMenuSelection;
 @property (nonatomic) ITS_ListViewModel *viewModel;
 @end

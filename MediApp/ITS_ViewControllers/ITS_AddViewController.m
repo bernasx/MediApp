@@ -13,6 +13,7 @@
 @property (nonatomic) NSArray* dataArray; //contains all data for building components
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
+@property (weak, nonatomic) IBOutlet UIButton *cancelEditButton;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (nonatomic) NSArray* sectionArray; //contains all section titles
 @end
@@ -24,7 +25,10 @@
     self.viewModel = [[ITS_AddViewModel alloc] init];
     self.viewModel.delegate = self; //delegate will ensure we get the data back 
     [self.viewModel buildScreen:self.addTypeSelection];//build the screen with textfields that represent what type of screen we're in
-    
+    [self.cancelEditButton setHidden:YES];
+    if (self.isEditing) {   
+        [self.cancelEditButton setHidden:NO];
+    }
     
     //Setup for scrolling smoothly
     self.tableViewHeight.constant = 0;
@@ -32,35 +36,45 @@
     self.scrollView.bounces = NO;
     self.fieldsTableView.bounces = YES;
     
-    //setup button
-    [self setupButtonTitle];
-    [self.addButton setBackgroundColor:[ITS_Colors primaryColor]];
-    [self.addButton.layer setCornerRadius:8];
-    [self.addButton setClipsToBounds:YES];
-    //button shadow
-    [self.addButton.layer setShadowColor:[[UIColor darkGrayColor] CGColor]];
-    [self.addButton.layer setShadowOffset:CGSizeMake(0, 2)];
-    [self.addButton.layer setShadowRadius:4];
-    [self.addButton.layer setShadowOpacity:0.8];
-    [self.addButton.layer setMasksToBounds:NO];
+    [self designBottomButton:self.addButton];
+    [self designBottomButton:self.cancelEditButton];
+    
 }
 
-- (void)setupButtonTitle {
+- (void)designBottomButton:(UIButton *)button {
+    //setup button
+    [self setupButtonTitle:button];
+    [button setBackgroundColor:[ITS_Colors primaryColor]];
+    [button.layer setCornerRadius:8];
+    [button setClipsToBounds:YES];
+    //button shadow
+    [button.layer setShadowColor:[[UIColor darkGrayColor] CGColor]];
+    [button.layer setShadowOffset:CGSizeMake(0, 2)];
+    [button.layer setShadowRadius:4];
+    [button.layer setShadowOpacity:0.8];
+    [button.layer setMasksToBounds:NO];
+}
+
+- (void)setupButtonTitle:(UIButton*)button {
     switch (self.addTypeSelection) {
         case MainMenuSelectionMedics:
-            [self.addButton setTitle:NSLocalizedString(@"add_button_medic", @"") forState:UIControlStateNormal];
+            [button setTitle:NSLocalizedString(@"add_button_medic", @"") forState:UIControlStateNormal];
             break;
         case MainMenuSelectionPatients:
-            [self.addButton setTitle:NSLocalizedString(@"add_button_patient", @"") forState:UIControlStateNormal];
+            [button setTitle:NSLocalizedString(@"add_button_patient", @"") forState:UIControlStateNormal];
              break;
         case MainMenuSelectionAppointments:
-            [self.addButton setTitle:NSLocalizedString(@"add_button_appointment", @"") forState:UIControlStateNormal];
+            [button setTitle:NSLocalizedString(@"add_button_appointment", @"") forState:UIControlStateNormal];
              break;
         case MainMenuSelectionMedicalAppointment:
-            [self.addButton setTitle:NSLocalizedString(@"add_button_medical_appointment", @"") forState:UIControlStateNormal];
+            [button setTitle:NSLocalizedString(@"add_button_medical_appointment", @"") forState:UIControlStateNormal];
              break;
         default:
             break;
+    }
+    
+    if ([button isEqual:self.cancelEditButton]) {
+        [button setTitle:@"Cancelar" forState:UIControlStateNormal];
     }
 }
 
@@ -114,7 +128,7 @@
                 }
             }
         }
-    [self.viewModel buildObjectWithType:self.addTypeSelection andWithArray:buildingArray andSections:sections];
+        [self.viewModel buildObjectWithType:self.addTypeSelection andWithArray:buildingArray andSections:sections andIsEditing:self.isEditing andOldObject:self.selectedObject];
     }
 }
 
@@ -161,8 +175,6 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    
     if (scrollView == self.scrollView) {
         self.fieldsTableView.scrollEnabled = (self.scrollView.contentOffset.y >= 200);
     }
@@ -183,7 +195,7 @@
 }
 
 #pragma mark - ViewModel Delegate
-- (void)addViewModel:(ITS_AddViewModel *)viewModel didFinishBuildingScreenArray:(NSArray *)dataArray andSectionArray:(NSArray *)sectionArray{
+- (void)addViewModel:(ITS_AddViewModel *)viewModel didFinishBuildingScreenArray:(NSArray *)dataArray andSectionArray:(NSArray *)sectionArray {
     self.sectionArray = sectionArray;
     self.dataArray = dataArray;
     double totalHeight = 0;
@@ -195,6 +207,22 @@
     }
     totalHeight += 175;
     self.tableViewHeight.constant = totalHeight;
-    [self.fieldsTableView reloadData];
+    
+    if (self.isEditing) {
+        switch (self.addTypeSelection) {
+            case MainMenuSelectionMedics:
+                self.dataArray = [self.viewModel fillComponentsWithData:[(Medic *)self.selectedObject arrayWithFullData] andDataArray:self.dataArray andSectionArray:self.sectionArray];
+                break;
+            case MainMenuSelectionPatients:
+                self.dataArray = [self.viewModel fillComponentsWithData:[(Patient*)self.selectedObject arrayWithFullData] andDataArray:self.dataArray andSectionArray:self.sectionArray];
+                break;
+            default:
+                break;
+        }
+        [self.fieldsTableView reloadData];
+    } else {
+        [self.fieldsTableView reloadData];
+    }
+  
 }
 @end

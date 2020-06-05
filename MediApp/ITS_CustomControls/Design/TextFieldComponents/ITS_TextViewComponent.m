@@ -160,4 +160,8 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     [self updateComponentStatus:UITextFieldStatusNormal withWarningMessage:@""];
 }
+
+- (void)setDefaultValueFromUser:(id)defaultValue {
+    self.objectArray = defaultValue;
+}
 @end

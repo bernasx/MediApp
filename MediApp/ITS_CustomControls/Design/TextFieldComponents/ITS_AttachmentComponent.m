@@ -148,4 +148,9 @@
 - (CGFloat)getDefaultComponentHeight {
     return 200;
 }
+
+- (void)setDefaultValueFromUser:(id)defaultValue {
+    _attachmentArray = defaultValue;
+    [self.attachmentTableView reloadData];
+}
 @end

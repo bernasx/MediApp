@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIView *view;
 - (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame;
 - (id)getObjectData;
+- (void)setSwitch:(NSNumber *)boolNumber;
 @end
 
 NS_ASSUME_NONNULL_END

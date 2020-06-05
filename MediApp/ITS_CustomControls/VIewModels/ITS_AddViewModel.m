@@ -53,7 +53,6 @@
 
 //calls a function for every type of screen that should be built
 - (void)buildScreen:(MainMenuSelection)addTypeSelection {
-    
     switch (addTypeSelection) {
         case MainMenuSelectionMedics:
             [self buildForMedics];
@@ -232,26 +231,47 @@
     [[self.dataArray objectAtIndex:section] addObject:componentView];
 }
 
-#pragma mark - Object Construction
+#pragma mark - New Object Construction
 //sections are the sections for attachments 
-- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray andSections:(NSArray *)sections{
-    switch (mainMenuSelection) {
-        case MainMenuSelectionMedics:
-            [self buildMedicObject:buildingArray withSections:(NSArray*)sections];
-            break;
-        case MainMenuSelectionPatients:
-            [self buildPatientObject:buildingArray withSection:sections];
-            break;
-        case MainMenuSelectionAppointments:
-            //build appointments
-            break;
-        case MainMenuSelectionMedicalAppointment:
-            //build medical appointment
-            break;
-        default:
-            break;
+- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray andSections:(NSArray *)sections andIsEditing:(bool)isEditing andOldObject:(id)oldObject {
+    
+    if (isEditing) {
+        switch (mainMenuSelection) {
+            case MainMenuSelectionMedics:
+                [self buildMedicObjectForEditing:buildingArray withSections:sections withOldObject:oldObject];
+                break;
+            case MainMenuSelectionPatients:
+                [self buildPatientObject:buildingArray withSection:sections];
+                break;
+            case MainMenuSelectionAppointments:
+                //build appointments
+                break;
+            case MainMenuSelectionMedicalAppointment:
+                //build medical appointment
+                break;
+            default:
+                break;
+        }
+    } else {
+        switch (mainMenuSelection) {
+            case MainMenuSelectionMedics:
+                [self buildMedicObject:buildingArray withSections:(NSArray*)sections];
+                break;
+            case MainMenuSelectionPatients:
+                [self buildPatientObject:buildingArray withSection:sections];
+                break;
+            case MainMenuSelectionAppointments:
+                //build appointments
+                break;
+            case MainMenuSelectionMedicalAppointment:
+                //build medical appointment
+                break;
+            default:
+                break;
+        }
     }
 }
+
 
 - (void)buildMedicObject:(NSArray *)buildingArray withSections:(NSArray*)sections {
     Medic* medic = [[Medic alloc] init];
@@ -301,5 +321,42 @@
     [self.repository registerSeparateUserWithEmail:patient.email completion:^(NSString * _Nonnull uid) {
         [self.repository writeNewPatient:patient withUID:uid andWithSections:(NSArray*)sections];
     }];
+}
+
+
+#pragma mark - Edit methods
+- (NSArray *)fillComponentsWithData:(NSMutableArray*)dataSourceArray andDataArray:(NSArray *)dataArray andSectionArray:(nonnull NSArray *)sectionArray {
+    int currentComponent = 0;
+    for (int i = 0; i < [sectionArray count]; i++) {
+        for (ITS_BaseTextFieldComponent* component in [dataArray objectAtIndex:i]) {
+            [component setDefaultValueFromUser:[dataSourceArray objectAtIndex:currentComponent]];
+            currentComponent +=1;
+        }
+    }
+    
+    return dataArray;
+}
+
+
+- (void)buildMedicObjectForEditing:(NSArray*)buildingArray withSections:(NSArray*)sections withOldObject:(Medic *)oldMedic {
+    Medic* medic = [[Medic alloc] init];
+    [medic setFirstNames:[buildingArray objectAtIndex:0]];
+    [medic setLastNames:[buildingArray objectAtIndex:1]];
+    [medic setAge:[[buildingArray objectAtIndex:2] intValue]];
+    [medic setGender:[buildingArray objectAtIndex:3]];
+    [medic setAddress:[buildingArray objectAtIndex:4]];
+    [medic setPostalCode:[buildingArray objectAtIndex:5]];
+    [medic setNatural:[buildingArray objectAtIndex:6]];
+    [medic setNationality:[buildingArray objectAtIndex:7]];
+    [medic setNIF:[buildingArray objectAtIndex:8]];
+    [medic setCcNumber:[buildingArray objectAtIndex:9]];
+    [medic setSpecialtiesArray:[buildingArray objectAtIndex:10]];
+    [medic setIsSuperior:[[buildingArray objectAtIndex:11] boolValue]];
+    [medic setEmail:oldMedic.email];
+    [medic setPhoneNumber:[buildingArray objectAtIndex:13]];
+    [medic setAttachmentArray:[buildingArray objectAtIndex:14]];
+    NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
+    [medic setSuperior:currentUserUID];
+    [self.repository editMedic:medic andWithSections:sections andOldMedic:oldMedic];
 }
 @end

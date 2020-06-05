@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSMutableArray* notesArray;
 @property (nonatomic) NSArray<Diagnostic *> *diagnosticArray;
 - (void)initWithDict:(NSDictionary *)dict andUid:(NSString*)uid;
+- (NSMutableArray *)arrayWithFullData;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,9 +11,16 @@
 #import "Medic.h"
 #import "Specialty.h"
 NS_ASSUME_NONNULL_BEGIN
-
+@protocol MedicListCellDelegate;
 @interface ITS_MedicListCollectionViewCell : ITS_BaseListCollectionViewCell <UITableViewDelegate,UITableViewDataSource>
+
 - (void)fillCellWithData:(id)data;
+@end
+
+@protocol MedicListCellDelegate <NSObject>
+
+- (void)cell:(ITS_MedicListCollectionViewCell*)cell didTapEditOnMedic:(Medic *)medic;
+
 @end
 
 NS_ASSUME_NONNULL_END

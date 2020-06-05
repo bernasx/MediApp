@@ -225,6 +225,13 @@
     return [self getObjectArray];
 }
 
+- (void)setObjectArray:(NSMutableArray *)objectArray {
+    _objectArray = objectArray;
+}
+- (void)setDefaultValueFromUser:(id)defaultValue {
+    _objectArray = defaultValue;
+}
+
 - (CGFloat)getDefaultComponentHeight {
     return 315;
 }

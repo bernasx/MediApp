@@ -16,6 +16,15 @@
 @property (nonatomic) NSMutableArray *diseasesArray;
 @end
 @implementation ITS_PatientListCollectionViewCell
+- (IBAction)onEdit:(id)sender {
+    id<PatientListCellDelegate> strongDelegate = self.delegate;
+    if ([strongDelegate respondsToSelector:@selector(cell:didTapEditOnPatient:)]) {
+        [strongDelegate cell:self didTapEditOnPatient:self.patient];
+    }
+    
+}
+- (IBAction)onDelete:(id)sender {
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

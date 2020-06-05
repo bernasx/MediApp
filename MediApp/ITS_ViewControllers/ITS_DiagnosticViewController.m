@@ -121,18 +121,9 @@
 
 #pragma mark - ViewModel Delegate
 - (void)diagnosticViewModel:(ITS_DiagnosticViewModel *)viewModel didFinishBuildingScreenArray:(NSArray *)dataArray andSectionArray:(NSArray *)sectionArray {
-      self.sectionArray = sectionArray;
-        self.dataArray = dataArray;
-    //    double totalHeight = 0;
-    //    for (NSArray* array in self.dataArray) {
-    //        for (ITS_BaseTextFieldComponent* component in array) {
-    //            totalHeight += [component getDefaultComponentHeight];
-    //            NSLog(@"%f",[component getDefaultComponentHeight]);
-    //        }
-    //    }
-    //    totalHeight += 175;
-    //    self.tableViewHeight.constant = totalHeight;
-        [self.fieldsTableView reloadData];
+    self.sectionArray = sectionArray;
+    self.dataArray = dataArray;
+    [self.fieldsTableView reloadData];
 }
 
 - (void)diagnosticViewModel:(ITS_DiagnosticViewModel *)viewModel didFinishBuildingDiagnostic:(Diagnostic *)diagnostic {

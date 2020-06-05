@@ -38,8 +38,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getAllMedics:(void (^)(NSDictionary * _Nullable))completion;
 - (void)getMedicForUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion;
 - (void)getMedicsFromUID:(NSString *)uid completion:(void (^)(NSDictionary * _Nullable))completion;
+- (void)editMedic:(Medic *)medic andWithSections:(nonnull NSArray*)sections andOldMedic:(Medic *)oldMedic;
 //others
 - (void)getNoteFromUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion;
+
+//storage
+- (void)getFileMetadata:(NSString *)refString completion:(void (^)(NSString *))completion;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -71,14 +71,16 @@
 
 #pragma mark -  Navigation
 - (void)didTapAddButton {
-    [self instantiateNewViewController:@"addViewController"];
+    [self instantiateNewViewController:@"addViewController" withIsEditing:NO withSelectedObject:nil];
 }
 
 //Instantiates and pushes a new view controller based on the storyboard identifier
-- (void)instantiateNewViewController:(NSString *)identifier{
+- (void)instantiateNewViewController:(NSString *)identifier withIsEditing:(bool)isEditing withSelectedObject:(id)selectedObject {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:NSBundle.mainBundle];
     UIViewController* vc = [storyboard instantiateViewControllerWithIdentifier:identifier]; //Casts the initiated vc to the class it should be in
     [(ITS_AddViewController *)vc setAddTypeSelection:self.mainMenuSelection];
+    [(ITS_AddViewController *)vc setIsEditing:isEditing];
+    [(ITS_AddViewController *)vc setSelectedObject:selectedObject];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -122,10 +124,20 @@
         }
             break;
     }
-    
+    [cell setDelegate:self];
     [cell fillCellWithData:[self.objectArray objectAtIndex:indexPath.row]];
     return cell;
     
+}
+
+#pragma mark - Cell delegates
+
+- (void)cell:(ITS_MedicListCollectionViewCell *)cell didTapEditOnMedic:(Medic *)medic{
+    [self instantiateNewViewController:@"addViewController" withIsEditing:YES withSelectedObject:medic];
+}
+
+- (void)cell:(ITS_PatientListCollectionViewCell *)cell didTapEditOnPatient:(Patient *)patient {
+    [self instantiateNewViewController:@"addViewController" withIsEditing:YES withSelectedObject:patient];
 }
 
 @end

@@ -154,6 +154,65 @@
     }
 }
 
+- (void)editMedic:(Medic *)medic andWithSections:(nonnull NSArray*)sections andOldMedic:(Medic *)oldMedic {
+    NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
+    
+    
+    
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"firstName"] setValue:medic.firstNames];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"lastName"] setValue:medic.lastNames];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"age"] setValue:[NSNumber numberWithInt:medic.age]];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"gender"] setValue:medic.gender];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"address"] setValue:medic.address];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"postalCode"] setValue:medic.postalCode];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"natural"] setValue:medic.natural];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"nationality"] setValue:medic.nationality];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"NIF"] setValue:medic.NIF];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"ccNumber"] setValue:medic.ccNumber];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"email"] setValue:medic.email];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"phoneNumber"] setValue:medic.phoneNumber];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"isSuperior"] setValue:[NSNumber numberWithBool:medic.isSuperior]];
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"superior"] setValue:currentUserUID];
+    
+    //add medic to superior medics
+    if (medic.isSuperior) {
+        [self getSuperiorMedics:^(NSArray * _Nullable superiorMedicsArray) {
+            if ([superiorMedicsArray isKindOfClass:[NSNull class]]) {
+                superiorMedicsArray = [[NSArray alloc] init];
+            }
+            NSMutableArray* newSuperiorMedicsArray = [[NSMutableArray alloc] initWithArray:superiorMedicsArray];
+            [newSuperiorMedicsArray addObject:@{@"uid":oldMedic.uid,@"superior":currentUserUID}]; //add
+            [[self.ref child:@"superiorMedics"] setValue:newSuperiorMedicsArray];
+        }];
+    }
+    
+    //[[[[[self.ref child:@"medics"] child:currentUserUID] child:@"medics"] childByAutoId] setValue:@{@"uid":uid}];
+
+    
+    //get only the IDs
+    NSMutableArray *specialtiesArray = [NSMutableArray new];
+    for (Specialty* specialty in medic.specialtiesArray) {
+        [specialtiesArray addObject:specialty.specialtyId];
+    }
+    //Save the IDs
+    [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"specialties"] setValue:specialtiesArray];
+    
+    int sectionCount = 0; //track which section we're in so we can name it for the file path
+    for (NSMutableArray* array in medic.attachmentArray) {
+        //get all the attachments, add a uuid to each of them.
+        for (Attachment* attachment in array) {
+            NSUUID *uuid = [NSUUID UUID]; //generate a new id for the attachment
+            NSString *str = [uuid UUIDString];
+            [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@/%@",oldMedic.uid,[sections objectAtIndex:sectionCount],str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
+                [[[[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"attachments"] child:[sections objectAtIndex:sectionCount]]childByAutoId] setValue:url.absoluteString];
+            }];
+        }
+        sectionCount += 1;
+    }
+    
+}
+
+
 //get medics that someone with the uid is in charge of
 - (void)getMedicsFromUID:(NSString *)uid completion:(void (^)(NSDictionary * _Nullable))completion {
     [[[[self.ref child:@"medics"] child:uid] child:@"medics"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
@@ -333,4 +392,12 @@
         }
     }];
 }
+
+- (void)getFileMetadata:(NSString *)refString completion:(void (^)(NSString *))completion {
+    FIRStorageReference *storageRef = [self.storage referenceForURL:refString];
+    [storageRef metadataWithCompletion:^(FIRStorageMetadata * _Nullable metadata, NSError * _Nullable error) {
+        completion(metadata.name);
+    }];
+}
+
 @end

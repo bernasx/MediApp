@@ -21,6 +21,11 @@
 @end
 @implementation ITS_MedicListCollectionViewCell
 - (IBAction)onEdit:(id)sender {
+    id<MedicListCellDelegate> strongDelegate = self.delegate;
+    if ([strongDelegate respondsToSelector:@selector(cell:didTapEditOnMedic:)]) {
+        [strongDelegate cell:self didTapEditOnMedic:self.medic];
+    }
+    
 }
 - (IBAction)onDelete:(id)sender {
 }
@@ -50,7 +55,7 @@
     [self.nameLabel setText:fullName];
     NSString *phoneIconAndNumber = [NSString stringWithFormat:@"􀌿%@",self.medic.phoneNumber];
     [self.phoneLabel setText:phoneIconAndNumber];
-    NSString *emailIconAndEmail = [NSString stringWithFormat:@"􀍕 %@",self.medic.phoneNumber];
+    NSString *emailIconAndEmail = [NSString stringWithFormat:@"􀍕 %@",self.medic.email];
     [self.emailLabel setText:emailIconAndEmail];
     [self.addressLabel setText:medic.address];
 }

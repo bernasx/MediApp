@@ -126,4 +126,10 @@
     }
 }
 
+- (void)setDefaultValueFromUser:(id)defaultValue {
+    NSArray *strings = [defaultValue componentsSeparatedByString:@"-"];
+    [self.leftTextField setText:[strings objectAtIndex:0]];
+    [self.rightTextField setText:[strings objectAtIndex:1]];
+}
+
 @end

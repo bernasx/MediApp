@@ -46,14 +46,22 @@
                 NSMutableArray* attachmentUrlArray = [[NSMutableArray alloc] init];
                 [attachmentUrlArray addObject:[NSMutableArray new]];
                 [attachmentUrlArray addObject:[NSMutableArray new]];
-                int currentSection = 0;
-                for (NSString* documentType in patientDicts[key][@"attachments"]) {
-                    for (NSString* documentKey in patientDicts[key][@"attachments"][documentType]) {
-                        [[attachmentUrlArray objectAtIndex:currentSection] addObject:patientDicts[key][@"attachments"][documentType][documentKey]];
-                    }
-                    currentSection +=1;
+                for (NSString* documentKey in patientDicts[@"attachments"][@"Documents"]) {
+                    [[attachmentUrlArray objectAtIndex:0] addObject:patientDicts[@"attachments"][@"Documents"][documentKey]];
+                }
+                
+                for (NSString* documentKey in patientDicts[@"attachments"][@"Extras"]) {
+                    [[attachmentUrlArray objectAtIndex:1] addObject:patientDicts[@"attachments"][@"Extras"][documentKey]];
                 }
                 patient.attachmentURLArray = attachmentUrlArray;
+                
+                //go get the names for each attachment (but not the actual file)
+                for (int i = 0; i < [patient.attachmentURLArray count]; i++) {
+                    [patient.attachmentArray addObject:[NSMutableArray new]];
+                    [self getAttachmentsWithOutFileDataWithArray:[patient.attachmentURLArray objectAtIndex:i] completion:^(NSMutableArray * attachmentArray) {
+                        [patient.attachmentArray replaceObjectAtIndex:i withObject:attachmentArray];
+                    }];
+                }
                 
                 [self fetchDiagnosticsFromPatientUID:patient.uid completion:^(NSArray * _Nullable diagnosticArray) {
                     patient.diagnosticArray = diagnosticArray;
@@ -73,6 +81,9 @@
         
     }];
 }
+
+
+#pragma mark - Diagnostics
 
 - (void)fetchDiagnosticsFromPatientUID:(NSString *)uid completion:(void (^)(NSArray * _Nullable))completion {
     
@@ -99,16 +110,22 @@
             NSMutableArray* attachmentUrlArray = [[NSMutableArray alloc] init];
             [attachmentUrlArray addObject:[NSMutableArray new]];
             [attachmentUrlArray addObject:[NSMutableArray new]];
-            int currentSection = 0;
-            for (NSString* documentType in diagnosticDicts[key][@"attachments"]) {
-                for (NSString* documentKey in diagnosticDicts[key][@"attachments"][documentType]) {
-                    [[attachmentUrlArray objectAtIndex:currentSection] addObject:diagnosticDicts[key][@"attachments"][documentType][documentKey]];
-                }
-                currentSection +=1;
+            for (NSString* documentKey in diagnosticDicts[@"attachments"][@"Documents"]) {
+                [[attachmentUrlArray objectAtIndex:0] addObject:diagnosticDicts[@"attachments"][@"Documents"][documentKey]];
+            }
+            
+            for (NSString* documentKey in diagnosticDicts[@"attachments"][@"Extras"]) {
+                [[attachmentUrlArray objectAtIndex:1] addObject:diagnosticDicts[@"attachments"][@"Extras"][documentKey]];
             }
             diagnostic.attachmentURLArray = attachmentUrlArray;
             
-            
+            //go get the names for each attachment (but not the actual file)
+              for (int i = 0; i < [diagnostic.attachmentURLArray count]; i++) {
+                  [diagnostic.attachmentArray addObject:[NSMutableArray new]];
+                  [self getAttachmentsWithOutFileDataWithArray:[diagnostic.attachmentURLArray objectAtIndex:i] completion:^(NSMutableArray * attachmentArray) {
+                      [diagnostic.attachmentArray replaceObjectAtIndex:i withObject:attachmentArray];
+                  }];
+              }
         }
         completion(diagnosticArray);
     }];
@@ -134,39 +151,62 @@
     NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
     
     [self.repository getMedicsFromUID:currentUserUID completion:^(NSDictionary * _Nullable medicUIDs) {
-        for (NSString* key in medicUIDs) {
-            NSDictionary *medicUIDDict = medicUIDs[key];
-              [self.repository getMedicForUID:medicUIDDict[@"uid"] completion:^(NSDictionary * _Nullable dict) {
-                  Medic* medic = [[Medic alloc] init];
-                  [medicArray addObject:medic];
-                  [medic initWithDict:dict andUid:medicUIDDict[@"uid"]];
-                  
-                  //attachments for the medic
-                  NSMutableArray* attachmentUrlArray = [[NSMutableArray alloc] init];
-                  [attachmentUrlArray addObject:[NSMutableArray new]];
-                  [attachmentUrlArray addObject:[NSMutableArray new]];
-                  int currentSection = 0;
-                  for (NSString* documentType in dict[@"attachments"]) {
-                      for (NSString* documentKey in dict[@"attachments"][documentType]) {
-                          [[attachmentUrlArray objectAtIndex:currentSection] addObject:dict[@"attachments"][documentType][documentKey]];
-                      }
-                      currentSection +=1;
-                  }
-                  medic.attachmentURLArray = attachmentUrlArray;
-                  
-                  
-            
-                  for (NSNumber* specialtyID in medic.specialtyIds) {
-                      [self.repository fetchSpecialtyWithID:[NSString stringWithFormat:@"%@",specialtyID] completion:^(NSDictionary * _Nullable dict) {
-                          Specialty *specialty = [[Specialty alloc] init];
-                          [specialty initWithDict:dict];
-                          [medic.specialtiesArray addObject:specialty];
-                          completion(medicArray);
-                      }];
-                  }
-              }];
+        if (![medicUIDs isKindOfClass:[NSNull class]]) {
+            for (NSString* key in medicUIDs) {
+                NSDictionary *medicUIDDict = medicUIDs[key];
+                [self.repository getMedicForUID:medicUIDDict[@"uid"] completion:^(NSDictionary * _Nullable dict) {
+                    Medic* medic = [[Medic alloc] init];
+                    [medicArray addObject:medic];
+                    [medic initWithDict:dict andUid:medicUIDDict[@"uid"]];
+                    
+                    //attachments for the medic
+                    NSMutableArray* attachmentUrlArray = [[NSMutableArray alloc] init];
+                    [attachmentUrlArray addObject:[NSMutableArray new]];
+                    [attachmentUrlArray addObject:[NSMutableArray new]];
+                    
+                    for (NSString* documentKey in dict[@"attachments"][@"Documents"]) {
+                        [[attachmentUrlArray objectAtIndex:0] addObject:dict[@"attachments"][@"Documents"][documentKey]];
+                    }
+                    
+                    for (NSString* documentKey in dict[@"attachments"][@"Extras"]) {
+                        [[attachmentUrlArray objectAtIndex:1] addObject:dict[@"attachments"][@"Extras"][documentKey]];
+                    }
+                    
+                    medic.attachmentURLArray = attachmentUrlArray;
+                    
+                    //go get the names for each attachment (but not the actual file)
+                    for (int i = 0; i < [medic.attachmentURLArray count]; i++) {
+                        [medic.attachmentArray addObject:[NSMutableArray new]];
+                        [self getAttachmentsWithOutFileDataWithArray:[medic.attachmentURLArray objectAtIndex:i] completion:^(NSMutableArray * attachmentArray) {
+                            [medic.attachmentArray replaceObjectAtIndex:i withObject:attachmentArray];
+                        }];
+                    }
+                    
+                    
+                    for (NSNumber* specialtyID in medic.specialtyIds) {
+                        [self.repository fetchSpecialtyWithID:[NSString stringWithFormat:@"%@",specialtyID] completion:^(NSDictionary * _Nullable dict) {
+                            Specialty *specialty = [[Specialty alloc] init];
+                            [specialty initWithDict:dict];
+                            [medic.specialtiesArray addObject:specialty];
+                            completion(medicArray);
+                        }];
+                    }
+                }];
+            }
         }
     }];
 }
 
+- (void)getAttachmentsWithOutFileDataWithArray:(NSArray*)attachmentURLArray completion:(void (^)(NSMutableArray *))completion{
+    NSMutableArray* attachmentArray = [[NSMutableArray alloc] init];
+    for (NSString* filePath in attachmentURLArray) {
+        [self.repository getFileMetadata:filePath completion:^(NSString * _Nonnull fileName) {
+            Attachment* attachment = [[Attachment alloc] init];
+            attachment.url = filePath;
+            attachment.attachmentName = fileName;
+            [attachmentArray addObject:attachment];
+        }];
+    }
+    completion(attachmentArray);
+}
 @end

@@ -14,13 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSMutableArray* currentDiseases;
 @property (nonatomic) NSArray* currentDiseasesIds;
 @property (nonatomic) NSMutableArray* notesArray;
-@property (nonatomic) NSArray* attachmentArray;
+@property (nonatomic) NSMutableArray* attachmentArray;
 @property (nonatomic) NSArray* attachmentURLArray;
 @property (nonatomic) NSUUID* uid;
 @property (nonatomic) NSDate* creationDate;
 //sections for the attachment array
 @property (nonatomic)NSArray* attachmentsSections;
 - (void)initWithDict:(NSDictionary *)dict andUid:(NSString*)uid;
+- (NSMutableArray *)arrayWithFullData;
 @end
 
 NS_ASSUME_NONNULL_END

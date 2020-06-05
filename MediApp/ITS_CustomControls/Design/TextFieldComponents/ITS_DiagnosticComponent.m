@@ -130,5 +130,7 @@
     [self.currentDiagnosticsTableView reloadData];
 }
 
-
+- (void)setDefaultValueFromUser:(id)defaultValue {
+    self.diagnosticArray = defaultValue;
+}
 @end

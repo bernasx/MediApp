@@ -97,4 +97,7 @@
     return [NSNumber numberWithInteger:[self.selectionArray indexOfObject:self.currentSelection]];
 }
 
+- (void)setDefaultValueFromUser:(id)defaultValue {
+     [self.pickerView selectRow:[defaultValue longValue] inComponent:0 animated:nil];
+}
 @end

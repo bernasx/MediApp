@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)initWithTitle:(NSString *)title andFrame:(CGRect)frame andSectionArray:(NSArray *)sectionArray andSectionStringsArray:(NSArray *)sectionStringsArray;
 - (NSArray *)getSections;
 - (id)getObjectData;
+- (void)setAttachmentArray:(NSMutableArray *)attachmentArray;
 @end
 
 // 3. Definition of the delegate's interface

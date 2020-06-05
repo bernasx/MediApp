@@ -28,9 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
 //static fetches
 - (void)fetchSpecialties:(void (^)(NSArray * _Nullable))completion;
 //build objects
-- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray andSections:(NSArray *)sections;
+- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray andSections:(NSArray *)sections andIsEditing:(bool)isEditing andOldObject:(id)oldObject;
 //build screens
 - (void)buildScreen:(MainMenuSelection)addTypeSelection;
+- (NSArray *)fillComponentsWithData:(NSMutableArray*)dataSourceArray andDataArray:(NSArray *)dataArray andSectionArray:(nonnull NSArray *)sectionArray;
 @property (nonatomic, weak) id<AddViewModelDelegate> delegate;
 @end
 

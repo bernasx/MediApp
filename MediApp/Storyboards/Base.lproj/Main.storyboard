@@ -329,6 +329,20 @@
                                                     <action selector="didTapConfirmButton:" destination="XqS-y3-OzA" eventType="touchUpInside" id="08i-1Y-uoV"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF4-bM-p3a">
+                                                <rect key="frame" x="82" y="1000" width="120" height="37"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="AT3-ks-mVG"/>
+                                                    <constraint firstAttribute="height" constant="37" id="ZUX-FA-bqV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                                <state key="normal" title="dd">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapConfirmButton:" destination="XqS-y3-OzA" eventType="touchUpInside" id="th1-9f-qoo"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -337,7 +351,9 @@
                                             <constraint firstAttribute="trailing" secondItem="MzF-X4-dNd" secondAttribute="trailing" id="5jS-1W-Gra"/>
                                             <constraint firstAttribute="trailing" secondItem="vlC-12-1HT" secondAttribute="trailing" constant="16" id="IZp-qv-w1r"/>
                                             <constraint firstItem="MzF-X4-dNd" firstAttribute="leading" secondItem="sTs-ic-2iV" secondAttribute="leading" id="Npe-CS-doB"/>
+                                            <constraint firstItem="vlC-12-1HT" firstAttribute="leading" secondItem="KF4-bM-p3a" secondAttribute="trailing" constant="16" id="hrP-EE-FAu"/>
                                             <constraint firstItem="MzF-X4-dNd" firstAttribute="top" secondItem="sTs-ic-2iV" secondAttribute="top" id="qNw-Xz-NKs"/>
+                                            <constraint firstItem="KF4-bM-p3a" firstAttribute="top" secondItem="MzF-X4-dNd" secondAttribute="bottom" id="sSS-DZ-jm2"/>
                                             <constraint firstItem="vlC-12-1HT" firstAttribute="top" secondItem="MzF-X4-dNd" secondAttribute="bottom" id="tHA-kw-Bov"/>
                                         </constraints>
                                     </view>
@@ -364,6 +380,7 @@
                     <size key="freeformSize" width="414" height="1050"/>
                     <connections>
                         <outlet property="addButton" destination="vlC-12-1HT" id="VXY-Z1-CfI"/>
+                        <outlet property="cancelEditButton" destination="KF4-bM-p3a" id="cGB-R8-sjI"/>
                         <outlet property="fieldsTableView" destination="MzF-X4-dNd" id="wpx-rH-BFd"/>
                         <outlet property="scrollView" destination="BkN-ry-Hgm" id="STJ-dX-eKw"/>
                         <outlet property="tableViewHeight" destination="Fj2-K3-8JE" id="RQI-CZ-eDV"/>

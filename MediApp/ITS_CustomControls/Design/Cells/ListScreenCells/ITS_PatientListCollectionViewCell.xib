@@ -40,6 +40,9 @@
                                 <state key="normal" image="pencil.circle" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onEdit:" destination="gTV-IL-0wX" eventType="touchUpInside" id="jIw-VK-AYM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVR-q5-jae">
                                 <rect key="frame" x="358" y="8" width="20" height="22"/>
@@ -48,6 +51,9 @@
                                 <state key="normal" image="trash.circle" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onDelete:" destination="gTV-IL-0wX" eventType="touchUpInside" id="QC7-UP-J90"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6t-6q-0es">
                                 <rect key="frame" x="8" y="39" width="398" height="16"/>

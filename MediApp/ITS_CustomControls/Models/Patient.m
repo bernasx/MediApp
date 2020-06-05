@@ -39,4 +39,29 @@
     
     //NOTE - Previous diseases and family history are not set here to save API calls when possible
 }
+
+//Returns an array that will be used to fill in the EDIT screen
+- (NSMutableArray *)arrayWithFullData {
+    NSMutableArray* buildingArray = [[NSMutableArray alloc] init];
+    [buildingArray addObject:self.firstNames];
+    [buildingArray addObject:self.lastNames];
+    [buildingArray addObject:[NSString stringWithFormat:@"%d",self.age]];
+    [buildingArray addObject:self.gender];
+    [buildingArray addObject:self.address];
+    [buildingArray addObject:self.postalCode];
+    [buildingArray addObject:self.natural];
+    [buildingArray addObject:self.nationality];
+    [buildingArray addObject:self.NIF];
+    [buildingArray addObject:self.ccNumber];
+    [buildingArray addObject:self.snsNumber];
+    [buildingArray addObject:self.previousDiseasesArray];
+    [buildingArray addObject:self.familyDiseasesArray];
+    [buildingArray addObject:self.notesArray];
+    [buildingArray addObject:self.diagnosticArray];
+    [buildingArray addObject:self.email];
+    [buildingArray addObject:self.phoneNumber];
+    [buildingArray addObject:self.attachmentArray];
+    
+    return buildingArray;
+}
 @end

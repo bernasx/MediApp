@@ -187,6 +187,14 @@
     return self.textfield.text;
 }
 
+- (void)setTextfieldText:(NSString*)text {
+   
+}
+
+- (void)setDefaultValueFromUser:(id)defaultValue {
+     [self.textfield setText:defaultValue];
+}
+
 - (id)getObjectData {
     return [self textfieldText];
 }

@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ITS_AddViewController : ITS_ViewController<UITableViewDelegate,UITableViewDataSource, AttachmentComponentDelegate,AddViewModelDelegate,UIScrollViewDelegate,DiagnosticComponentDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *fieldsTableView;
 @property (nonatomic) MainMenuSelection addTypeSelection;
+@property (nonatomic) bool isEditing;
+@property (nonatomic) id selectedObject;
 @end
 
 NS_ASSUME_NONNULL_END

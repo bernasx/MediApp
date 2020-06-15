@@ -233,15 +233,22 @@
 
 #pragma mark - New Object Construction
 //sections are the sections for attachments 
-- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray andSections:(NSArray *)sections andIsEditing:(bool)isEditing andOldObject:(id)oldObject {
+- (void)buildObjectWithType:(MainMenuSelection)mainMenuSelection andWithArray:(NSArray *)buildingArray andSections:(NSArray *)sections andIsEditing:(bool)isEditing andOldObject:(id)oldObject completion:(void (^)(NSString * _Nullable))completion {
     
     if (isEditing) {
         switch (mainMenuSelection) {
-            case MainMenuSelectionMedics:
-                [self buildMedicObjectForEditing:buildingArray withSections:sections withOldObject:oldObject];
+            case MainMenuSelectionMedics: {
+                [self buildMedicObjectForEditing:buildingArray withSections:sections withOldObject:oldObject completion:^(NSString * _Nullable errorMsg) {
+                    completion(errorMsg);
+                }];
+            }
+                
                 break;
-            case MainMenuSelectionPatients:
-                [self buildPatientObject:buildingArray withSection:sections];
+            case MainMenuSelectionPatients:{
+                [self buildPatientObjectForEditing:buildingArray withSections:sections withOldObject:oldObject completion:^(NSString * _Nullable errorMsg) {
+                    completion(errorMsg);
+                }];
+            }
                 break;
             case MainMenuSelectionAppointments:
                 //build appointments
@@ -254,11 +261,17 @@
         }
     } else {
         switch (mainMenuSelection) {
-            case MainMenuSelectionMedics:
-                [self buildMedicObject:buildingArray withSections:(NSArray*)sections];
+            case MainMenuSelectionMedics: {
+                [self buildMedicObject:buildingArray withSections:(NSArray*)sections completion:^(NSString * _Nullable errorMsg) {
+                    completion(errorMsg);
+                }];
+            }
                 break;
-            case MainMenuSelectionPatients:
-                [self buildPatientObject:buildingArray withSection:sections];
+            case MainMenuSelectionPatients: {
+                [self buildPatientObject:buildingArray withSection:sections completion:^(NSString * _Nullable errorMsg) {
+                    completion(errorMsg);
+                }];
+            }
                 break;
             case MainMenuSelectionAppointments:
                 //build appointments
@@ -273,7 +286,7 @@
 }
 
 
-- (void)buildMedicObject:(NSArray *)buildingArray withSections:(NSArray*)sections {
+- (void)buildMedicObject:(NSArray *)buildingArray withSections:(NSArray*)sections completion:(void (^)(NSString * _Nullable))completion{
     Medic* medic = [[Medic alloc] init];
     [medic setFirstNames:[buildingArray objectAtIndex:0]];
     [medic setLastNames:[buildingArray objectAtIndex:1]];
@@ -293,11 +306,13 @@
     NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
     [medic setSuperior:currentUserUID];
     [self.repository registerSeparateUserWithEmail:medic.email completion:^(NSString * _Nonnull uid) {
-        [self.repository writeNewMedic:medic withUID:uid andWithSections:(NSArray*)sections];
+        [self.repository writeNewMedic:medic withUID:uid andWithSections:(NSArray*)sections completion:^(NSString * _Nullable errorMsg) {
+             completion(errorMsg);
+        }];
     }];
 }
 
--(void)buildPatientObject:(NSArray *)buildingArray withSection:(NSArray *)sections {
+-(void)buildPatientObject:(NSArray *)buildingArray withSection:(NSArray *)sections completion:(void (^)(NSString * _Nullable))completion {
     Patient *patient = [[Patient alloc] init];
     [patient setFirstNames:[buildingArray objectAtIndex:0]];
     [patient setLastNames:[buildingArray objectAtIndex:1]];
@@ -319,7 +334,9 @@
     [patient setAttachmentArray:[buildingArray objectAtIndex:17]];
     
     [self.repository registerSeparateUserWithEmail:patient.email completion:^(NSString * _Nonnull uid) {
-        [self.repository writeNewPatient:patient withUID:uid andWithSections:(NSArray*)sections];
+        [self.repository writeNewPatient:patient withUID:uid andWithSections:(NSArray*)sections completion:^(NSString * _Nullable errorMsg) {
+            completion(errorMsg);
+        }];
     }];
 }
 
@@ -337,8 +354,33 @@
     return dataArray;
 }
 
+- (void)buildPatientObjectForEditing:(NSArray*)buildingArray withSections:(NSArray*)sections withOldObject:(Patient*)oldPatient completion:(void (^)(NSString * _Nullable))completion {
+    Patient *patient = [[Patient alloc] init];
+    [patient setFirstNames:[buildingArray objectAtIndex:0]];
+    [patient setLastNames:[buildingArray objectAtIndex:1]];
+    [patient setAge:[[buildingArray objectAtIndex:2] intValue]];
+    [patient setGender:[buildingArray objectAtIndex:3]];
+    [patient setAddress:[buildingArray objectAtIndex:4]];
+    [patient setPostalCode:[buildingArray objectAtIndex:5]];
+    [patient setNatural:[buildingArray objectAtIndex:6]];
+    [patient setNationality:[buildingArray objectAtIndex:7]];
+    [patient setNIF:[buildingArray objectAtIndex:8]];
+    [patient setCcNumber:[buildingArray objectAtIndex:9]];
+    [patient setSnsNumber:[buildingArray objectAtIndex:10]];
+    [patient setPreviousDiseasesArray:[buildingArray objectAtIndex:11]];
+    [patient setFamilyDiseasesArray:[buildingArray objectAtIndex:12]];
+    [patient setNotesArray:[buildingArray objectAtIndex:13]];
+    [patient setDiagnosticArray:[buildingArray objectAtIndex:14]];
+    [patient setEmail:oldPatient.email];
+    [patient setPhoneNumber:[buildingArray objectAtIndex:16]];
+    [patient setAttachmentArray:[buildingArray objectAtIndex:17]];
+    
+    [self.repository editPatient:patient andWithSections:sections andOldPatient:oldPatient completion:^(NSString * _Nullable errorMsg) {
+       completion(errorMsg);
+    }];
+}
 
-- (void)buildMedicObjectForEditing:(NSArray*)buildingArray withSections:(NSArray*)sections withOldObject:(Medic *)oldMedic {
+- (void)buildMedicObjectForEditing:(NSArray*)buildingArray withSections:(NSArray*)sections withOldObject:(Medic *)oldMedic completion:(void (^)(NSString * _Nullable))completion {
     Medic* medic = [[Medic alloc] init];
     [medic setFirstNames:[buildingArray objectAtIndex:0]];
     [medic setLastNames:[buildingArray objectAtIndex:1]];
@@ -357,6 +399,8 @@
     [medic setAttachmentArray:[buildingArray objectAtIndex:14]];
     NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
     [medic setSuperior:currentUserUID];
-    [self.repository editMedic:medic andWithSections:sections andOldMedic:oldMedic];
+    [self.repository editMedic:medic andWithSections:sections andOldMedic:oldMedic completion:^(NSString * _Nullable errorMsg) {
+         completion(errorMsg);
+    }];
 }
 @end

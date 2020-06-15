@@ -99,7 +99,7 @@
 #pragma mark - Medic Functions
 
 //uid is the new user's uid
-- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections {
+- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections completion:(void (^)(NSString * _Nullable))completion {
     NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
     [[[[self.ref child:@"medics"] child:uid] child:@"firstName"] setValue:medic.firstNames];
     [[[[self.ref child:@"medics"] child:uid] child:@"lastName"] setValue:medic.lastNames];
@@ -152,13 +152,11 @@
         }
         sectionCount += 1;
     }
+    completion(nil);
 }
 
-- (void)editMedic:(Medic *)medic andWithSections:(nonnull NSArray*)sections andOldMedic:(Medic *)oldMedic {
+- (void)editMedic:(Medic *)medic andWithSections:(nonnull NSArray*)sections andOldMedic:(Medic *)oldMedic completion:(void (^)(NSString * _Nullable))completion {
     NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
-    
-    
-    
     [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"firstName"] setValue:medic.firstNames];
     [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"lastName"] setValue:medic.lastNames];
     [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"age"] setValue:[NSNumber numberWithInt:medic.age]];
@@ -187,7 +185,41 @@
     }
     
     //[[[[[self.ref child:@"medics"] child:currentUserUID] child:@"medics"] childByAutoId] setValue:@{@"uid":uid}];
-
+    
+    
+    //Editing attachments
+    //go through each section and see if any is missing
+    for (int i = 0; i < [sections count]; i++) {
+        for (Attachment*oldMedicAttachment in [oldMedic.attachmentArray objectAtIndex:i]) {
+            bool exists = NO;
+            for (Attachment*newMedicAttachment in [medic.attachmentArray objectAtIndex:i]) {
+                if ([oldMedicAttachment.url isEqualToString:newMedicAttachment.url]) {
+                    exists = YES;
+                }
+            }
+            if (!exists) {
+                //get every attachment
+                [[[[[self.ref child:@"medics" ] child:oldMedic.uid] child:@"attachments"] child:[sections objectAtIndex:i]] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                    if ([snapshot exists]) {
+                        //go through every attachment
+                        for (FIRDataSnapshot* child in snapshot.children) {
+                            NSLog(@"Delete %@",oldMedicAttachment.attachmentName);
+                            NSString* key = child.key;
+                            //if they match, and being here means being ready for deletion, delete that one
+                            if ([child.value isEqualToString:oldMedicAttachment.url]) {
+                                
+                                [[[[[[self.ref child:@"medics" ] child:oldMedic.uid] child:@"attachments"] child:[sections objectAtIndex:i]] child:key] removeValue];
+                                [[self.storage referenceForURL:oldMedicAttachment.url] deleteWithCompletion:^(NSError * _Nullable error) {
+                                    NSLog(@"Delete from firebase storage: %@",error.localizedDescription);
+                                }];
+                            }
+                        }
+                    }
+                    
+                }];
+            }
+        }
+    }
     
     //get only the IDs
     NSMutableArray *specialtiesArray = [NSMutableArray new];
@@ -197,18 +229,24 @@
     //Save the IDs
     [[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"specialties"] setValue:specialtiesArray];
     
+    //new attachments
     int sectionCount = 0; //track which section we're in so we can name it for the file path
     for (NSMutableArray* array in medic.attachmentArray) {
         //get all the attachments, add a uuid to each of them.
         for (Attachment* attachment in array) {
             NSUUID *uuid = [NSUUID UUID]; //generate a new id for the attachment
             NSString *str = [uuid UUIDString];
-            [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@/%@",oldMedic.uid,[sections objectAtIndex:sectionCount],str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
-                [[[[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"attachments"] child:[sections objectAtIndex:sectionCount]]childByAutoId] setValue:url.absoluteString];
-            }];
+            if (attachment.attachmentData) {
+                [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@/%@",oldMedic.uid,[sections objectAtIndex:sectionCount],str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
+                    [[[[[[self.ref child:@"medics"] child:oldMedic.uid] child:@"attachments"] child:[sections objectAtIndex:sectionCount]]childByAutoId] setValue:url.absoluteString];
+                }];
+            }
+            
         }
         sectionCount += 1;
     }
+    
+     completion(nil);
     
 }
 
@@ -243,7 +281,7 @@
 #pragma mark - Patient Functions
 
 //uid is the new user's uid
-- (void)writeNewPatient:(Patient *)patient withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections {
+- (void)writeNewPatient:(Patient *)patient withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections completion:(void (^)(NSString * _Nullable))completion {
        /* Patient info */
     NSString*currentUserUID = [FIRAuth auth].currentUser.uid;
     [[[[self.ref child:@"patients"] child:uid] child:@"firstName"] setValue:patient.firstNames];
@@ -298,6 +336,128 @@
     }
    
     [self writeNewDiagnosticWithArray:patient.diagnosticArray withPatientUid:uid andCurrentUserUid:currentUserUID andSections:sections];
+    completion(nil);
+}
+
+- (void)editPatient:(Patient *)patient andWithSections:(nonnull NSArray*)sections andOldPatient:(Patient *)oldPatient completion:(void (^)(NSString * _Nullable))completion {
+    /* Patient info */
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"firstName"] setValue:patient.firstNames];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"lastName"] setValue:patient.lastNames];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"age"] setValue:[NSNumber numberWithInt:patient.age]];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"gender"] setValue:patient.gender];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"address"] setValue:patient.address];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"postalCode"] setValue:patient.postalCode];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"natural"] setValue:patient.natural];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"nationality"] setValue:patient.nationality];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"NIF"] setValue:patient.NIF];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"ccNumber"] setValue:patient.ccNumber];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"email"] setValue:patient.email];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"phoneNumber"] setValue:patient.phoneNumber];
+    [[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"snsNumber"] setValue:patient.snsNumber];
+    
+    
+    //remove old notes that need to be removed
+    for (Note* oldNote in oldPatient.notesArray) {
+        bool exists = NO;
+        for (Note* newNote in patient.notesArray) {
+            
+            if ([oldNote.uid isEqualToString:newNote.uid]) {
+                exists = YES;
+            }
+    
+        }
+        //delete it
+        if(!exists) {
+            [[[self.ref child:@"notes"] child:oldNote.uid] removeValue];
+            [[[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"notes"] child:oldNote.uid] removeValue];
+        }
+    }
+    
+    //Add new ones
+    for (Note* newNote in patient.notesArray) {
+        bool exists = NO;
+        for (Note* oldNote in oldPatient.notesArray) {
+            if ([oldNote.uid isEqualToString:newNote.uid]) {
+                exists = YES;
+            }
+        }
+        
+        if (!exists) {
+            //write new one
+            [[[[self.ref child:@"notes"] child:newNote.uid] child:@"title"]setValue:newNote.noteTitle];
+            [[[[self.ref child:@"notes"] child:newNote.uid] child:@"text"]setValue:newNote.noteTitle];
+            [[[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"notes"] child:newNote.uid] setValue:newNote.uid];
+        }
+    }
+    
+    /* Disease history */
+    //get only the IDs
+    NSMutableArray *diseasesArray = [NSMutableArray new];
+    for (Disease* disease in patient.previousDiseasesArray) {
+        [diseasesArray addObject:disease.diseaseId];
+    }
+    //Save the ID
+    [[[[[self.ref child:@"history"] child:@"patientHistory"] child:oldPatient.uid] child:@"previousDiseases"] setValue:diseasesArray];
+    
+    //Same for family history
+    NSMutableArray *familyDiseases = [NSMutableArray new];
+    for (Disease* disease in patient.familyDiseasesArray) {
+        [familyDiseases addObject:disease.diseaseId];
+    }
+    //Save the ID
+    [[[[[self.ref child:@"history"] child:@"patientHistory"] child:oldPatient.uid] child:@"familyDiseases"] setValue:familyDiseases];
+    
+    
+    
+    //Editing attachments
+    //go through each section and see if any is missing
+    for (int i = 0; i < [sections count]; i++) {
+        for (Attachment*oldPatientAttachment in [oldPatient.attachmentArray objectAtIndex:i]) {
+            bool exists = NO;
+            for (Attachment*newPatientAttachment in [patient.attachmentArray objectAtIndex:i]) {
+                if ([oldPatientAttachment.url isEqualToString:newPatientAttachment.url]) {
+                    exists = YES;
+                }
+            }
+            if (!exists) {
+                //get every attachment
+                [[[[[self.ref child:@"patients" ] child:oldPatient.uid] child:@"attachments"] child:[sections objectAtIndex:i]] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                    if ([snapshot exists]) {
+                        //go through every attachment
+                        for (FIRDataSnapshot* child in snapshot.children) {
+                            NSLog(@"Delete %@",oldPatientAttachment.attachmentName);
+                            NSString* key = child.key;
+                            //if they match, and being here means being ready for deletion, delete that one
+                            if ([child.value isEqualToString:oldPatientAttachment.url]) {
+                                
+                                [[[[[[self.ref child:@"patients" ] child:oldPatient.uid] child:@"attachments"] child:[sections objectAtIndex:i]] child:key] removeValue];
+                                [[self.storage referenceForURL:oldPatientAttachment.url] deleteWithCompletion:^(NSError * _Nullable error) {
+                                    NSLog(@"Delete from firebase storage: %@",error.localizedDescription);
+                                }];
+                            }
+                        }
+                    }
+                    
+                }];
+            }
+        }
+    }
+    
+    /* Patient attachments */
+    int patientSectionCount = 0; //track which section we're in so we can name it for the file path
+    for (NSMutableArray* array in patient.attachmentArray) {
+        //get all the attachments, add a uuid to each of them.
+        for (Attachment* attachment in array) {
+            NSUUID *uuid = [NSUUID UUID]; //generate a new id for the attachment
+            NSString *str = [uuid UUIDString];
+            [self saveToStorageWithReferenceString:[NSString stringWithFormat:@"%@/attachments/%@/%@/%@",oldPatient.uid,[sections objectAtIndex:patientSectionCount],str,attachment.attachmentName] andData:attachment.attachmentData completion:^(NSURL * url) {
+                [[[[[[self.ref child:@"patients"] child:oldPatient.uid] child:@"attachments"] child:[sections objectAtIndex:patientSectionCount]]childByAutoId] setValue:url.absoluteString];
+            }];
+        }
+        patientSectionCount += 1;
+    }
+    
+     completion(nil);
 }
 
 
@@ -305,6 +465,20 @@
     [[_ref child:@"patients"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         completion(snapshot.value);
     }];
+}
+
+- (void)fetchHistoryOfDiseasesWithUID:(NSString *)uid andIsFamilyHistory:(bool)isFamilyHistory completion:(void (^)(NSArray * _Nullable))completion{
+    if (isFamilyHistory) {
+        [[[[[_ref child:@"history"] child:@"patientHistory"] child:uid] child:@"familyDiseases"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            completion(snapshot.value);
+        }];
+    } else {
+        [[[[[_ref child:@"history"] child:@"patientHistory"] child:uid] child:@"previousDiseases"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            completion(snapshot.value);
+        }];
+    }
+    
+    
 }
 
 #pragma mark - Diagnostic Functions

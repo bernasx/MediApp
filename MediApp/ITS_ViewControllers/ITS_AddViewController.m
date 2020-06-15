@@ -72,10 +72,16 @@
         default:
             break;
     }
+    if (self.isEditing) {
+        [button setTitle:NSLocalizedString(@"add_save_button", @"") forState:UIControlStateNormal];
+    }
     
     if ([button isEqual:self.cancelEditButton]) {
-        [button setTitle:@"Cancelar" forState:UIControlStateNormal];
+        [button setTitle:NSLocalizedString(@"add_cancel_button", @"") forState:UIControlStateNormal];
     }
+}
+- (IBAction)didTapCancel:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)didTapConfirmButton:(id)sender {
@@ -87,20 +93,20 @@
         for (ITS_BaseTextFieldComponent* component in array) {
             if ([component isKindOfClass:[ITS_TextFieldComponent class]]) {
                 if (![(ITS_TextFieldComponent*)component textfieldHasText]) {
-                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor preencha este campo!"];
+                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warning_fill_in_field", @"")];
                     creationIsValid = NO;
                 }
             }
             
             if ([component isKindOfClass:[ITS_ZipCodeComponent class]]) {
                 if (![(ITS_ZipCodeComponent*)component textfieldHasText]) {
-                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor preencha este campo!"];
+                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warning_fill_in_field", @"")];
                     creationIsValid = NO;
                 }
             }
             if ([component isKindOfClass:[ITS_TextFieldWithTableComponent class]]) {
                 if ([[(ITS_TextFieldWithTableComponent*)component getObjectArray] count] < 1) {
-                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor insira pelo menos 1 elemento."];
+                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warning_insert_one_element", @"")];
                     creationIsValid = NO;
                 }
                 NSLog(@"%@",[(ITS_TextFieldWithTableComponent*)component getObjectArray]);
@@ -110,7 +116,7 @@
             }
             if ([component isKindOfClass:[ITS_DiagnosticComponent class]]) {
                 if ([[(ITS_DiagnosticComponent*)component getObjectData] count] < 1) {
-                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:@"Por favor insira um diagnóstico!"];
+                    [component updateComponentStatus:UITextFieldStatusWarning withWarningMessage:NSLocalizedString(@"warning_insert_one_diagnostic", @"")];
                     creationIsValid = NO;
                 }
             }
@@ -128,7 +134,13 @@
                 }
             }
         }
-        [self.viewModel buildObjectWithType:self.addTypeSelection andWithArray:buildingArray andSections:sections andIsEditing:self.isEditing andOldObject:self.selectedObject];
+        [self.viewModel buildObjectWithType:self.addTypeSelection andWithArray:buildingArray andSections:sections andIsEditing:self.isEditing andOldObject:self.selectedObject completion:^(NSString * _Nullable errorMsg) {
+            
+            if (!errorMsg) {
+                 [self.navigationController popViewControllerAnimated:YES];
+            }
+            
+        }];
     }
 }
 

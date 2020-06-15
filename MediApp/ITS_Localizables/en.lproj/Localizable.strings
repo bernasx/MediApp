@@ -13,6 +13,8 @@
 "warning_disease_already_added" = "That disease was already added!";
 "warning_disease_does_not_exist" = "That disease does not exist.";
 "warning_textview_title_not_filled" = "Please insert a title.";
+"warning_insert_one_element" = "Please insert at least 1 element";
+"warning_insert_one_diagnostic" = "Please insert a diagnostic";
 
 //Main Menu
 "main_menu_medics" = "My medics";
@@ -62,9 +64,14 @@
 "add_button_appointment" = "Add Appointment";
 "add_button_medical_appointment" = "Add Medical Appointment";
 
+//Add View Controller
+"add_save_button" = "Save";
+"add_cancel_button" = "Cancel";
+
 //List Screen
 "list_medic_title" = "Medics";
 "list_patient_title" = "Patients";
+"list_patient_age" = "%d years old.";
 
 //Diagnostic view model
 "diagnostic_component_treatment" = "Treatment";
@@ -72,3 +79,7 @@
 "diagnostic_component_attachments" = "Diagnostic Attachments";
 "diagnostic_component_attachment_documents" = "Documents";
 "diagnostic_component_attachment_extras" = "Extras";
+
+//Diagnostic View Controller
+"diagnostic_save_button" = "Save Diagnostic";
+"diagnostic_cancel_button" = "Cancel";

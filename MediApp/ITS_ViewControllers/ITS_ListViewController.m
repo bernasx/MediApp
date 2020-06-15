@@ -11,6 +11,7 @@
 @interface ITS_ListViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *listCollectionView;
 @property (nonatomic) NSArray* objectArray;
+@property (nonatomic) bool isBacking;
 @end
 
 @implementation ITS_ListViewController
@@ -19,8 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewModel = [[ITS_ListViewModel alloc] init];
+    [self prepareScreen];
+    self.isBacking = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if(self.isBacking) {
+        [self prepareScreen];
+    }
+    self.isBacking = YES;
+}
+
+- (void)prepareScreen {
     [self designViewElements];
-    
     switch (self.mainMenuSelection) {
         case MainMenuSelectionMedics:{
             [self.viewModel getMedics:^(NSArray * _Nullable array) {

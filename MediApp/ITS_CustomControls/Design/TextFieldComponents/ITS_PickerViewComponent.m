@@ -58,6 +58,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     self.currentSelection = [self.selectionArray objectAtIndex:row];
+    
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -98,6 +99,9 @@
 }
 
 - (void)setDefaultValueFromUser:(id)defaultValue {
-     [self.pickerView selectRow:[defaultValue longValue] inComponent:0 animated:nil];
+
+    [self.pickerView selectRow:[defaultValue longValue] inComponent:0 animated:nil];
+    self.currentSelection = [self.selectionArray objectAtIndex:[defaultValue longValue]];
+    
 }
 @end

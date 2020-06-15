@@ -51,7 +51,7 @@
     
     NSString *fullName = [NSString stringWithFormat:@"%@ %@",self.patient.firstNames,self.patient.lastNames];
     [self.nameLabel setText:fullName];
-    [self.ageLabel setText:[NSString stringWithFormat:@"%d anos",self.patient.age]];
+    [self.ageLabel setText:[NSString stringWithFormat:NSLocalizedString(@"list_patient_age", @""),self.patient.age]];
     NSString *phoneIconAndNumber = [NSString stringWithFormat:@"􀌿%@",self.patient.phoneNumber];
     [self.phoneNumberLabel setText:phoneIconAndNumber];
     

@@ -162,6 +162,9 @@
 }
 
 - (void)setDefaultValueFromUser:(id)defaultValue {
-    self.objectArray = defaultValue;
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    array = [defaultValue mutableCopy];
+    self.objectArray = array;
+    [self.listTableView reloadData];
 }
 @end

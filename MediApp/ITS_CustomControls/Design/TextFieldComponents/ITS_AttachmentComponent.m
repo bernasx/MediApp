@@ -150,7 +150,12 @@
 }
 
 - (void)setDefaultValueFromUser:(id)defaultValue {
-    _attachmentArray = defaultValue;
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (NSMutableArray* innerArray in defaultValue) {
+        [array addObject:[innerArray mutableCopy]];
+    }
+    
+    _attachmentArray = array;
     [self.attachmentTableView reloadData];
 }
 @end

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSString* attachmentName;
 @property (nonatomic) NSData* attachmentData;
 @property (nonatomic) NSString* url;
+@property (nonatomic) NSString* attachmentAutoID;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -73,6 +73,8 @@
     self.viewModel.delegate = self;
     [self.saveButton setTintColor:[ITS_Colors primaryColor]];
     [self.cancelButton setTintColor:[ITS_Colors primaryColor]];
+    [self.saveButton setTitle:NSLocalizedString(@"diagnostic_save_button", @"") forState:UIControlStateNormal];
+    [self.cancelButton setTitle:NSLocalizedString(@"diagnostic_cancel_button", @"") forState:UIControlStateNormal];
     NSString *cellID = @"addTableViewCell";
     [self.fieldsTableView registerNib:[UINib nibWithNibName:@"ITS_AddTableViewCell" bundle:nil] forCellReuseIdentifier:cellID];
     [self.viewModel buildScreen];

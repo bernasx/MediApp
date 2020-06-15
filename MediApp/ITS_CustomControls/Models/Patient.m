@@ -13,7 +13,9 @@
 {
     self = [super init];
     if (self) {
-         self.notesArray = [[NSMutableArray alloc] init];
+        self.notesArray = [[NSMutableArray alloc] init];
+        self.previousDiseasesArray = [[NSMutableArray alloc] init];
+        self.familyDiseasesArray = [[NSMutableArray alloc] init];
     }
     return self;
 }

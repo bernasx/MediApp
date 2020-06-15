@@ -13,7 +13,6 @@
     self = [super init];
     if (self) {
         self.specialtiesArray = [[NSMutableArray alloc] init];
-        self.attachmentArray = [[NSMutableArray alloc] init];
     }
     return self;
 }

@@ -340,7 +340,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="didTapConfirmButton:" destination="XqS-y3-OzA" eventType="touchUpInside" id="th1-9f-qoo"/>
+                                                    <action selector="didTapCancel:" destination="XqS-y3-OzA" eventType="touchUpInside" id="f90-qD-55R"/>
                                                 </connections>
                                             </button>
                                         </subviews>

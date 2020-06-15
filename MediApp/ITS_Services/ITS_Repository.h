@@ -28,17 +28,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)fetchDiseases:(void (^)(NSArray * _Nullable))completion;
 - (void)fetchDiseaseWithID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion;
 //write new data
-- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid andWithSections:(NSArray *)sections;
-- (void)writeNewPatient:(Patient *)patient withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections;
+- (void)writeNewMedic:(Medic *)medic withUID:(NSString*)uid andWithSections:(NSArray *)sections completion:(void (^)(NSString * _Nullable))completion;
+- (void)writeNewPatient:(Patient *)patient withUID:(NSString*)uid andWithSections:(nonnull NSArray *)sections completion:(void (^)(NSString * _Nullable))completion;
 //patients
 - (void)getAllPatients:(void (^)(NSDictionary * _Nullable))completion;
+- (void)fetchHistoryOfDiseasesWithUID:(NSString *)uid andIsFamilyHistory:(bool)isFamilyHistory completion:(void (^)(NSArray * _Nullable))completion;
+- (void)editPatient:(Patient *)patient andWithSections:(nonnull NSArray*)sections andOldPatient:(Patient *)oldPatient completion:(void (^)(NSString * _Nullable))completion;
 //Diagnostic
 - (void)getDiagnosticsFromPatientUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion;
 //Medics
 - (void)getAllMedics:(void (^)(NSDictionary * _Nullable))completion;
 - (void)getMedicForUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion;
 - (void)getMedicsFromUID:(NSString *)uid completion:(void (^)(NSDictionary * _Nullable))completion;
-- (void)editMedic:(Medic *)medic andWithSections:(nonnull NSArray*)sections andOldMedic:(Medic *)oldMedic;
+- (void)editMedic:(Medic *)medic andWithSections:(nonnull NSArray*)sections andOldMedic:(Medic *)oldMedic completion:(void (^)(NSString * _Nullable))completion;
 //others
 - (void)getNoteFromUID:(NSString*)uid completion:(void (^)(NSDictionary * _Nullable))completion;
 

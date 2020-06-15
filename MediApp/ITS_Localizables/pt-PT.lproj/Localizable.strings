@@ -13,6 +13,8 @@
 "warning_disease_already_added" = "Essa doença já foi adicionada!";
 "warning_disease_does_not_exist" = "Essa doença não existe.";
 "warning_textview_title_not_filled" = "Por favor insira um titulo!";
+"warning_insert_one_element" = "Por favor insira pelo menos 1 elemento.";
+"warning_insert_one_diagnostic" = "Por favor insira um diagnóstico.";
 
 //Main Menu
 "main_menu_medics" = "Os meus médicos";
@@ -61,9 +63,14 @@
 "add_button_appointment" = "Adicionar Agendamento";
 "add_button_medical_appointment" = "Adicionar Consulta";
 
+//Add ViewController
+"add_save_button" = "Guardar";
+"add_cancel_button" = "Cancelar";
+
 //List Screen
 "list_medic_title" = "Médicos";
 "list_patient_title" = "Pacientes";
+"list_patient_age" = "%d anos.";
 
 //Diagnostic view model
 "diagnostic_component_treatment" = "Tratamento";
@@ -71,3 +78,8 @@
 "diagnostic_component_attachments" = "Anexos do Diagnóstico";
 "diagnostic_component_attachment_documents" = "Documentos";
 "diagnostic_component_attachment_extras" = "Extras";
+
+//Diagnostic View Controller
+"diagnostic_save_button" = "Guardar Diagnóstico";
+"diagnostic_cancel_button" = "Cancelar";
+

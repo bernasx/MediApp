@@ -23,6 +23,7 @@
     NSMutableArray* patientArray = [[NSMutableArray alloc] init];
     
     [self.repository getAllPatients:^(NSDictionary * _Nullable patientDicts) {
+        
         if (![patientDicts isKindOfClass:[NSNull class]]) {
             for (NSString* key in patientDicts) {
                 Patient* patient = [[Patient alloc] init];
@@ -42,16 +43,18 @@
                     
                 }
                 
-                //attachments for the medic
+                
+                //attachments for the patient
                 NSMutableArray* attachmentUrlArray = [[NSMutableArray alloc] init];
                 [attachmentUrlArray addObject:[NSMutableArray new]];
                 [attachmentUrlArray addObject:[NSMutableArray new]];
-                for (NSString* documentKey in patientDicts[@"attachments"][@"Documents"]) {
-                    [[attachmentUrlArray objectAtIndex:0] addObject:patientDicts[@"attachments"][@"Documents"][documentKey]];
+                
+                for (NSString* documentKey in patientDicts[key][@"attachments"][@"Documents"]) {
+                    [[attachmentUrlArray objectAtIndex:0] addObject:patientDicts[key][@"attachments"][@"Documents"][documentKey]];
                 }
                 
-                for (NSString* documentKey in patientDicts[@"attachments"][@"Extras"]) {
-                    [[attachmentUrlArray objectAtIndex:1] addObject:patientDicts[@"attachments"][@"Extras"][documentKey]];
+                for (NSString* documentKey in patientDicts[key][@"attachments"][@"Extras"]) {
+                    [[attachmentUrlArray objectAtIndex:1] addObject:patientDicts[key][@"attachments"][@"Extras"][documentKey]];
                 }
                 patient.attachmentURLArray = attachmentUrlArray;
                 
@@ -62,6 +65,30 @@
                         [patient.attachmentArray replaceObjectAtIndex:i withObject:attachmentArray];
                     }];
                 }
+                
+                [self.repository fetchHistoryOfDiseasesWithUID:patient.uid andIsFamilyHistory:NO completion:^(NSArray * _Nullable idArray) {
+                    patient.previousDiseasesIdArray = idArray;
+                    
+                    for (NSNumber* diseaseID in idArray) {
+                        [self.repository fetchDiseaseWithID:[NSString stringWithFormat:@"%@",diseaseID] completion:^(NSDictionary * _Nullable dict) {
+                            Disease *disease = [[Disease alloc] init];
+                            [disease initWithDict:dict];
+                            [patient.previousDiseasesArray addObject:disease];
+                        }];
+                    }
+                }];
+                
+                [self.repository fetchHistoryOfDiseasesWithUID:patient.uid andIsFamilyHistory:YES completion:^(NSArray * _Nullable idArray) {
+                    patient.familyDiseasesIdArray = idArray;
+                    for (NSNumber* diseaseID in idArray) {
+                        [self.repository fetchDiseaseWithID:[NSString stringWithFormat:@"%@",diseaseID] completion:^(NSDictionary * _Nullable dict) {
+                            Disease *disease = [[Disease alloc] init];
+                            [disease initWithDict:dict];
+                            [patient.familyDiseasesArray addObject:disease];
+                        }];
+                    }
+                }];
+                
                 
                 [self fetchDiagnosticsFromPatientUID:patient.uid completion:^(NSArray * _Nullable diagnosticArray) {
                     patient.diagnosticArray = diagnosticArray;
@@ -105,7 +132,7 @@
                 }];
                 
             }
-            
+#warning attachments could be missing [key] and notes could be completely broken - FIX ASAP
             //attachments for the diagnostic
             NSMutableArray* attachmentUrlArray = [[NSMutableArray alloc] init];
             [attachmentUrlArray addObject:[NSMutableArray new]];

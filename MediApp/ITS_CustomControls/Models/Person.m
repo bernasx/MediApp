@@ -9,5 +9,13 @@
 #import "Person.h"
 
 @implementation Person
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.attachmentArray = [[NSMutableArray alloc] init];
+        self.attachmentURLArray = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 @end

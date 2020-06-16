@@ -132,7 +132,7 @@
                 }];
                 
             }
-#warning attachments could be missing [key] and notes could be completely broken - FIX ASAP
+            
             //attachments for the diagnostic
             NSMutableArray* attachmentUrlArray = [[NSMutableArray alloc] init];
             [attachmentUrlArray addObject:[NSMutableArray new]];
